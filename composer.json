@@ -1,0 +1,12 @@
+{
+    "name": "bil/educate",
+    "authors": [
+        {
+            "name": "lecrosoft",
+            "email": "lecrosoft@gmail.com"
+        }
+    ],
+    "require": {
+        "pusher/pusher-php-server": "^7.0"
+    }
+}
