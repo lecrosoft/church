@@ -43,17 +43,81 @@ include('includes/function.php');
 
                     <!-- /.col-lg-12 -->
                 </div>
+
+
+                <!-- INCOME AND EXPENSES REPORT -->
+
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-3 col-sm-3 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total Income</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-down text-success"></i> <span class="counter text-success">₦8659</span></li>
+
+                            </ul>
+                            <hr>
+                            <span class="text-success">This Month ₦2334</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total Expenses</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-danger"></i> <span class="counter text-danger">₦7469</span></li>
+                            </ul>
+                            <hr>
+                            <span class="text-danger">This Month ₦2334</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Current Balance</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash3"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-down text-info"></i> <span class="counter text-info">₦6011</span></li>
+                            </ul>
+                            <hr>
+                            <span class="text-success">This Month ₦2334</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Pledges</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash4"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-warning"></i> <span class="text-warning">₦1800</span></li>
+                            </ul>
+                            <hr>
+                            <span class="text-warning">Pending Pledges ₦2334</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <!-- INCOME AND EXPENSES REPORT -->
+
+
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="white-box">
                             <div class="r-icon-stats"> <i class=" ti-pencil-alt bg-megna"></i>
                                 <?php
-                                $lecrosoft = "SELECT * FROM post";
+                                $lecrosoft = "SELECT * FROM family";
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
-                                $post_count = mysqli_num_rows($query_lecrosoft);
+                                $family_count = mysqli_num_rows($query_lecrosoft);
                                 ?>
                                 <div class="bodystate">
-                                    <h4><?php echo $post_count; ?></h4> <span class="text-muted">Total Posts</span>
+                                    <h4><?php echo $family_count; ?></h4> <span class="text-muted">Total Families</span>
                                 </div>
 
                             </div>
@@ -63,13 +127,13 @@ include('includes/function.php');
                         <div class="white-box">
                             <div class="r-icon-stats"> <i class="  ti-comments bg-info"></i>
                                 <?php
-                                $lecrosoft = "SELECT * FROM comment";
+                                $lecrosoft = "SELECT * FROM members";
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
-                                $comment_count = mysqli_num_rows($query_lecrosoft);
+                                $members_count = mysqli_num_rows($query_lecrosoft);
                                 ?>
 
                                 <div class="bodystate">
-                                    <h4><?php echo $comment_count; ?></h4> <span class="text-muted">Total comments</span>
+                                    <h4><?php echo $members_count; ?></h4> <span class="text-muted">Total members</span>
                                 </div>
                             </div>
                         </div>
@@ -79,12 +143,12 @@ include('includes/function.php');
                             <div class="r-icon-stats"> <i class=" ti-book bg-success"></i>
 
                                 <?php
-                                $lecrosoft = "SELECT * FROM ebook";
+                                $lecrosoft = "SELECT * FROM department";
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
-                                $ebook_count = mysqli_num_rows($query_lecrosoft);
+                                $department_count = mysqli_num_rows($query_lecrosoft);
                                 ?>
                                 <div class="bodystate">
-                                    <h4><?php echo $ebook_count; ?></h4> <span class="text-muted">Total Ebooks.</span>
+                                    <h4><?php echo $department_count; ?></h4> <span class="text-muted">Total department.</span>
                                 </div>
                             </div>
                         </div>
@@ -106,55 +170,109 @@ include('includes/function.php');
                 </div>
 
 
+
+
                 <!-- RECENT COMMENT BOX -->
 
                 <div class="row">
-                    <div class="col-md-6 col-lg-6 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Recent Comments</h3>
-                            <div class="comment-center">
-                                <?php
-                                $lecrosoft = "SELECT * FROM comment LEFT JOIN post ON comment.post_id = post.post_id ORDER BY comment_id DESC LIMIT 4 ";
-                                $query_lecrosoft = mysqli_query($con, $lecrosoft);
-                                while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"> Birthday Celebrants </div>
+                            <div class="panel-body">
+                                <ul class="nav nav-pills m-b-30 ">
+                                    <li class="active nav-item"> <a href="#navpills-1" class="nav-link" data-toggle="tab" aria-expanded="false">Today Celebrants</a> </li>
+                                    <li class="nav-item"> <a href="#navpills-2" class="nav-link" data-toggle="tab" aria-expanded="false">This Week Celebrant</a> </li>
+                                    <li class="nav-item"> <a href="#navpills-3" class="nav-link" data-toggle="tab" aria-expanded="true">This Month</a> </li>
+                                </ul>
+                                <div class="tab-content br-n pn">
+                                    <div id="navpills-1" class="tab-pane active">
+                                        <div class="row sales-report">
+                                            <?php
+                                            $lecrosoft = "SELECT * FROM members WHERE day(current_date)=day(date_of_birth) && month(current_date)= month(date_of_birth)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $count_celebrant = mysqli_num_rows($query_lecrosoft);
+                                            ?>
+                                            <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants Today</H2>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fullname</th>
+                                                        <th>Email</th>
+                                                        <th>DOB</th>
 
-                                    $comment_id = $row['comment_id'];
-                                    $comment_author = $row['comment_author'];
-                                    $post_title = $row['post_title'];
-                                    $comment_content = $row['comment_content'];
-                                    $comment_email = $row['comment_email'];
-                                    $comment_website = $row['comment_website'];
-                                    $comment_date = $row['date'];
-                                    $comment_status = $row['comment_status'];
-                                    $post_id = $row['post_id'];
 
-                                    if ($comment_status == 'PENDING') {
-                                        $label_color = "label-info";
-                                    } elseif ($comment_status == 'APPROVED') {
-                                        $label_color = "label-success";
-                                    } elseif ($comment_status == 'REJECTED') {
-                                        $label_color = "label-danger";
-                                    } else {
-                                        $label_color = "";
-                                    }
-                                ?>
+                                                        <th>ACTION</th>
 
-                                    <div class="comment-body" style="width:100%">
-                                        <!-- <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div> -->
-                                        <div class="mail-contnet">
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
 
-                                            <h5><?php echo $comment_author ?></h5> <span class="mail-desc"><?php echo $comment_content ?></span> <span class="label label-rouded <?php echo  $label_color ?>"><?php echo $comment_status ?></span><a href="" class="action_disapproved"><input type="hidden" value='<?php echo $comment_id ?>'><i class="ti-close text-danger"></i></a> <a href="" class="action_approved"><input type="hidden" value='<?php echo $comment_id ?>'><i class="ti-check text-success"></i></a><span class="time pull-right"><?php echo date('M d,Y', strtotime($comment_date)) ?></span>
+                                                    while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+                                                        extract($row);
+                                                        echo "<tr>";
+                                                        echo "<td>" . $first_name . ' ' . $last_name . " </td>";
+                                                        echo "<td>" . $email . " </td>";
+                                                        echo "<td>" . $date_of_birth . "</td>";
+                                                        echo "<td><div class='dropdown show'>
+  <a class='btn btn-secondary dropdown-toggle' href='#' role='button' id='dropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+    Dropdown link
+  </a>
+
+  <div class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
+    <a class='dropdown-item' href='#'>Action</a>
+    <a class='dropdown-item' href='#'>Another action</a>
+    <a class='dropdown-item' href='#'>Something else here</a>
+  </div>
+</div></td>";
+                                                        echo "<tr>";
+                                                    }
+                                                    ?>
+
+
+
+
+
+
+
+
+
+                                                    </tr>
+
+
+
+
+
+
+                                                </tbody>
+                                            </table> <a href="#">Check all the sales</a>
                                         </div>
                                     </div>
-                                <?php } ?>
-
-
+                                    <div id="navpills-2" class="tab-pane">
+                                        <div class="row">
+                                            <div class="col-md-8"> Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
+                                                <p><br /> Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid.</p>
+                                            </div>
+                                            <div class="col-md-4"> <img src="../plugins/images/large/img2.jpg" class="img-responsive thumbnail mr25"> </div>
+                                        </div>
+                                    </div>
+                                    <div id="navpills-3" class="tab-pane">
+                                        <div class="row">
+                                            <div class="col-md-4"> <img src="../plugins/images/large/img3.jpg" class="img-responsive thumbnail mr25"> </div>
+                                            <div class="col-md-8"> Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
+                                                <p><br /> Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Recent subscribers
+                            <h3 class="box-title">Recent Visitors
                                 <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
                                     <select class="form-control pull-right row b-none">
                                         <option>March 2017</option>
@@ -188,7 +306,8 @@ include('includes/function.php');
                                         <tr>
                                             <td>1</td>
                                             <td class="txt-oflo">lecrosoft@gmail.com</td>
-                                            <td class="txt-oflo"><a class="btn btn-success">SEND MAIL</a></td>
+                                            <td class="txt-oflo"><a class="btn btn-success btn-sm">SEND MAIL</a><a class="btn btn-success btn-sm">SEND SMS</a></td>
+
 
 
                                         </tr>

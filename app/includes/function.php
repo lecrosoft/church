@@ -107,7 +107,7 @@ function selectFamily()
     echo "<td>$join_date</td>";
     echo "<td>$status</td>";
 
-    echo "<td class='text-nowrap'><a type='button'  id='$family_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a onClick=\"javascript: return confirm ('Are you sure you want to delete this category?');\" href='department.php?del_id=$family_id'  data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "<td class='text-nowrap'><a type='button'  id='$family_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='sa-warning'   data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
     echo "</tr>";
   }
 }
@@ -144,3 +144,25 @@ function addFamily()
 }
 
 // ============ FAMILY  FUNCTION END HERE ==============
+
+// FINANCE CATEGORY START HERE
+function selectTransactionCategory()
+{
+  global $con;
+
+
+  $lecrosoft = "SELECT * FROM income_expence_category";
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+    extract($row);
+
+    echo "<tr>";
+
+    echo "<td>$category_name</td>";
+    echo "<td>$description</td>";
+
+    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='sa-warning'   data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
+}

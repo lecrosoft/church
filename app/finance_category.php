@@ -32,7 +32,7 @@ include('includes/function.php');
                         <a href="" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Main Website</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Dashboard</li>
+                            <li class="active">Finance transaction categories</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -48,11 +48,11 @@ include('includes/function.php');
                                 <div class="white-box">
                                     <div class="row d-flex justify-content-between px-3">
                                         <div class="sm-10">
-                                            <h3 class="box-title m-b-0">Family List</h3>
+                                            <h3 class="box-title m-b-0">Finance transaction categories</h3>
                                             <p class="text-muted">this is the sample data here for crm</p>
                                         </div>
                                         <div class="sm-2">
-                                            <button class="btn btn-primary add-family">Add New Family</button>
+                                            <button class="btn btn-primary add-family">New transaction category</button>
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -60,19 +60,15 @@ include('includes/function.php');
                                             <thead>
                                                 <tr>
 
-                                                    <th>Family Name</th>
-                                                    <th>Family Leader</th>
-                                                    <th>Family Quantity</th>
-                                                    <th>Family Contact No.</th>
-                                                    <th>Address</th>
-                                                    <th>Join Date</th>
-                                                    <th>Status</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+
                                                     <th class="text-nowrap">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                selectFamily();
+                                                selectTransactionCategory();
                                                 ?>
 
 
