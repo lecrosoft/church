@@ -56,7 +56,14 @@ include('includes/function.php');
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-down text-success"></i> <span class="counter text-success">₦8659</span></li>
+                                <?php
+                                $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense";
+                                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                $row = mysqli_fetch_assoc($query_lecrosoft);
+                                $sum = $row['value_sum'];
+
+                                ?>
+                                <li class="text-right"><i class="ti-arrow-down text-success"></i> <span class="counter text-success">₦<?php echo $sum ?></span></li>
 
                             </ul>
                             <hr>
@@ -68,9 +75,15 @@ include('includes/function.php');
                             <h3 class="box-title">Total Expenses</h3>
                             <ul class="list-inline two-part">
                                 <li>
+                                    <?php
+                                    $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense";
+                                    $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                    $row = mysqli_fetch_assoc($query_lecrosoft);
+                                    $sum_expense = $row['value_sum'];
+                                    ?>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-danger"></i> <span class="counter text-danger">₦7469</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-danger"></i> <span class="counter text-danger">₦<?php echo $sum_expense ?></span></li>
                             </ul>
                             <hr>
                             <span class="text-danger">This Month ₦2334</span>
@@ -83,7 +96,7 @@ include('includes/function.php');
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-down text-info"></i> <span class="counter text-info">₦6011</span></li>
+                                <li class="text-right"><i class="ti-arrow-down text-info"></i> <span class="counter text-info">₦<?php echo $sum - $sum_expense ?></span></li>
                             </ul>
                             <hr>
                             <span class="text-success">This Month ₦2334</span>
@@ -117,7 +130,7 @@ include('includes/function.php');
                                 $family_count = mysqli_num_rows($query_lecrosoft);
                                 ?>
                                 <div class="bodystate">
-                                    <h4><?php echo $family_count; ?></h4> <span class="text-muted">Total Families</span>
+                                    <h4><?php echo $family_count; ?></h4> <span class="text-muted">Families</span>
                                 </div>
 
                             </div>
@@ -133,7 +146,7 @@ include('includes/function.php');
                                 ?>
 
                                 <div class="bodystate">
-                                    <h4><?php echo $members_count; ?></h4> <span class="text-muted">Total members</span>
+                                    <h4><?php echo $members_count; ?></h4> <span class="text-muted">Members</span>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +161,7 @@ include('includes/function.php');
                                 $department_count = mysqli_num_rows($query_lecrosoft);
                                 ?>
                                 <div class="bodystate">
-                                    <h4><?php echo $department_count; ?></h4> <span class="text-muted">Total department.</span>
+                                    <h4><?php echo $department_count; ?></h4> <span class="text-muted">Departments.</span>
                                 </div>
                             </div>
                         </div>
@@ -212,21 +225,22 @@ include('includes/function.php');
 
                                                     while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                                         extract($row);
-                                                        echo "<tr>";
-                                                        echo "<td>" . $first_name . ' ' . $last_name . " </td>";
-                                                        echo "<td>" . $email . " </td>";
-                                                        echo "<td>" . $date_of_birth . "</td>";
-                                                        echo "<td><div class='dropdown show'>
-  <a class='btn btn-secondary dropdown-toggle' href='#' role='button' id='dropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-    Dropdown link
-  </a>
+                                                        $date = date('d M', strtotime($date_of_birth));
 
-  <div class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
-    <a class='dropdown-item' href='#'>Action</a>
-    <a class='dropdown-item' href='#'>Another action</a>
-    <a class='dropdown-item' href='#'>Something else here</a>
-  </div>
-</div></td>";
+                                                        echo "<tr>";
+                                                        echo "<td>" . "<a href='#'>" . $first_name . ' ' . $last_name . "</a>" . " </td>";
+                                                        echo "<td>$email</td>";
+                                                        echo "<td> $date </td>";
+                                                        echo "<td><div class='btn-group'>
+  <button type='button' class='btn btn-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+   Message
+  </button>
+  <div class='dropdown-menu'>
+    <a class='dropdown-item' href='#'>SMS</a>
+    <a class='dropdown-item' href='https://wa.me/+2347060934005?text=happy birthday to $first_name'>Whatsapp</a>
+    <a class='dropdown-item' href='#'>Email</a>
+   
+  </div></td>";
                                                         echo "<tr>";
                                                     }
                                                     ?>
@@ -247,23 +261,139 @@ include('includes/function.php');
 
 
                                                 </tbody>
-                                            </table> <a href="#">Check all the sales</a>
+                                            </table> <a href="#">Check all celebrants</a>
                                         </div>
                                     </div>
                                     <div id="navpills-2" class="tab-pane">
-                                        <div class="row">
-                                            <div class="col-md-8"> Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                                                <p><br /> Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid.</p>
-                                            </div>
-                                            <div class="col-md-4"> <img src="../plugins/images/large/img2.jpg" class="img-responsive thumbnail mr25"> </div>
+                                        <div class="row sales-report">
+                                            <?php
+                                            $lecrosoft = "SELECT * FROM members WHERE YEARWEEK(date_of_birth)= YEARWEEK(NOW())";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $count_celebrant = mysqli_num_rows($query_lecrosoft);
+                                            ?>
+                                            <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants This week</H2>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fullname</th>
+                                                        <th>Email</th>
+                                                        <th>DOB</th>
+
+
+                                                        <th>ACTION</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+
+                                                    while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+                                                        extract($row);
+                                                        $date = date('d M', strtotime($date_of_birth));
+
+                                                        echo "<tr>";
+                                                        echo "<td>" . "<a href='#'>" . $first_name . ' ' . $last_name . "</a>" . " </td>";
+                                                        echo "<td>$email</td>";
+                                                        echo "<td> $date </td>";
+                                                        echo "<td><div class='btn-group'>
+  <button type='button' class='btn btn-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+   Message
+  </button>
+  <div class='dropdown-menu'>
+    <a class='dropdown-item' href='#'>SMS</a>
+    <a class='dropdown-item' href='https://wa.me/+2347060934005?text=happy birthday to $first_name'>Whatsapp</a>
+    <a class='dropdown-item' href='#'>Email</a>
+   
+  </div></td>";
+                                                        echo "<tr>";
+                                                    }
+                                                    ?>
+
+
+
+
+
+
+
+
+
+                                                    </tr>
+
+
+
+
+
+
+                                                </tbody>
+                                            </table> <a href="#">Check all celebrants</a>
                                         </div>
                                     </div>
                                     <div id="navpills-3" class="tab-pane">
-                                        <div class="row">
-                                            <div class="col-md-4"> <img src="../plugins/images/large/img3.jpg" class="img-responsive thumbnail mr25"> </div>
-                                            <div class="col-md-8"> Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                                                <p><br /> Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid.</p>
-                                            </div>
+                                        <div class="row sales-report">
+                                            <?php
+                                            $lecrosoft = "SELECT * FROM members WHERE month(current_date)= month(date_of_birth)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $count_celebrant = mysqli_num_rows($query_lecrosoft);
+                                            ?>
+                                            <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants this month</H2>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fullname</th>
+                                                        <th>Email</th>
+                                                        <th>DOB</th>
+
+
+                                                        <th>ACTION</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+
+                                                    while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+                                                        extract($row);
+                                                        $date = date('d M', strtotime($date_of_birth));
+
+                                                        echo "<tr>";
+                                                        echo "<td>" . "<a href='#'>" . $first_name . ' ' . $last_name . "</a>" . " </td>";
+                                                        echo "<td>$email</td>";
+                                                        echo "<td> $date </td>";
+                                                        echo "<td><div class='btn-group'>
+  <button type='button' class='btn btn-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+   Message
+  </button>
+  <div class='dropdown-menu'>
+    <a class='dropdown-item' href='#'>SMS</a>
+    <a class='dropdown-item' href='https://wa.me/+2347060934005?text=happy birthday to $first_name'>Whatsapp</a>
+    <a class='dropdown-item' href='#'>Email</a>
+   
+  </div></td>";
+                                                        echo "<tr>";
+                                                    }
+                                                    ?>
+
+
+
+
+
+
+
+
+
+                                                    </tr>
+
+
+
+
+
+
+                                                </tbody>
+                                            </table> <a href="#">Check all celebrants</a>
                                         </div>
                                     </div>
                                 </div>
@@ -272,7 +402,7 @@ include('includes/function.php');
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Recent Visitors
+                            <h3 class="box-title">First Timers
                                 <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
                                     <select class="form-control pull-right row b-none">
                                         <option>March 2017</option>

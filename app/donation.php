@@ -32,7 +32,7 @@ include('includes/function.php');
                         <a href="" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Main Website</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Finance transaction categories</li>
+                            <li class="active">Donations</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->

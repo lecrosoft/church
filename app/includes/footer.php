@@ -20,8 +20,10 @@
 <!--Style Switcher -->
 <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 <!-- Sweet-Alert  -->
-<script src="../plugins/bower_components/sweetalert/sweetalert.min.js"></script>
-<script src="../plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
+<!-- <script src="../plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="../plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script> -->
+<script src="../sweetalert/sweetalert2.all.js"></script>
+
 
 <!-- Custom Theme JavaScript -->
 

@@ -30,12 +30,17 @@
     <link href="../plugins/bower_components/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
     <link href="../plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../plugins/bower_components/html5-editor/bootstrap-wysihtml5.css" />
+    <!-- my data table -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" />
+
+
 
 
 
 
     <!--alerts CSS -->
-    <link href="../plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+
+    <link href="../sweetalert/sweetalert2.css" rel="stylesheet" type="text/css">
 
     <!-- Wizard CSS -->
     <link href="../plugins/bower_components/jquery-wizard-master/css/wizard.css" rel="stylesheet">

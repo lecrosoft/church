@@ -175,6 +175,18 @@ include('includes/function.php');
                     </div>
                 </div>
             </div>
+            <?php
+            if (isset($_POST['del_fam_id'])) {
+                $del_fam_id = $_POST['del_fam_id'];
+                $lecrosoft = "DELETE FROM family WHERE family_id =$del_fam_id";
+                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                if ($query_lecrosoft) {
+                    echo '<script type="text/javascript">location = "family.php"</script>';
+                } else {
+                    die("QUERY ERROR" . mysqli_error($con));
+                }
+            }
+            ?>
 
             <?php
             if (isset($_POST['add'])) {
@@ -241,6 +253,60 @@ include('includes/function.php');
                         $('#dataModal2').modal("show");
                     })
                 })
+            </script>
+
+
+
+            <script>
+                $(document).ready(function() {
+                    $('.delete-alert').click(function(e) {
+                        e.preventDefault();
+                        let id = $(this).attr("id");
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+
+                                $.ajax({
+                                    url: "family.php",
+                                    method: "post",
+                                    data: {
+                                        del_fam_id: id
+                                    },
+                                    success: function(data) {
+
+                                        Swal.fire(
+                                            'Deleted!',
+                                            'Your file has been deleted.',
+                                            'success'
+                                        )
+                                        location = "/church/app/family.php"
+                                        console.log(location)
+
+
+
+                                    }
+                                });
+
+
+                            }
+                        })
+                    })
+                })
+                // const flashdata = $('.flash-data').data('flashdata')
+                // if (flashdata) {
+                //     Swal.fire(
+                //         'Deleted!',
+                //         'Your file has been deleted.',
+                //         'success'
+                //     )
+                // }
             </script>
 
 

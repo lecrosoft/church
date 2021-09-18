@@ -32,8 +32,8 @@
             <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> Finance <span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
                     <li> <a href="transaction.php">Income/Expense</a> </li>
-                    <li> <a href="posts.php?source=add-post">Donations</a> </li>
-                    <li> <a href="posts.php?source=add-post">Asset</a> </li>
+                    <li> <a href="donation.php">Donations</a> </li>
+                    <li> <a href="asset.php">Asset</a> </li>
 
                 </ul>
             </li>
@@ -73,7 +73,7 @@
                     <li> <a href="users.php">General</a> </li>
                     <li> <a href="users.php?source=add-user">Family</a> </li>
                     <li> <a href="finance_category.php">Transaction Category</a> </li>
-                    <li> <a href="users.php?source=add-user">Positions</a> </li>
+                    <li> <a href="donation_campaign.php">Donation Campaign</a> </li>
                     <li> <a href="department.php">Department</a> </li>
                     <li> <a href="users.php?source=add-user">Family</a> </li>
 
