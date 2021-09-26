@@ -37,8 +37,8 @@ include('includes/function.php');
                 }
 
                 switch ($source) {
-                    case  "add-member":
-                        include('includes/add_new_member.php');
+                    case  "add-firsttimer":
+                        include('includes/add_new_firsttmer.php');
                         break;
                     case "edit":
                         include('includes/edit_members.php');
@@ -48,7 +48,7 @@ include('includes/function.php');
                         break;
 
                     default:
-                        include('includes/view_all_members.php');
+                        include('includes/view_all_firsttimers.php');
                 }
                 ?>
                 <!-- --right side bar--- -->

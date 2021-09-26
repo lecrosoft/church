@@ -26,101 +26,219 @@ include('includes/function.php');
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Welcome Admin</h4>
+                        <h4 class="page-title">Income/Expense</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Main Website</a>
+                        <a href="" target="_blank" class="
+                  btn btn-danger
+                  pull-right
+                  m-l-20
+                  btn-rounded btn-outline
+                  hidden-xs hidden-sm
+                  waves-effect waves-light
+                ">Main Website</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Finance transaction categories</li>
+                            <li><a href="#">Income</a></li>
+                            <li class="active">Expense</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
+                <!-- .row -->
                 <div class="row">
-                    <?php
-
-                    ?>
                     <div class="col-md-12">
+                        <div class="white-box">
+                            <div class="d-flex">
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="white-box">
-                                    <div class="row d-flex justify-content-between px-3">
-                                        <div class="sm-10">
-                                            <h3 class="box-title m-b-0">Finance transaction </h3>
-                                            <p class="text-muted">Export data to Copy, CSV, Excel, PDF & Print</p>
+                                <div class="col-sm-8">
+
+                                    <code>Income/Expense</code>
+                                </div>
+                                <div class="col-sm-4">
+                                    <!-- Example single danger button -->
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            New Transaction
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item add-income" href="#">Income</a>
+                                            <a class="dropdown-item add-expense" href="#">Expense</a>
+
                                         </div>
-                                        <div class="sm-2">
-
-                                            <!-- Example single danger button -->
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    New Transaction
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item add-income" href="#">Income</a>
-                                                    <a class="dropdown-item add-expense" href="#">Expense</a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="table-responsive">
-                                        <table id="example-transation" class="display nowrap" style="width:100%">
-                                            <thead>
-                                                <tr>
-
-                                                    <th>Ref_id</th>
-                                                    <th>Category</th>
-                                                    <th>Note</th>
-                                                    <th>Transaction Date</th>
-                                                    <th>Pay Method</th>
-                                                    <th>Income(₦)</th>
-                                                    <th>Expense(₦)</th>
-                                                    <th>Entered By</th>
-                                                    <th>Created at</th>
-
-                                                    <th class="text-nowrap">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                selectTransaction();
-                                                ?>
-
-
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            <?php
-                            deleteFamily();
-                            ?>
 
-                            <?php
+                            <hr />
 
-                            addFamily();
+                            <section class="m-t-40">
+                                <div class="sttabs tabs-style-linebox">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#section-linebox-5"><span>Income</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#section-linebox-4"><span>Expense</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#section-linebox-2"><span>Analytics</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#section-linebox-3"><span>Income/Expense</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#section-linebox-5"><span>Settings</span></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <div class="content-wrap text-center">
+                                        <section id="section-linebox-1">
+                                            <h3>Best Clean Tab ever</h3>
+                                            <div class="example container">
+                                                <!-- 
+                                                <p class="text-muted m-b-20">just add id <code>#date-range</code> to create it.</p> -->
+                                                <div class="input-daterange input-group" id="date-range">
+                                                    <span class="input-group-addon bg-info b-0 text-white">From</span> <input type="text" class="form-control" id="datepicker" name="start" /> <span class="input-group-addon bg-info b-0 text-white">to</span>
+                                                    <input type="text" class="form-control" id="datepicker" name="end" /><button id="search_btn" class="input-group-addon btn bg-info b-0 text-white">Go</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="row d-flex justify-content-between px-3">
+                                                <div class="sm-10">
+
+                                                    <p class="text-muted">Export data to Copy, CSV, Excel, PDF & Print</p>
+                                                </div>
+                                                <div class="sm-2">
 
 
-                            ?>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table id="example-transation" class="display nowrap" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th>Ref_id</th>
+                                                            <th>Category</th>
+                                                            <th>Note</th>
+                                                            <th>Trans Date</th>
+                                                            <th>Pay Method</th>
+                                                            <th>Income(₦)</th>
+                                                            <th>Entered By</th>
+                                                            <th>Created at</th>
+
+                                                            <th class="text-nowrap">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        selectTransactionIncome();
+                                                        ?>
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <?php
+                                            deleteFamily();
+                                            ?>
+
+                                            <?php
+
+                                            addFamily();
+
+
+                                            ?>
+
+                                        </section>
+                                        <section id="section-linebox-2">
+                                            <h2>Tabbing 2</h2>
+                                            <div class="row d-flex justify-content-between px-3">
+                                                <div class="sm-10">
+
+                                                    <p class="text-muted">Export data to Copy, CSV, Excel, PDF & Print</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table id="example-transation2" class="display nowrap" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th>Ref_id</th>
+                                                            <th>Category</th>
+                                                            <th>Note</th>
+                                                            <th>Transaction Date</th>
+                                                            <th>Pay Method</th>
+
+                                                            <th>Expense(₦)</th>
+                                                            <th>Entered By</th>
+                                                            <th>Created at</th>
+
+                                                            <th class="text-nowrap">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        selectTransactionExpense();
+                                                        ?>
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <?php
+                                            deleteFamily();
+                                            ?>
+
+                                            <?php
+
+                                            addFamily();
+
+
+                                            ?>
+                                        </section>
+                                        <section id="section-linebox-3">
+                                            <h2>Tabbing 3</h2>
+                                        </section>
+                                        <section id="section-linebox-4">
+                                            <h2>Tabbing 4</h2>
+                                        </section>
+                                        <section id="section-linebox-5">
+                                            <h2>Tabbing 5</h2>
+                                        </section>
+                                    </div>
+                                    <!-- /content -->
+                                </div>
+                                <!-- /tabs -->
+                            </section>
+                            <!-- Tabstyle start -->
+                            <!-- Tabstyle start -->
+
+
+
+
+
+
+
 
 
                         </div>
-
-
-                        <!-- /.row -->
                     </div>
                 </div>
+                <!-- /.row -->
                 <!-- .right-sidebar -->
                 <?php
                 include('includes/right-side-bar.php');
                 ?>
                 <!-- /.right-sidebar -->
             </div>
+            <!-- /.container-fluid -->
+
             <!-- /.container-fluid -->
             <!-- footer begins -->
 
@@ -159,7 +277,7 @@ include('includes/function.php');
                                     <select class="form-select form-control" name="tcategory" required>
                                         <option value="">Select Transaction category</option>
                                         <?php
-                                        $lecrosoft = "SELECT * FROM income_expence_category";
+                                        $lecrosoft = "SELECT * FROM income_expence_category WHERE type = 'income' ";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                         while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                             extract($row);
@@ -204,12 +322,12 @@ include('includes/function.php');
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="">Transaction Date<span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control" name="tdate" required>
+                                    <input type="text" class="form-control" id="datepicker" name="tdate" required>
 
                                 </div>
                                 <div class="form-group mb-3">
                                     <!-- <label for="" hiden>Entered By<span class="text-danger ">*</span></label> -->
-                                    <input type="text" class="form-control" name="created_by" value="Olumide" hidden>
+                                    <input type="text" class="form-control" name="created_by" value="<?php echo $_SESSION['first_name'] . "  " . $_SESSION['last_name'] ?>" hidden>
 
                                 </div>
 
@@ -266,7 +384,7 @@ include('includes/function.php');
                                     <select class="form-select form-control" name="tcategory" required>
                                         <option value="">Select Transaction category</option>
                                         <?php
-                                        $lecrosoft = "SELECT * FROM income_expence_category";
+                                        $lecrosoft = "SELECT * FROM income_expence_category WHERE type = 'expense'";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                         while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                             extract($row);
@@ -311,12 +429,12 @@ include('includes/function.php');
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="">Transaction Date<span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control" name="tdate" required>
+                                    <input type="text" class="form-control" id="datepicker" name="tdate" required>
 
                                 </div>
                                 <div class="form-group mb-3">
                                     <!-- <label for="" hiden>Entered By<span class="text-danger ">*</span></label> -->
-                                    <input type="text" class="form-control" name="created_by" value="Olumide" hidden>
+                                    <input type="text" class="form-control" name="created_by" value="<?php echo $_SESSION['first_name'] . "  " . $_SESSION['last_name'] ?>" hidden>
 
                                 </div>
 
@@ -357,6 +475,23 @@ include('includes/function.php');
             <?php
             include('includes/footer.php');
             ?>
+
+
+            <!-- Custom Theme JavaScript -->
+            <script src="js/cbpFWTabs.js"></script>
+            <script type="text/javascript">
+                (function() {
+                    [].slice
+                        .call(document.querySelectorAll(".sttabs"))
+                        .forEach(function(el) {
+                            new CBPFWTabs(el);
+                        });
+                })();
+            </script>
+
+
+
+
             <!-- footer ends -->
             <script>
                 $(document).ready(function() {
@@ -413,9 +548,99 @@ include('includes/function.php');
                     });
                 });
             </script>
+            <script>
+                $(document).ready(function() {
+                    $('#example-transation2').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
+                    });
+                });
+            </script>
 
+            <script>
+                // Clock pickers
+                $('#single-input').clockpicker({
+                    placement: 'bottom',
+                    align: 'left',
+                    autoclose: true,
+                    'default': 'now'
+                });
+                $('.clockpicker').clockpicker({
+                    donetext: 'Done',
+                }).find('input').change(function() {
+                    console.log(this.value);
+                });
+                $('#check-minutes').click(function(e) {
+                    // Have to stop propagation here
+                    e.stopPropagation();
+                    input.clockpicker('show').clockpicker('toggleView', 'minutes');
+                });
+                if (/mobile/i.test(navigator.userAgent)) {
+                    $('input').prop('readOnly', true);
+                }
+                // Colorpicker
+                $(".colorpicker").asColorPicker();
+                $(".complex-colorpicker").asColorPicker({
+                    mode: 'complex'
+                });
+                $(".gradient-colorpicker").asColorPicker({
+                    mode: 'gradient'
+                });
+                // Date Picker
+                var date = $('#datepicker').datepicker({
+                    dateFormat: 'yy-mm-dd',
+                }).val();
+                jQuery('.mydatepicker, #datepicker').datepicker();
+                jQuery('#datepicker-autoclose').datepicker({
+                    autoclose: true,
+                    todayHighlight: true
 
+                });
+                jQuery('#date-range').datepicker({
+                    toggleActive: true
+                });
+                jQuery('#datepicker-inline').datepicker({
+                    todayHighlight: true
+                });
+                // Daterange picker
+                $('.input-daterange-datepicker').daterangepicker({
+                    buttonClasses: ['btn', 'btn-sm'],
+                    applyClass: 'btn-danger',
+                    cancelClass: 'btn-inverse'
+                });
+                $('.input-daterange-timepicker').daterangepicker({
+                    timePicker: true,
+                    format: 'MM/DD/YYYY h:mm A',
+                    timePickerIncrement: 30,
+                    timePicker12Hour: true,
+                    timePickerSeconds: false,
+                    buttonClasses: ['btn', 'btn-sm'],
+                    applyClass: 'btn-danger',
+                    cancelClass: 'btn-inverse'
+                });
+                $('.input-limit-datepicker').daterangepicker({
+                    format: 'MM/DD/YYYY',
+                    minDate: '06/01/2015',
+                    maxDate: '06/30/2015',
+                    buttonClasses: ['btn', 'btn-sm'],
+                    applyClass: 'btn-danger',
+                    cancelClass: 'btn-inverse',
+                    dateLimit: {
+                        days: 6
+                    }
+                });
+            </script>
 
+            <!-- FILTER DATE SCRIPT -->
+            <script>
+                $(document).ready(function() {
+                    $('#search_btn').click(function() {
+                        alert('good boy')
+                    })
+                })
+            </script>
 
 </body>
 

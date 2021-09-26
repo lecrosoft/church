@@ -1,6 +1,6 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start() ?>
 
 <head>
     <meta charset="utf-8">
@@ -33,17 +33,14 @@
     <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
     </div>
+
     <section id="wrapper" class="login-register">
         <div class="login-box login-sidebar">
             <div class="white-box">
                 <form class="form-horizontal form-material" id="loginform" action="" method="POST">
-                    <?php include('../connections/conn.php'); ?>
-
-
-                    <a href="javascript:void(0)" class="text-center db"><img src="../plugins/images/eliteadmin-logo-dark.png22" alt="THE GLORY OF GOD CHURCH" />
-                        <br /><img src="../plugins/images/eliteadmin-text-dark.png22" alt="GGPPM" /></a>
-
                     <?php
+                    include('../connections/conn.php');
+
                     if (isset($_POST['login'])) {
                         $username = $_POST['username'];
                         $password = $_POST['password'];
@@ -52,41 +49,47 @@
                         $password = mysqli_real_escape_string($con, $password);
 
                         if (!empty($username) && !empty($password)) {
-                            $lecrosoft = "SELECT * FROM members WHERE username = '$username'";
-                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                            $lecrosoft = "SELECT * FROM users WHERE username = '$username'";
+                            $query_lecrosoft_login = mysqli_query($con, $lecrosoft);
 
-                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                            $row = mysqli_fetch_assoc($query_lecrosoft_login);
                             $db_username = $row['username'];
-                            $db_first_name = $row['first_name'];
-                            $db_last_name = $row['last_name'];
-                            $db_email = $row['email'];
                             $db_password = $row['password'];
                             $db_user_role = $row['user_role'];
-                        }
+                            $db_user_id = $row['user_id'];
+                            $db_firstname = $row['user_firstname'];
+                            $db_lastname = $row['user_lastname'];
+                            $db_user_email = $row['user_email'];
+                            $db_image = $row['image'];
 
-                        if ($username = $db_username && $password = $db_password && $db_user_role == "Admin") {
 
-                            $_SESSION['username'] = $db_username;
-                            $_SESSION['first_name'] = $db_first_name;
-                            $_SESSION['last_name'] = $db_last_name;
-                            $_SESSION['password'] = $db_password;
-                            $_SESSION['email'] = $db_email;
-                            $_SESSION['user_role'] = $db_user_role;
-                            echo '<div class="alert alert-success" id="success-alert">
-   <button type="button" class="close" data-dismiss="alert">x</button>
-   <strong>Success!</strong>
-   Login  successfull.
-</div>';
-                            echo '<script type="text/javascript">location = "index.php"</script>';
-                        } else {
-                            echo '<div class="alert alert-danger" id="success-alert">
-   <button type="button" class="close" data-dismiss="alert">x</button>
-   <strong>Failed!</strong>
-   Login failed.
-</div>';
+                            if ($query_lecrosoft_login) {
+                                if ($username = $db_username && $password = $db_password && $db_user_role  == 'Admin') {
+                                    $_SESSION['firstname'] = $db_firstname;
+                                    $_SESSION['lastname'] = $db_lastname;
+                                    $_SESSION['username'] = $db_username;
+                                    $_SESSION['email'] = $db_user_email;
+                                    $_SESSION['password'] = $db_password;
+                                    $_SESSION['user_role'] = $db_user_role;
+                                    $_SESSION['image'] = $db_image;
+
+                                    echo "<script type='text/javascript'> location = 'index.php'</script>";
+                                } else {
+                                    echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                <strong>Username Or Password </strong> incorrect.
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+                </button>
+                </div>";
+                                }
+                            }
                         }
                     }
                     ?>
+                    <a href="javascript:void(0)" class="text-center db"><img src="../plugins/images/eliteadmin-logo-dark.png22" alt="Home" />
+                        <br /><img src="../plugins/images/eliteadmin-text-dark.png2" alt="Home" />
+                        <h1>J Educate</h1>
+                    </a>
                     <div class="form-group m-t-40">
                         <div class="col-xs-12">
                             <input class="form-control" type="text" required="" name="username" placeholder="Username">
@@ -107,10 +110,17 @@
                     </div>
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
-                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" name="login" type="subbmit">Log In</button>
+                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" name="login" type="submit">Log In</button>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
+                            <div class="social">
+                                <a href="javascript:void(0)" class="btn  btn-facebook" data-toggle="tooltip" title="Login with Facebook"> <i aria-hidden="true" class="fa fa-facebook"></i> </a>
+                                <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip" title="Login with Google"> <i aria-hidden="true" class="fa fa-google-plus"></i> </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
                             <p>Don't have an account? <a href="register2.html" class="text-primary m-l-5"><b>Sign Up</b></a></p>

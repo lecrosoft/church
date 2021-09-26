@@ -14,7 +14,7 @@
                 <!-- /input-group -->
             </li>
             <li class="user-pro">
-                <a href="#" class="waves-effect"><img src="" alt="user-img" class="img-circle"> <span class="hide-menu"><span class="fa arrow"></span></span>
+                <a href="#" class="waves-effect"><img src="" alt="" class="img-circle"> <span class="hide-menu"><?php echo $_SESSION['last_name'] . " " . $_SESSION['first_name'] ?><span class="fa arrow"></span></span>
                 </a>
                 <ul class="nav nav-second-level">
                     <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
@@ -28,11 +28,17 @@
 
 
             <li class="nav-small-cap">--- POST</li>
+            <li> <a href="javascript:void(0);" class="waves-effect active"><i class="ti-calendar p-r-10"></i> <span class="hide-menu"> Appointment <span class="fa arrow"></span></span></a>
+                <ul class="nav nav-second-level">
+                    <li> <a href="pastor-schedule.php">Pastor Schedule</a> </li>
+                    <!-- <li> <a href="book-appointment.html">Book Appointment</a> </li> -->
+                </ul>
+            </li>
 
             <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> Finance <span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
                     <li> <a href="transaction.php">Income/Expense</a> </li>
-                    <li> <a href="donation.php">Donations</a> </li>
+                    <li> <a href="donation_campaign.php">Fund Raising</a> </li>
                     <li> <a href="asset.php">Asset</a> </li>
 
                 </ul>
@@ -47,6 +53,13 @@
 
                 </ul>
             </li>
+            <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> First Timers <span class="fa arrow"></span></span></a>
+                <ul class="nav nav-second-level">
+                    <li> <a href="firsttimer.php">Manage First Timers</a> </li>
+                    <li> <a href="firsttimer.php?source=add-firsttimer">Add New First timer</a> </li>
+
+                </ul>
+            </li>
             <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> Communication <span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
                     <li> <a href="users.php">SMS</a> </li>
@@ -56,8 +69,8 @@
             </li>
             <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> Attendance<span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
-                    <li> <a href="users.php">Manage User</a> </li>
-                    <li> <a href="users.php?source=add-user">Add New User</a> </li>
+                    <li> <a href="users.php#">Manage Attendance</a> </li>
+                    <li> <a href="users.php?source=add-user#">New Attendance</a> </li>
 
                 </ul>
             </li>
@@ -82,10 +95,10 @@
 
 
 
-
+            <!-- 
             <li class="nav-small-cap">--- FORUM</li>
             <li> <a href="forum-category.php" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Forum</span></a> </li>
-            <li> <a href="widgets.php" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Widgets</span></a> </li>
+            <li> <a href="widgets.php" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Widgets</span></a> </li> -->
 
 
 

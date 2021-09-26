@@ -5,6 +5,7 @@
 <!-- /#wrapper -->
 <!-- jQuery -->
 <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <!-- Bootstrap Core JavaScript -->
 <script src="bootstrap/dist/js/tether.min.js"></script>
 <script src="bootstrap/dist/js/bootstrap.min.js"></script>
@@ -20,11 +21,23 @@
 <!--Style Switcher -->
 <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 <!-- Sweet-Alert  -->
-<!-- <script src="../plugins/bower_components/sweetalert/sweetalert.min.js"></script>
-<script src="../plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script> -->
+<script src="../plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="../plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
 <script src="../sweetalert/sweetalert2.all.js"></script>
 
+<script src="js/custom.min.js"></script>
+<!-- Date Picker Plugin JavaScript -->
+<script src="../plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<!-- Date range Plugin JavaScript -->
+<script src="../plugins/bower_components/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="../plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 
+<!-- Calendar JavaScript -->
+<script src="../plugins/bower_components/calendar/jquery-ui.min.js"></script>
+<script src="../plugins/bower_components/moment/moment.js"></script>
+<script src="../plugins/bower_components/calendar/dist/fullcalendar.min.js"></script>
+<script src="../plugins/bower_components/calendar/dist/jquery.fullcalendar.js"></script>
+<script src="../plugins/bower_components/calendar/dist/cal-init.js"></script>
 <!-- Custom Theme JavaScript -->
 
 <script src="../plugins/bower_components/switchery/dist/switchery.min.js"></script>
@@ -53,10 +66,16 @@
 
 
 
+
+
 <script>
     // Date Picker
+    var date = $('#datepicker').datepicker({
+        dateFormat: 'yy-mm-dd'
+    }).val();
     jQuery('.mydatepicker, #datepicker').datepicker();
     jQuery('#datepicker-autocloseLekan').datepicker({
+
         autoclose: true,
         todayHighlight: true
     });

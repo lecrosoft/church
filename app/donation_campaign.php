@@ -48,11 +48,11 @@ include('includes/function.php');
                                 <div class="white-box">
                                     <div class="row d-flex justify-content-between px-3">
                                         <div class="sm-10">
-                                            <h3 class="box-title m-b-0">Family List</h3>
+                                            <h3 class="box-title m-b-0">Fund Raising </h3>
                                             <p class="text-muted">this is the sample data here for crm</p>
                                         </div>
                                         <div class="sm-2">
-                                            <button class="btn btn-primary add-family">Add New Family</button>
+                                            <button class="btn btn-primary add-family">Raise New fund</button>
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -63,7 +63,8 @@ include('includes/function.php');
                                                     <th>Campaign</th>
                                                     <th>Description</th>
                                                     <th>Date</th>
-                                                    <th>Amt Donated</th>
+                                                    <th>Amt Pledged</th>
+                                                    <th>Amt Redeemed</th>
                                                     <th>Status</th>
                                                     <th class="text-nowrap">Action</th>
                                                 </tr>
@@ -136,31 +137,22 @@ include('includes/function.php');
                         <div class="modal-body" id="">
                             <form method="POST">
                                 <div class="form-group mb-3">
-                                    <input type="text" class="form-control" name="fname" placeholder="Enter Family Name" required>
+                                    <label for="">Fund Purpose</label>
+                                    <input type="text" class="form-control" name="fund_purpose" placeholder="Enter Fund purpose" required>
 
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" class="form-control" name="fleader" placeholder="Enter Family Leader " required>
-
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <input type="text" class="form-control" name="fquantity" placeholder="Enter Family Quantity" required>
-
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" class="form-control" name="fcontact" placeholder="Enter Contact">
-
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" class="form-control" name="address" placeholder="Enter Address">
+                                    <label for="">Description</label>
+                                    <input type="text" class="form-control" name="description" placeholder="Enter Description " required>
 
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <input type="text" class="form-control" name="jtime" placeholder="Enter Join Time">
+                                    <label for="">Date</label>
+                                    <input type="date" class="form-control" name="date" required>
 
                                 </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" name="add">Save changes</button>
@@ -191,22 +183,19 @@ include('includes/function.php');
 
 
 
-                $fname = $_POST['fname'];
+                $fund_purpose = $_POST['fund_purpose'];
 
-                $fleader = $_POST['fleader'];
-                $fquantity = $_POST['fquantity'];
-                $fcontact = $_POST['fcontact'];
-                $address  = $_POST['address'];
-                $jtime = $_POST['jtime'];
-                if (!empty($fname)) {
-                    $lecrosoft = "INSERT INTO family(family_name,family_leader,family_quantity,family_contact,address,join_date) VALUES ('$fname','$fleader',$fquantity,'$fcontact','$address','$jtime')";
-                    $query_lecrosoft = mysqli_query($con, $lecrosoft);
-                    if ($query_lecrosoft) {
-                        echo '<script type="text/javascript">location = "family.php"</script>';
-                    } else {
-                        die("QUERY ERROR" . mysqli_error($con));
-                        recordDangerMessage();
-                    }
+                $description = $_POST['description'];
+                $date = $_POST['date'];
+
+
+                $lecrosoft = "INSERT INTO `campaign`(`campaign`, `description`, `date`) VALUES ('$fund_purpose ','$description','$date')";
+                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                if ($query_lecrosoft) {
+                    echo '<script type="text/javascript">location = location.href</script>';
+                } else {
+                    die("QUERY ERROR" . mysqli_error($con));
+                    recordDangerMessage();
                 }
             }
             ?>

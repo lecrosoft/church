@@ -30,7 +30,7 @@ include('includes/function.php');
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Welcome </h4>
+                        <h4 class="page-title">Welcome <span> <?php echo $_SESSION['username'] ?> </span></h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <a href="../index.php" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Main Website</a>
@@ -57,17 +57,27 @@ include('includes/function.php');
                                     <div id="sparklinedash"></div>
                                 </li>
                                 <?php
-                                $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense";
+                                $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE year(current_date) = year(transaction_date)";
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                 $row = mysqli_fetch_assoc($query_lecrosoft);
                                 $sum = $row['value_sum'];
+                                $formated_sum = number_format($sum);
 
                                 ?>
-                                <li class="text-right"><i class="ti-arrow-down text-success"></i> <span class="counter text-success">₦<?php echo $sum ?></span></li>
+
+                                <?php
+                                $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(current_date) = month(transaction_date)";
+                                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                $row = mysqli_fetch_assoc($query_lecrosoft);
+                                $sum_by_month = $row['value_sum'];
+                                $formated_sum_by_month = number_format($sum_by_month);
+
+                                ?>
+                                <li class="text-right"><i class="ti-arrow-down text-success"></i> <span class="counter text-success">₦<?php echo $formated_sum ?></span></li>
 
                             </ul>
                             <hr>
-                            <span class="text-success">This Month ₦2334</span>
+                            <span class="text-success">This Month ₦<?php echo $formated_sum_by_month ?></span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-3 col-xs-12">
@@ -76,17 +86,25 @@ include('includes/function.php');
                             <ul class="list-inline two-part">
                                 <li>
                                     <?php
-                                    $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense";
+                                    $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE year(current_date) = year(transaction_date)";
                                     $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                     $row = mysqli_fetch_assoc($query_lecrosoft);
                                     $sum_expense = $row['value_sum'];
+                                    $formated_expense = number_format($sum_expense);
+                                    ?>
+                                    <?php
+                                    $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(current_date) = month(transaction_date)";
+                                    $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                    $row = mysqli_fetch_assoc($query_lecrosoft);
+                                    $sum_expense_by_month = $row['value_sum'];
+                                    $formated_expense_by_month = number_format($sum_expense_by_month);
                                     ?>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-danger"></i> <span class="counter text-danger">₦<?php echo $sum_expense ?></span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-danger"></i> <span class="counter text-danger">₦<?php echo $formated_expense ?></span></li>
                             </ul>
                             <hr>
-                            <span class="text-danger">This Month ₦2334</span>
+                            <span class="text-danger">This Month ₦<?php echo $formated_expense_by_month ?></span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-3 col-xs-12">
@@ -96,10 +114,14 @@ include('includes/function.php');
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-down text-info"></i> <span class="counter text-info">₦<?php echo $sum - $sum_expense ?></span></li>
+                                <?php
+                                $balance = $sum - $sum_expense;
+                                $balance_by_month = $sum_by_month - $sum_expense_by_month;
+                                ?>
+                                <li class="text-right"><i class="ti-arrow-down text-info"></i> <span class="counter text-info">₦<?php echo number_format($balance) ?></span></li>
                             </ul>
                             <hr>
-                            <span class="text-success">This Month ₦2334</span>
+                            <span class="text-success">This Month ₦<?php echo number_format($balance_by_month) ?></span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-3 col-xs-12">
@@ -107,12 +129,29 @@ include('includes/function.php');
                             <h3 class="box-title">Pledges</h3>
                             <ul class="list-inline two-part">
                                 <li>
+                                    <?php
+                                    $lecrosoft = "SELECT SUM(amount) as value_sum FROM pledges_payment_histroy";
+                                    $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                    $row = mysqli_fetch_assoc($query_lecrosoft);
+                                    $sum_pledges = $row['value_sum'];
+                                    $formated_sum_pledges = number_format($sum_pledges);
+
+                                    ?>
+
+                                    <?php
+                                    $lecrosoft = "SELECT SUM(amount) as value_sum FROM pledges_payment_histroy WHERE month(current_date) = month(payment_date)";
+                                    $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                    $row = mysqli_fetch_assoc($query_lecrosoft);
+                                    $pending_sum_by_month = $row['value_sum'];
+                                    $formated_sum_pledges_by_month = number_format($pending_sum_by_month);
+
+                                    ?>
                                     <div id="sparklinedash4"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-warning"></i> <span class="text-warning">₦1800</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-warning"></i> <span class="text-warning"><?php echo $formated_sum_pledges ?></span></li>
                             </ul>
                             <hr>
-                            <span class="text-warning">Pending Pledges ₦2334</span>
+                            <span class="text-warning">Pending Pledges ₦<?php echo $formated_sum_pledges_by_month ?></span>
                         </div>
                     </div>
                 </div>
@@ -405,7 +444,7 @@ include('includes/function.php');
                             <h3 class="box-title">First Timers
                                 <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
                                     <select class="form-control pull-right row b-none">
-                                        <option>March 2017</option>
+                                        <option>September 20201</option>
                                         <option>April 2017</option>
                                         <option>May 2017</option>
                                         <option>June 2017</option>
@@ -413,42 +452,73 @@ include('includes/function.php');
                                     </select>
                                 </div>
                             </h3>
-                            <div class="row sales-report">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <h2>TOTAL SUBSCRIBERS</h2>
-                                    <p>Check all the subscribers</p>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6 ">
-                                    <h1 class="text-right text-success m-t-20">30</h1>
-                                </div>
-                            </div>
+                            <!-- <div class="row sales-report">
+
+
+                            </div> -->
                             <div class="table-responsive">
-                                <table class="table">
+                                <table id="" class="table table-striped toggle-circle table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>EMAIL</th>
-                                            <th>ACTION</th>
+
+
+                                            <th>Full Name</th>
+
+                                            <th>Phone number</th>
+
+                                            <th>Date of visit</th>
+
+
+                                            <th>Actions</th>
+
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo">lecrosoft@gmail.com</td>
-                                            <td class="txt-oflo"><a class="btn btn-success btn-sm">SEND MAIL</a><a class="btn btn-success btn-sm">SEND SMS</a></td>
+                                        <?php
+                                        $lecrosoft = "SELECT * FROM first_timers ORDER BY first_timmer_id DESC";
+                                        $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                        while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+                                            extract($row);
+                                            // $title = $row['title'];
+                                            //$first_name = $row['first_name'];
+                                            //$last_name = $row['last_name'];
+                                            //$family = $row['family'];
+                                            //$title = $row['title'];
+                                            //$title = $row['title'];
+                                            //$title = $row['title'];
+                                            //$status = $row['status'];
+                                            $realdate = date("d M Y", strtotime($date_of_visit));
+                                            echo "<tr>";
+                                            echo "<td>$last_name $first_name</td>";
 
 
+                                            echo "<td>$phone_number</td>";
 
-                                        </tr>
+                                            echo "<td>$date_of_visit</td>";
+
+                                            //                     echo " <td>
+                                            //     <span class='label label-table label-danger'>$status</span>
+                                            // </td>";
+                                            echo "<td><div class='btn-group'>
+  <button type='button' class='btn btn-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+   Message
+  </button>
+  <div class='dropdown-menu'>
+    <a class='dropdown-item' href='#'>SMS</a>
+    <a class='dropdown-item' href='https://wa.me/+2347060934005?text=happy birthday to $first_name'>Whatsapp</a>
+    <a class='dropdown-item' href='#'>Email</a>
+   
+  </div></td>";
 
 
+                                            echo "</tr>";
+                                        };
 
-
-
+                                        ?>
 
                                     </tbody>
-                                </table> <a href="#">Check all the sales</a>
+                                </table>
                             </div>
                         </div>
                     </div>

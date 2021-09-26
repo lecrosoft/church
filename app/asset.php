@@ -32,7 +32,7 @@ include('includes/function.php');
                         <a href="" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Main Website</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Finance transaction categories</li>
+                            <li class="active">Dashboard</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -48,11 +48,11 @@ include('includes/function.php');
                                 <div class="white-box">
                                     <div class="row d-flex justify-content-between px-3">
                                         <div class="sm-10">
-                                            <h3 class="box-title m-b-0">Finance transaction categories</h3>
+                                            <h3 class="box-title m-b-0">Asset</h3>
                                             <p class="text-muted">this is the sample data here for crm</p>
                                         </div>
                                         <div class="sm-2">
-                                            <button class="btn btn-primary add-category">New transaction category</button>
+                                            <button class="btn btn-primary add-family">Add New Asset</button>
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -60,16 +60,16 @@ include('includes/function.php');
                                             <thead>
                                                 <tr>
 
-                                                    <th>Name</th>
+                                                    <th>Asset Name</th>
                                                     <th>Description</th>
-                                                    <th>Type</th>
+                                                    <th>Cost</th>
 
                                                     <th class="text-nowrap">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                selectTransactionCategory();
+                                                selectAsset();
                                                 ?>
 
 
@@ -109,12 +109,12 @@ include('includes/function.php');
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Edit Transaction Category</h5>
+                            <h5 class="modal-title">Asset</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" id="edit-transaction-category">
+                        <div class="modal-body" id="asset_content">
 
                         </div>
 
@@ -122,12 +122,12 @@ include('includes/function.php');
                     </div>
                 </div>
             </div>
-            <!-- ADD category -->
+            <!-- ADD ASSET -->
             <div id="dataModal2" class="modal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">New Transaction Category</h5>
+                            <h5 class="modal-title">Asset</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -135,24 +135,21 @@ include('includes/function.php');
                         <div class="modal-body" id="">
                             <form method="POST">
                                 <div class="form-group mb-3">
-                                    <label for="">Category Name<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="category_name" placeholder="Enter Category Name" required>
+                                    <label for="">Asset Name</label>
+                                    <input type="text" class="form-control" name="asset_name" placeholder="Enter Asset Name" required>
 
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="">Category description<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="category_description" placeholder="Enter category description " required>
+                                    <label for="">Description</label>
+                                    <input type="text" class="form-control" name="description" placeholder="Enter description" required>
 
                                 </div>
+
                                 <div class="form-group mb-3">
-                                    <label for="">Category Type<span class="text-danger">*</span></label>
-                                    <select name="category_type" id="" class="form-control form-select">
-                                        <option value="">Select income</option>
-                                        <option value="income">Income</option>
-                                        <option value="expense">Expense</option>
-                                    </select>
-                                </div>
+                                    <label for="">Cost</label>
+                                    <input type="number" class="form-control" name="cost" placeholder="Enter asset Cost" required>
 
+                                </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -166,23 +163,34 @@ include('includes/function.php');
                     </div>
                 </div>
             </div>
+            <?php
+            if (isset($_POST['del_fam_id'])) {
+                $del_fam_id = $_POST['del_fam_id'];
+                $lecrosoft = "DELETE FROM family WHERE family_id =$del_fam_id";
+                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                if ($query_lecrosoft) {
+                    echo '<script type="text/javascript">location = "family.php"</script>';
+                } else {
+                    die("QUERY ERROR" . mysqli_error($con));
+                }
+            }
+            ?>
 
             <?php
             if (isset($_POST['add'])) {
 
 
 
-                $category_name = $_POST['category_name'];
+                $asset_name = $_POST['asset_name'];
 
-                $category_description = $_POST['category_description'];
-                $category_type = $_POST['category_type'];
+                $description = $_POST['description'];
+                $cost = $_POST['cost'];
 
 
-
-                $lecrosoft = "INSERT INTO `income_expence_category`(`category_name`, `description`,`type`) VALUES ('$category_name','$category_description','$category_type')";
+                $lecrosoft = "INSERT INTO `asset`(`asset_name`, `asset_description`, `asset_cost`) VALUES ('$asset_name','$description','$cost')";
                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
                 if ($query_lecrosoft) {
-                    echo '<script type="text/javascript">location = "finance_category.php"</script>';
+                    echo '<script type="text/javascript">location = "asset.php"</script>';
                 } else {
                     die("QUERY ERROR" . mysqli_error($con));
                     recordDangerMessage();
@@ -196,18 +204,18 @@ include('includes/function.php');
             <script>
                 $(document).ready(function() {
                     $(".view_data").click(function() {
-                        var id = $(this).attr("id");
+                        var asset_id = $(this).attr("id");
                         $.ajax({
-                            url: "fetch_transaction_category_edit.php",
+                            url: "fetch_asset.php",
                             method: "post",
                             data: {
-                                tCategoryId: id,
+                                asset_id: asset_id,
 
 
                             },
                             success: function(data) {
                                 // console.log('mydata', data)
-                                $("#edit-transaction-category").html(data);
+                                $("#asset_content").html(data);
                                 $('#dataModal').modal("show");
 
                             },
@@ -226,12 +234,65 @@ include('includes/function.php');
             </script>
             <script>
                 $(document).ready(function() {
-                    $('.add-category').click(function() {
+                    $('.add-family').click(function() {
                         $('#dataModal2').modal("show");
                     })
                 })
             </script>
 
+
+
+            <script>
+                $(document).ready(function() {
+                    $('.delete-alert').click(function(e) {
+                        e.preventDefault();
+                        let id = $(this).attr("id");
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+
+                                $.ajax({
+                                    url: "family.php",
+                                    method: "post",
+                                    data: {
+                                        del_fam_id: id
+                                    },
+                                    success: function(data) {
+
+                                        Swal.fire(
+                                            'Deleted!',
+                                            'Your file has been deleted.',
+                                            'success'
+                                        )
+                                        location = "/church/app/family.php"
+                                        console.log(location)
+
+
+
+                                    }
+                                });
+
+
+                            }
+                        })
+                    })
+                })
+                // const flashdata = $('.flash-data').data('flashdata')
+                // if (flashdata) {
+                //     Swal.fire(
+                //         'Deleted!',
+                //         'Your file has been deleted.',
+                //         'success'
+                //     )
+                // }
+            </script>
 
 
 

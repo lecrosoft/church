@@ -32,7 +32,7 @@ include('includes/function.php');
                         <a href="" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Main Website</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Donations</li>
+                            <li class="active">Finance transaction categories</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -159,7 +159,7 @@ include('includes/function.php');
                                     <select class="form-select form-control" name="tcategory" required>
                                         <option value="">Select Transaction category</option>
                                         <?php
-                                        $lecrosoft = "SELECT * FROM income_expence_category";
+                                        $lecrosoft = "SELECT * FROM income_expence_category WHERE type = 'income' ";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                         while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                             extract($row);
@@ -209,7 +209,7 @@ include('includes/function.php');
                                 </div>
                                 <div class="form-group mb-3">
                                     <!-- <label for="" hiden>Entered By<span class="text-danger ">*</span></label> -->
-                                    <input type="text" class="form-control" name="created_by" value="Olumide" hidden>
+                                    <input type="text" class="form-control" name="created_by" value="<?php echo $_SESSION['first_name'] . "  " . $_SESSION['last_name'] ?>" hidden>
 
                                 </div>
 
@@ -266,7 +266,7 @@ include('includes/function.php');
                                     <select class="form-select form-control" name="tcategory" required>
                                         <option value="">Select Transaction category</option>
                                         <?php
-                                        $lecrosoft = "SELECT * FROM income_expence_category";
+                                        $lecrosoft = "SELECT * FROM income_expence_category WHERE type = 'expense'";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                         while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                             extract($row);
@@ -316,7 +316,7 @@ include('includes/function.php');
                                 </div>
                                 <div class="form-group mb-3">
                                     <!-- <label for="" hiden>Entered By<span class="text-danger ">*</span></label> -->
-                                    <input type="text" class="form-control" name="created_by" value="Olumide" hidden>
+                                    <input type="text" class="form-control" name="created_by" value="<?php echo $_SESSION['first_name'] . "  " . $_SESSION['last_name'] ?>" hidden>
 
                                 </div>
 
