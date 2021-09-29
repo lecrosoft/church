@@ -4,7 +4,7 @@ include('../connections/conn.php');
 <?php
 
 
-if (isset($_POST['fund_purpose']) and isset($_POST['description']) and isset($_POST['pledger_name']) and isset($_POST['amount']) and isset($_POST['paymethod']) and isset($_POST['payment_date']) and isset($_POST['created_by']) and isset($_POST['fund_purpose_to_add_pledge_to_income'])) {
+if (isset($_POST['fund_purpose']) and isset($_POST['description']) and isset($_POST['pledger_name']) and isset($_POST['amount']) and isset($_POST['paymethod']) and isset($_POST['payment_date']) and isset($_POST['created_by'])) {
     $fund_purpose = $_POST['fund_purpose'];
     $description = $_POST['description'];
     $pledger_name = $_POST['pledger_name'];
@@ -47,8 +47,10 @@ if (isset($_POST['fund_purpose']) and isset($_POST['description']) and isset($_P
     $query_update_pledge = mysqli_query($con, $lecrosft_update_pledge);
 
     // ADD TO INCOME TABLE
+
     $lecrosoft_add_to_income = "INSERT INTO `income_and_expense`(`income_and_expenses_category_id`, `note`, `transaction_date`, `payment_method_id`, `income`,`entered_by`) VALUES ($pledge_category,'$description','$payment_date',$paymethod,'$amount','$created_by')";
-    $query_lecrosoft = mysqli_query($con, $lecrosoft_add_to_income);
+    $query_lecrosoft = mysqli_query($con, $lecrosoft_add_to_income) or die(mysqli_error($con));
+
 
     // UPDATE CAMPAIGN 
     $lecrosft_update_campaign = "UPDATE campaign SET `amount_donated` = `amount_donated` + $amount WHERE campaign_id = $fund_purpose";

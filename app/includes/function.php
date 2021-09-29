@@ -353,7 +353,7 @@ selectPledgesByUnderCampaign()
       echo "<td>$ammount_paid</td>";
       $balance = ($amount - $ammount_paid);
       echo "<td>" . $balance . "</td>";
-      echo "<td>$status</td>";
+      // echo "<td>$status</td>";
 
 
       echo "<td class='text-nowrap'><button $disabled type='button'  id='$pledges_id' class='view_data btn $btn_color btn-sm' data-toggle='tooltip' data-original-title='Add payment for this pledger' > <i class='fa $faplus text-inverse m-r-10'></i> $btn_label </button> </td>";

@@ -86,7 +86,7 @@ include('includes/function.php');
                                                 <a href="#section-linebox-2"><span>Analytics</span></a>
                                             </li>
                                             <li>
-                                                <a href="#section-linebox-3"><span>Income/Expense</span></a>
+                                                <a href="#section-linebox-3"><span>Yearly Income/Expense</span></a>
                                             </li>
                                             <li>
                                                 <a href="#section-linebox-5"><span>Settings</span></a>
@@ -95,13 +95,13 @@ include('includes/function.php');
                                     </nav>
                                     <div class="content-wrap text-center">
                                         <section id="section-linebox-1">
-                                            <h3>Best Clean Tab ever</h3>
+                                            <h3>Income Report</h3>
                                             <div class="example container">
                                                 <!-- 
                                                 <p class="text-muted m-b-20">just add id <code>#date-range</code> to create it.</p> -->
                                                 <div class="input-daterange input-group" id="date-range">
-                                                    <span class="input-group-addon bg-info b-0 text-white">From</span> <input type="text" class="form-control" id="datepicker" name="start" /> <span class="input-group-addon bg-info b-0 text-white">to</span>
-                                                    <input type="text" class="form-control" id="datepicker" name="end" /><button id="search_btn" class="input-group-addon btn bg-info b-0 text-white">Go</button>
+                                                    <span class="input-group-addon bg-info b-0 text-white">From</span> <input type="text" class="form-control date_from" id="datepicker" name="date_from" /> <span class="input-group-addon bg-info b-0 text-white">to</span>
+                                                    <input type="text" class="form-control date_to" id="datepicker" name="date_to" /><button id="search_btn" class="input-group-addon btn bg-info b-0 text-white">Go</button>
                                                 </div>
                                             </div>
 
@@ -115,7 +115,8 @@ include('includes/function.php');
 
                                                 </div>
                                             </div>
-                                            <div class="table-responsive">
+                                            <div class="table-responsive table-data-filter-fetch">
+
                                                 <table id="example-transation" class="display nowrap" style="width:100%">
                                                     <thead>
                                                         <tr>
@@ -139,23 +140,17 @@ include('includes/function.php');
 
 
                                                     </tbody>
-                                                </table>
+                                                </table> <?php
+                                                            deleteFamily();
+                                                            ?> <?php
 
-                                            </div>
-                                            <?php
-                                            deleteFamily();
-                                            ?>
-
-                                            <?php
-
-                                            addFamily();
+                                                                addFamily();
 
 
-                                            ?>
-
+                                                                ?>
                                         </section>
                                         <section id="section-linebox-2">
-                                            <h2>Tabbing 2</h2>
+                                            <h2>Expense Report</h2>
                                             <div class="row d-flex justify-content-between px-3">
                                                 <div class="sm-10">
 
@@ -203,10 +198,39 @@ include('includes/function.php');
                                             ?>
                                         </section>
                                         <section id="section-linebox-3">
-                                            <h2>Tabbing 3</h2>
+                                            <h2> Monthly Income/ Expenses Chart</h2>
+                                            <h3 class="box-title">Patients In</h3>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <h5><i class="fa fa-circle m-r-5" style="color: #00bfc7;"></i>OPD</h5>
+                                                </li>
+                                                <li>
+                                                    <h5><i class="fa fa-circle m-r-5" style="color: #b4becb;"></i>ICU</h5>
+                                                </li>
+                                            </ul>
+                                            <div id="morris-area-chart1" style="height: 370px;"></div>
                                         </section>
                                         <section id="section-linebox-4">
-                                            <h2>Tabbing 4</h2>
+                                            <h2>Yearly income/Expense chart</h2>
+                                            <h3 class="box-title">Yearly Sales</h3>
+                                            <ul class="list-inline text-right">
+                                                <li>
+                                                    <h5>
+                                                        <i class="fa fa-circle m-r-5" style="color: #00bfc7"></i>Income
+                                                    </h5>
+                                                </li>
+                                                <li>
+                                                    <h5>
+                                                        <i class="fa fa-circle m-r-5" style="color: #fdc006"></i>Expense
+                                                    </h5>
+                                                </li>
+                                                <li>
+                                                    <h5>
+                                                        <i class="fa fa-circle m-r-5" style="color: #9675ce"></i>iPod
+                                                    </h5>
+                                                </li>
+                                            </ul>
+                                            <div id="morris-area-chart" style="height: 340px"></div>
                                         </section>
                                         <section id="section-linebox-5">
                                             <h2>Tabbing 5</h2>
@@ -322,7 +346,7 @@ include('includes/function.php');
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="">Transaction Date<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="datepicker" name="tdate" required>
+                                    <input type="date" class="form-control" id="" name="tdate" required>
 
                                 </div>
                                 <div class="form-group mb-3">
@@ -429,7 +453,7 @@ include('includes/function.php');
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="">Transaction Date<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="datepicker" name="tdate" required>
+                                    <input type="date" class="form-control" id="" name="tdate" required>
 
                                 </div>
                                 <div class="form-group mb-3">
@@ -476,7 +500,18 @@ include('includes/function.php');
             include('includes/footer.php');
             ?>
 
-
+            <!--Morris JavaScript -->
+            <script src="../plugins/bower_components/raphael/raphael-min.js"></script>
+            <script src="../plugins/bower_components/morrisjs/morris.js"></script>
+            <!-- jQuery for carousel -->
+            <script src="../plugins/bower_components/owl.carousel/owl.carousel.min.js"></script>
+            <script src="../plugins/bower_components/owl.carousel/owl.custom.js"></script>
+            <!-- Sparkline chart JavaScript -->
+            <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+            <script src="../plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
+            <!--Counter js -->
+            <script src="../plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
+            <script src="../plugins/bower_components/counterup/jquery.counterup.min.js"></script>
             <!-- Custom Theme JavaScript -->
             <script src="js/cbpFWTabs.js"></script>
             <script type="text/javascript">
@@ -634,13 +669,29 @@ include('includes/function.php');
             </script>
 
             <!-- FILTER DATE SCRIPT -->
-            <script>
+            <!-- <script>
                 $(document).ready(function() {
                     $('#search_btn').click(function() {
-                        alert('good boy')
+
+                        const date_from = $(".date_from").val();
+                        const date_to = $(".date_to").val();
+                        $.ajax({
+                            url: "includes/fetch_income_by_filter.php",
+                            method: "post",
+                            data: {
+                                date_from: date_from,
+                                date_to: date_to
+                            },
+                            success: function(data) {
+                                $(".table-data-filter-fetch").html(data)
+                            }
+
+
+                        })
+
                     })
                 })
-            </script>
+            </script> -->
 
 </body>
 

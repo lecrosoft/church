@@ -1,6 +1,6 @@
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Foo Tables</h4>
+        <h4 class="page-title">First timers</h4>
     </div>
     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
         <a href="" target="_blank" class="
@@ -10,11 +10,11 @@
                   btn-rounded btn-outline
                   hidden-xs hidden-sm
                   waves-effect waves-light
-                ">Buy Now</a>
+                ">Main Website</a>
         <ol class="breadcrumb">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Foo Tables</li>
+            <li><a href="#"></a></li>
+            <li class="active">First Timers</li>
         </ol>
     </div>
     <!-- /.col-lg-12 -->
@@ -23,9 +23,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="white-box">
-            <h3 class="box-title m-b-0">Row Toggler</h3>
+            <h3 class="box-title m-b-0"></h3>
             <p class="text-muted m-b-20">
-                Create your table with Toggle Footable
+
             </p>
 
             <div class="table-responsive">

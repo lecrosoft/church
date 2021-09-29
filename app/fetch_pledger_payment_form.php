@@ -1,5 +1,7 @@
 <?php
+session_start();
 include('../connections/conn.php');
+
 if (isset($_POST['pledger_id'])) {
 
     $pledger_id = $_POST['pledger_id'];
@@ -34,14 +36,18 @@ if (isset($_POST['pledger_id'])) {
 
                 </div>
                 <!-- the real canpaign select  bellow-->
-                <select id="fund_purpose" class="form-control form-select" disabled>
+                <select id="fund_purpose" class="form-control form-select" hidden disabled>
 
                     <?php
 
                     echo " <option  class='' value='$campaign_id'>$campaign</option>";
 
                     ?>
-                </select>
+
+                    <!-- to display the campaign it self -->
+
+                    <input type="text" class="form-control" value="<?php echo $campaign ?>" disabled>
+
 
             </div>
             <div class="form-group mb-3">
@@ -52,7 +58,9 @@ if (isset($_POST['pledger_id'])) {
 
             <div class="form-group mb-3">
                 <label for="">Pledge By</label>
-                <select id="pledger_name" class="form-control form-select" disabled>
+                <input type="text" class="form-control" value="<?php echo $last_name . " " . $first_name ?>" disabled>
+
+                <select id="pledger_name" class="form-control form-select" hidden disabled>
                     <?php
 
                     echo " <option class='selected' value='$member_id'>$last_name  $first_name </option>";
@@ -83,7 +91,7 @@ if (isset($_POST['pledger_id'])) {
             </div>
             <div class="form-group mb-3">
                 <label for="">Payment date <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="payment_date" value='<?php echo date("d-m-Y") ?>' required>
+                <input type="date" class="form-control" id="payment_date" required>
 
             </div>
             <div class="form-group mb-3">
@@ -196,7 +204,7 @@ if (isset($_POST['pledger_id'])) {
                         if (data == "Data Successfully Saved") {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'CallBack response',
+                                title: 'successful',
                                 text: data["message"],
 
                             })

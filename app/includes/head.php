@@ -52,7 +52,12 @@ if (!isset($_SESSION['user_role'])) {
     <link href="../plugins/bower_components/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-
+    <!-- morris CSS -->
+    <link href="../plugins/bower_components/morrisjs/morris.css" rel="stylesheet" />
+    <link href="../plugins/bower_components/css-chart/css-chart.css" rel="stylesheet" />
+    <!--Owl carousel CSS -->
+    <link href="../plugins/bower_components/owl.carousel/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/bower_components/owl.carousel/owl.theme.default.css" rel="stylesheet" type="text/css" />
     <!--alerts CSS -->
 
     <link href="../sweetalert/sweetalert2.css" rel="stylesheet" type="text/css">

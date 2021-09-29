@@ -151,7 +151,7 @@ include('includes/function.php');
                                 <li class="text-right"><i class="ti-arrow-up text-warning"></i> <span class="text-warning"><?php echo $formated_sum_pledges ?></span></li>
                             </ul>
                             <hr>
-                            <span class="text-warning">Pending Pledges ₦<?php echo $formated_sum_pledges_by_month ?></span>
+                            <span class="text-warning">This month ₦<?php echo $formated_sum_pledges_by_month ?></span>
                         </div>
                     </div>
                 </div>
@@ -243,8 +243,15 @@ include('includes/function.php');
                                             $lecrosoft = "SELECT * FROM members WHERE day(current_date)=day(date_of_birth) && month(current_date)= month(date_of_birth)";
                                             $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                             $count_celebrant = mysqli_num_rows($query_lecrosoft);
+                                            if ($count_celebrant == 0) {
+                                                echo "<H2> We have no Birthday Celebrants Today </H2>";
+                                            } else {
                                             ?>
-                                            <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants Today</H2>
+                                                <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants Today</H2>
+                                            <?php
+                                            }
+                                            ?>
+
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table">
@@ -276,7 +283,7 @@ include('includes/function.php');
   </button>
   <div class='dropdown-menu'>
     <a class='dropdown-item' href='#'>SMS</a>
-    <a class='dropdown-item' href='https://wa.me/+2347060934005?text=happy birthday to $first_name'>Whatsapp</a>
+    <a class='dropdown-item' href='https://wa.me/+234$phone_number_one?text=happy birthday to $first_name'>Whatsapp</a>
     <a class='dropdown-item' href='#'>Email</a>
    
   </div></td>";
@@ -309,8 +316,15 @@ include('includes/function.php');
                                             $lecrosoft = "SELECT * FROM members WHERE YEARWEEK(date_of_birth)= YEARWEEK(NOW())";
                                             $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                             $count_celebrant = mysqli_num_rows($query_lecrosoft);
+
+                                            if ($count_celebrant == 0) {
+                                                echo "<H2> We have no Birthday Celebrants This Week </H2>";
+                                            } else {
                                             ?>
-                                            <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants This week</H2>
+                                                <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants This Week</H2>
+                                            <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table">
@@ -342,7 +356,7 @@ include('includes/function.php');
   </button>
   <div class='dropdown-menu'>
     <a class='dropdown-item' href='#'>SMS</a>
-    <a class='dropdown-item' href='https://wa.me/+2347060934005?text=happy birthday to $first_name'>Whatsapp</a>
+    <a class='dropdown-item' href='https://wa.me/+234$phone_number_one?text=happy birthday to $first_name'>Whatsapp</a>
     <a class='dropdown-item' href='#'>Email</a>
    
   </div></td>";
@@ -375,8 +389,14 @@ include('includes/function.php');
                                             $lecrosoft = "SELECT * FROM members WHERE month(current_date)= month(date_of_birth)";
                                             $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                             $count_celebrant = mysqli_num_rows($query_lecrosoft);
+                                            if ($count_celebrant == 0) {
+                                                echo "<H2> We have no Birthday Celebrants This month </H2>";
+                                            } else {
                                             ?>
-                                            <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants this month</H2>
+                                                <H2>Hurray!! We Have <span class="text-success"><?php echo $count_celebrant ?></span> Celebrants This month</H2>
+                                            <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table">
@@ -408,7 +428,7 @@ include('includes/function.php');
   </button>
   <div class='dropdown-menu'>
     <a class='dropdown-item' href='#'>SMS</a>
-    <a class='dropdown-item' href='https://wa.me/+2347060934005?text=happy birthday to $first_name'>Whatsapp</a>
+    <a class='dropdown-item' href='https://wa.me/+234$phone_number_one?text=happy birthday to $first_name'>Whatsapp</a>
     <a class='dropdown-item' href='#'>Email</a>
    
   </div></td>";

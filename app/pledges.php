@@ -95,7 +95,7 @@ include('includes/function.php');
                                                     <th>Due Date</th>
                                                     <th>Amt payed</th>
                                                     <th>Balance</th>
-                                                    <th>Status</th>
+                                                    <!-- <th>Status</th> -->
 
                                                     <th class="text-nowrap">Action</th>
                                                 </tr>
@@ -155,7 +155,7 @@ include('includes/function.php');
                     </div>
                 </div>
             </div>
-            <!-- ADD Pledge -->
+            <!-- ADD Pledger -->
             <div id="dataModal2" class="modal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -271,14 +271,6 @@ include('includes/function.php');
                     $lecrosoft = "INSERT INTO `pledges`(`campaign_id`, `member_id`, `note`, `amount`, `pledge_date`, `pledge_due_date`) VALUES ('$campaign','$pledge_by','$note','$amount','$pdate','$pduedate')";
 
                     $query_lecrosoft = mysqli_query($con, $lecrosoft);
-                    if ($query_lecrosoft) {
-                        $update_campaign = "UPDATE campaign SET amount_pledged = amount_pledged + $amount WHERE campaign_id = $campaign";
-                        $query_update_campaign = mysqli_query($con, $update_campaign);
-                        echo '<script type="text/javascript">location = location.href</script>';
-                    } else {
-                        die("QUERY ERROR" . mysqli_error($con));
-                        recordDangerMessage();
-                    }
                 }
             }
             ?>
