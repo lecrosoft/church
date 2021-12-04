@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_role'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>J educate</title>
+    <title>The Glory of God Prayer and Power Ministry</title>
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
@@ -106,4 +106,5 @@ if (!isset($_SESSION['user_role'])) {
         ga('create', 'UA-19175540-9', 'auto');
         ga('send', 'pageview');
     </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>

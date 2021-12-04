@@ -1,0 +1,207 @@
+[29-Sep-2021 17:31:58 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[29-Sep-2021 17:31:58 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[29-Sep-2021 17:31:58 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[29-Sep-2021 17:33:08 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:33:08 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:34:27 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:34:27 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:35:39 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:35:39 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:35:39 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:35:39 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:35:40 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:35:40 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:35:40 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:35:40 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:35:40 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:35:40 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:35:40 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:35:40 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:35:41 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:35:41 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:36:13 UTC] PHP Notice:  Undefined variable: formated_sum_income in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 208
+[29-Sep-2021 17:36:13 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:36:14 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:36:23 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:36:58 UTC] PHP Notice:  Undefined variable: formated_sum_expense in /home2/eventjac/public_html/ggppm/app/includes/function.php on line 252
+[29-Sep-2021 17:45:53 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[29-Sep-2021 17:45:53 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[29-Sep-2021 17:45:53 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[29-Sep-2021 18:03:13 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[29-Sep-2021 18:03:13 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[29-Sep-2021 18:03:13 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[29-Sep-2021 18:03:13 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[29-Sep-2021 18:03:13 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[29-Sep-2021 18:03:13 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[29-Sep-2021 18:03:13 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[29-Sep-2021 18:03:13 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[29-Sep-2021 18:08:38 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[29-Sep-2021 18:08:38 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[29-Sep-2021 18:08:38 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[29-Sep-2021 18:08:38 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[29-Sep-2021 18:08:38 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[29-Sep-2021 18:08:38 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[29-Sep-2021 18:08:38 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[29-Sep-2021 18:08:38 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[29-Sep-2021 18:08:42 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[29-Sep-2021 18:08:42 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[29-Sep-2021 18:08:42 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[29-Sep-2021 18:08:42 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[29-Sep-2021 18:08:42 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[29-Sep-2021 18:08:42 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[29-Sep-2021 18:08:42 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[29-Sep-2021 18:08:42 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[29-Sep-2021 18:10:28 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[29-Sep-2021 18:10:28 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[29-Sep-2021 18:10:28 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[29-Sep-2021 18:10:28 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[29-Sep-2021 18:10:28 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[29-Sep-2021 18:10:28 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[29-Sep-2021 18:10:28 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[29-Sep-2021 18:10:28 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[29-Sep-2021 18:21:01 UTC] PHP Warning:  include(includes/all-users.php): failed to open stream: No such file or directory in /home2/eventjac/public_html/ggppm/app/users.php on line 61
+[29-Sep-2021 18:21:01 UTC] PHP Warning:  include(includes/all-users.php): failed to open stream: No such file or directory in /home2/eventjac/public_html/ggppm/app/users.php on line 61
+[29-Sep-2021 18:21:01 UTC] PHP Warning:  include(): Failed opening 'includes/all-users.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home2/eventjac/public_html/ggppm/app/users.php on line 61
+[29-Sep-2021 18:37:22 UTC] PHP Warning:  include(includes/add-user.php): failed to open stream: No such file or directory in /home2/eventjac/public_html/ggppm/app/users.php on line 53
+[29-Sep-2021 18:37:22 UTC] PHP Warning:  include(includes/add-user.php): failed to open stream: No such file or directory in /home2/eventjac/public_html/ggppm/app/users.php on line 53
+[29-Sep-2021 18:37:22 UTC] PHP Warning:  include(): Failed opening 'includes/add-user.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home2/eventjac/public_html/ggppm/app/users.php on line 53
+[30-Sep-2021 08:00:37 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 08:00:37 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 08:00:37 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 08:00:37 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 09:43:32 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 09:43:32 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 09:43:32 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 09:43:41 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 09:43:41 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 09:43:41 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 09:43:41 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 09:43:41 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 09:43:41 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 09:43:41 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 09:43:41 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 09:43:49 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 09:43:49 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 09:43:49 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 09:43:49 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 09:43:49 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 09:43:49 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 09:43:49 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 09:43:49 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 09:47:48 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 09:47:48 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 09:47:48 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 09:47:48 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 09:47:48 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 09:47:48 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 09:47:48 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 09:47:48 UTC] PHP Notice:  Undefined variable: family_id in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 45
+[30-Sep-2021 09:50:13 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 09:50:13 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 09:50:13 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 10:00:49 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 10:00:49 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 10:00:49 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 10:00:49 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 10:00:49 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 10:00:49 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 10:00:49 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 10:00:49 UTC] PHP Notice:  Undefined variable: family_id in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 45
+[30-Sep-2021 10:14:32 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home2/eventjac/public_html/ggppm/app/login.php on line 58
+[30-Sep-2021 10:15:03 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home2/eventjac/public_html/ggppm/app/login.php on line 58
+[30-Sep-2021 10:15:06 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home2/eventjac/public_html/ggppm/app/login.php on line 58
+[30-Sep-2021 10:15:13 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home2/eventjac/public_html/ggppm/app/login.php on line 58
+[30-Sep-2021 10:15:20 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home2/eventjac/public_html/ggppm/app/login.php on line 58
+[30-Sep-2021 10:15:30 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home2/eventjac/public_html/ggppm/app/login.php on line 58
+[30-Sep-2021 10:15:48 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home2/eventjac/public_html/ggppm/app/login.php on line 58
+[30-Sep-2021 10:17:48 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 10:17:48 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 10:17:48 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 10:17:48 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 10:17:48 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 10:17:48 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 10:17:48 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 10:17:48 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 10:17:51 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 10:17:51 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 10:17:51 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 10:17:51 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 10:17:51 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 10:17:51 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 10:17:51 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 10:17:51 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 10:17:56 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 10:17:56 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 10:17:56 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 10:17:56 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 10:17:56 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 10:17:56 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 10:17:56 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 10:17:56 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 10:18:19 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 10:18:19 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 10:18:19 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 10:18:19 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 10:18:19 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 10:18:19 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 10:18:19 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 10:18:19 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 10:34:42 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 10:34:42 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 10:34:42 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 10:35:15 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 10:35:15 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 10:35:15 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 13:22:53 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 13:22:54 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 13:22:54 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 13:31:22 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 13:31:23 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 14:13:22 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 14:13:22 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 14:13:22 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 14:24:19 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 14:24:19 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 14:24:19 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 15:38:46 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 15:38:46 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 15:38:46 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 17:19:51 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 17:19:51 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 17:19:51 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/transaction.php on line 354
+[30-Sep-2021 17:19:51 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/transaction.php on line 354
+[30-Sep-2021 17:19:51 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/transaction.php on line 461
+[30-Sep-2021 17:19:51 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/transaction.php on line 461
+[30-Sep-2021 18:37:55 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 18:37:55 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 18:37:55 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 20:53:26 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 20:53:26 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 20:53:26 UTC] PHP Notice:  Undefined index: username in /home2/eventjac/public_html/ggppm/app/index.php on line 33
+[30-Sep-2021 20:56:30 UTC] PHP Warning:  extract() expects parameter 1 to be array, null given in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 10
+[30-Sep-2021 20:56:30 UTC] PHP Notice:  Undefined variable: family_name in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 15
+[30-Sep-2021 20:56:30 UTC] PHP Notice:  Undefined variable: family_leader in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 19
+[30-Sep-2021 20:56:30 UTC] PHP Notice:  Undefined variable: family_quantity in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 24
+[30-Sep-2021 20:56:30 UTC] PHP Notice:  Undefined variable: family_contact in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 28
+[30-Sep-2021 20:56:30 UTC] PHP Notice:  Undefined variable: address in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 32
+[30-Sep-2021 20:56:30 UTC] PHP Notice:  Undefined variable: status in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 36
+[30-Sep-2021 20:56:30 UTC] PHP Notice:  Undefined variable: join_date in /home2/eventjac/public_html/ggppm/app/fetch_family.php on line 40
+[30-Sep-2021 22:07:43 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 22:07:43 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/includes/left-side-bar.php on line 17
+[30-Sep-2021 22:07:43 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/transaction.php on line 354
+[30-Sep-2021 22:07:43 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/transaction.php on line 354
+[30-Sep-2021 22:07:43 UTC] PHP Notice:  Undefined index: first_name in /home2/eventjac/public_html/ggppm/app/transaction.php on line 461
+[30-Sep-2021 22:07:43 UTC] PHP Notice:  Undefined index: last_name in /home2/eventjac/public_html/ggppm/app/transaction.php on line 461

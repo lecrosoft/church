@@ -1,4 +1,4 @@
-<footer class="footer text-center"> 2021 &copy; Developed by Lecrosoft<a href="lecrosoft.co" </footer>
+<footer class="footer text-center"> 2021 &copy; Developed by<a href="https://lecrosoft.com">Lecrosoft Technologies </a> </footer>
         </div>
         <!-- /#page-wrapper -->
         </div>
@@ -14,18 +14,7 @@
         <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
         <!--slimscroll JavaScript -->
         <script src="js/jquery.slimscroll.js"></script>
-        <!--Morris JavaScript -->
-        <script src="../../../plugins/bower_components/raphael/raphael-min.js"></script>
-        <script src="../../plugins/bower_components/morrisjs/morris.js"></script>
-        <!-- jQuery for carousel -->
-        <script src="../../plugins/bower_components/owl.carousel/owl.carousel.min.js"></script>
-        <script src="../../plugins/bower_components/owl.carousel/owl.custom.js"></script>
-        <!-- Sparkline chart JavaScript -->
-        <script src="../../plugins/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-        <script src="../../plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
-        <!--Counter js -->
-        <script src="../../plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
-        <script src="../../plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+       
 
         <!--Wave Effects -->
         <script src="js/waves.js"></script>
@@ -141,7 +130,7 @@
                 ]
             });
         </script>
-        <script src="/admin/script.js"></script>
+        <script src="/app/script.js"></script>
         <!-- comment table -->
 
         <script>

@@ -3,13 +3,13 @@
 
 <?php
 
-$_SESSION['firstname'] = null;
-$_SESSION['lastname'] = null;
 $_SESSION['username'] = null;
-$_SESSION['email'] = null;
+$_SESSION['first_name'] = null;
+$_SESSION['last_name'] = null;
 $_SESSION['password'] = null;
+$_SESSION['email'] = null;
 $_SESSION['user_role'] = null;
-$_SESSION['image'] = null;
+
 
 header("Location: login.php");
 

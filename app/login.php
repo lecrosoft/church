@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Elite Hospital Admin Template - Hospital admin dashboard web app kit</title>
+    <title>The Glory Of God Prayer and Power Ministry</title>
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
@@ -113,7 +113,7 @@
 
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            <p>Don't have an account? <a href="register2.html" class="text-primary m-l-5"><b>Sign Up</b></a></p>
+                            <p>Don't have an account? <a href="#" class="text-primary m-l-5"><b>Sign Up</b></a></p>
                         </div>
                     </div>
                 </form>

@@ -201,7 +201,7 @@ if (isset($_POST['pledger_id'])) {
                     success: function(data) {
 
 
-                        if (data == "Data Successfully Saved") {
+                        if (data == "Data-Successfully-Saved") {
                             Swal.fire({
                                 icon: 'success',
                                 title: 'successful',

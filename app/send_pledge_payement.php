@@ -55,8 +55,8 @@ if (isset($_POST['fund_purpose']) and isset($_POST['description']) and isset($_P
     // UPDATE CAMPAIGN 
     $lecrosft_update_campaign = "UPDATE campaign SET `amount_donated` = `amount_donated` + $amount WHERE campaign_id = $fund_purpose";
     $query_update_campaign = mysqli_query($con, $lecrosft_update_campaign);
-    echo "Data Successfully Saved";
 
+    echo "Data-Successfully-Saved";
 
 
 

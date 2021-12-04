@@ -1,16 +1,58 @@
  <?php
+
+    use GuzzleHttp\Psr7\Request;
+
     sleep(1);
-    include('../../connections/conn.php');
+    include_once('../../connections/conn.php');
     include('function.php');
     ?>
  <?php
-    if (isset($_POST['date_from']) && isset($_POST['date_to'])) {
-        $from = $_POST['date_from'];
-        $to = $_POST['date_to'];
-        $lecrosoft = "SELECT * FROM income_and_expense LEFT JOIN income_expence_category ON income_and_expense.income_and_expenses_category_id=income_expence_category.id LEFT JOIN payment_method ON income_and_expense.payment_method_id = payment_method.id WHERE income !=0 && transaction_date BETWEEN '$from' and '$to' ";
-        $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+
+    if (isset($_POST['transaction_cat'])) {
+        $transaction_cat = $_POST['transaction_cat'];
+        $payment_mtd = $_POST['payment_mtd'];
+        $month = $_POST['month'];
+        $year = $_POST['year'];
+        $condition = "";
+
+        if ($transaction_cat == 'all' and  $payment_mtd == 'all') {
+            $condition = "&& month(transaction_date) = $month && year(transaction_date) = $year";
+        } else if (($transaction_cat == 'all' and $payment_mtd != 'all')) {
+            $condition = "&& payment_method_id = $payment_mtd && month(transaction_date) = $month && year(transaction_date) = $year";
+        } else if (($transaction_cat != 'all' and $payment_mtd == 'all')) {
+            $condition = "&& income_and_expenses_category_id = $transaction_cat  && month(transaction_date) = $month && year(transaction_date) = $year";
+        } else if ($transaction_cat == 'all' and  $payment_mtd == 'all' and $year = '') {
+            $condition = "&& month(transaction_date) = month(current_date) && year(transaction_date) = year(current_date)";
+        } else {
+            $condition = "&& income_and_expenses_category_id = $transaction_cat && month(transaction_date) = $month && year(transaction_date) = $year AND payment_method_id = $payment_mtd";
+        }
+
+
+
+
+
+        // if (!empty($payment_mtd) and !empty($month)) {
+        //     $condition = "WHERE income_and_expenses_category_id = $transaction_cat AND payment_method.id = $payment_mtd AND month(transaction_date) = month(current_date) AND year(transaction_date) = year(current_date)";
+        // } else {
+        //     $condition = "";
+        // }
+
+
+        // $lecrosoft = "SELECT * FROM income_and_expense";
+        $lecrosoft = "SELECT * FROM income_and_expense LEFT JOIN income_expence_category ON income_and_expense.income_and_expenses_category_id=income_expence_category.id LEFT JOIN payment_method ON income_and_expense.payment_method_id = payment_method.id WHERE income !=0" . $condition;
+        // $lecrosoft = "SELECT * FROM income_and_expense LEFT JOIN income_expence_category ON income_and_expense.income_and_expenses_category_id=income_expence_category.id LEFT JOIN payment_method ON income_and_expense.payment_method_id = payment_method.id WHERE income !=0 && income_and_expenses_category_id = $transaction_cat && month(transaction_date) = month(current_date) AND year(transaction_date) = year(current_date) AND payment_method_id = $payment_mtd ";
+        $query_lecrosoft = mysqli_query($con, $lecrosoft) or die(mysqli_error($con));
         $sum_income = 0;
+
+        echo $month;
+
+
         $count = mysqli_num_rows($query_lecrosoft);
+
+        if ($query_lecrosoft) {
+        }
+
 
 
 

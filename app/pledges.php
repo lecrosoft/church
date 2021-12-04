@@ -201,7 +201,7 @@ include('includes/function.php');
 
                                 <div class="form-group mb-3">
                                     <label for="">Pledge by<span class="text-danger">*</span></label>
-                                    <select class="form-select form-control" required name="pledge_by">
+                                    <select class="form-select form-control select2" required name="pledge_by">
                                         <option value="">Select pledger name</option>
                                         <?php
                                         $lecrosoft = "SELECT * FROM members";
@@ -264,13 +264,19 @@ include('includes/function.php');
                 $member_id = $row['member_id'];
                 $campaign_id = $row['campaign_id'];
                 if ($member_id == $pledge_by && $campaign_id == $cp_id) {
-                    echo "<script>alert('This User has Already Pledged under this pledger')</script>";
+                    echo "<script>alert('This User has Already Pledged under this category')</script>";
                     // echo "Already Pledged";
                 } else {
 
                     $lecrosoft = "INSERT INTO `pledges`(`campaign_id`, `member_id`, `note`, `amount`, `pledge_date`, `pledge_due_date`) VALUES ('$campaign','$pledge_by','$note','$amount','$pdate','$pduedate')";
 
                     $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+                    $lecrosft_update_campaign = "UPDATE campaign SET `amount_pledged` = `amount_pledged` + $amount WHERE campaign_id = $cp_id";
+                    $query_update_campaign = mysqli_query($con, $lecrosft_update_campaign);
+                    if ($query_update_campaign) {
+                        echo "<script type='text/javascript'>location=location.href</script>";
+                    }
                 }
             }
             ?>

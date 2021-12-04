@@ -85,11 +85,9 @@ include('includes/function.php');
                                             <li>
                                                 <a href="#section-linebox-2"><span>Analytics</span></a>
                                             </li>
+
                                             <li>
-                                                <a href="#section-linebox-3"><span>Yearly Income/Expense</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#section-linebox-5"><span>Settings</span></a>
+                                                <a href="#section-linebox-5"><span>Pledges</span></a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -99,9 +97,9 @@ include('includes/function.php');
                                             <div class="example container">
                                                 <!-- 
                                                 <p class="text-muted m-b-20">just add id <code>#date-range</code> to create it.</p> -->
-                                                <div class="input-daterange input-group" id="date-range">
-                                                    <span class="input-group-addon bg-info b-0 text-white">From</span> <input type="text" class="form-control date_from" id="datepicker" name="date_from" /> <span class="input-group-addon bg-info b-0 text-white">to</span>
-                                                    <input type="text" class="form-control date_to" id="datepicker" name="date_to" /><button id="search_btn" class="input-group-addon btn bg-info b-0 text-white">Go</button>
+                                                <div class="d-flex" id="">
+                                                    <span class="input-group-addon bg-info b-0 text-white">From</span> <input type="date" class="form-control date_from" id="" name="date_from" /> <span class="input-group-addon bg-info b-0 text-white">to</span>
+                                                    <input type="date" class="form-control date_to" id="" name="date_to" /><button id="search_btn" class="input-group-addon btn bg-info b-0 text-white">Go</button>
                                                 </div>
                                             </div>
 
@@ -151,6 +149,14 @@ include('includes/function.php');
                                         </section>
                                         <section id="section-linebox-2">
                                             <h2>Expense Report</h2>
+                                            <div class="example container">
+                                                <!-- 
+                                                <p class="text-muted m-b-20">just add id <code>#date-range</code> to create it.</p> -->
+                                                <div class="d-flex" id="">
+                                                    <span class="input-group-addon bg-info b-0 text-white">From</span> <input type="date" class="form-control date_from" id="" name="date_from" /> <span class="input-group-addon bg-info b-0 text-white">to</span>
+                                                    <input type="date" class="form-control date_to" id="" name="date_to" /><button id="search_btn2" class="input-group-addon btn bg-info b-0 text-white">Go</button>
+                                                </div>
+                                            </div>
                                             <div class="row d-flex justify-content-between px-3">
                                                 <div class="sm-10">
 
@@ -158,7 +164,7 @@ include('includes/function.php');
                                                 </div>
 
                                             </div>
-                                            <div class="table-responsive">
+                                            <div class="table-responsive table-data-filter-fetch_expense">
                                                 <table id="example-transation2" class="display nowrap" style="width:100%">
                                                     <thead>
                                                         <tr>
@@ -197,47 +203,325 @@ include('includes/function.php');
 
                                             ?>
                                         </section>
-                                        <section id="section-linebox-3">
+                                        <div id="section-linebox-3">
                                             <h2> Monthly Income/ Expenses Chart</h2>
-                                            <h3 class="box-title">Patients In</h3>
-                                            <ul class="list-inline text-center">
-                                                <li>
-                                                    <h5><i class="fa fa-circle m-r-5" style="color: #00bfc7;"></i>OPD</h5>
-                                                </li>
-                                                <li>
-                                                    <h5><i class="fa fa-circle m-r-5" style="color: #b4becb;"></i>ICU</h5>
-                                                </li>
-                                            </ul>
-                                            <div id="morris-area-chart1" style="height: 370px;"></div>
-                                        </section>
-                                        <section id="section-linebox-4">
-                                            <h2>Yearly income/Expense chart</h2>
-                                            <h3 class="box-title">Yearly Sales</h3>
-                                            <ul class="list-inline text-right">
-                                                <li>
-                                                    <h5>
-                                                        <i class="fa fa-circle m-r-5" style="color: #00bfc7"></i>Income
-                                                    </h5>
-                                                </li>
-                                                <li>
-                                                    <h5>
-                                                        <i class="fa fa-circle m-r-5" style="color: #fdc006"></i>Expense
-                                                    </h5>
-                                                </li>
-                                                <li>
-                                                    <h5>
-                                                        <i class="fa fa-circle m-r-5" style="color: #9675ce"></i>iPod
-                                                    </h5>
-                                                </li>
-                                            </ul>
-                                            <div id="morris-area-chart" style="height: 340px"></div>
-                                        </section>
+
+                                            <h3 class="box-title"></h3>
+
+
+                                        </div>
+
+                                        <!-- PLEEDGES -->
                                         <section id="section-linebox-5">
-                                            <h2>Tabbing 5</h2>
+                                            <h3>Pledges History</h3>
+                                            <div class="example container">
+                                                <!-- 
+                                                <p class="text-muted m-b-20">just add id <code>#date-range</code> to create it.</p> -->
+                                                <div class="d-flex" id="">
+                                                    <span class="input-group-addon bg-info b-0 text-white">From</span> <input type="date" class="form-control date_from" id="" name="date_from" /> <span class="input-group-addon bg-info b-0 text-white">to</span>
+                                                    <input type="date" class="form-control date_to" id="" name="date_to" /><button id="search_btn" class="input-group-addon btn bg-info b-0 text-white">Go</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="row d-flex justify-content-between px-3">
+                                                <div class="sm-10">
+
+                                                    <p class="text-muted">Export data to Copy, CSV, Excel, PDF & Print</p>
+                                                </div>
+                                                <div class="sm-2">
+
+
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive table-data-filter-fetch">
+
+                                                <table id="example-transation" class="display nowrap" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th>Ref_id</th>
+                                                            <th>Category</th>
+                                                            <th>Note</th>
+                                                            <th>Trans Date</th>
+                                                            <th>Pay Method</th>
+                                                            <th>Income(₦)</th>
+                                                            <th>Entered By</th>
+                                                            <th>Created at</th>
+
+                                                            <th class="text-nowrap">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        selectTransactionIncome();
+                                                        ?>
+
+
+                                                    </tbody>
+                                                </table> <?php
+                                                            deleteFamily();
+                                                            ?> <?php
+
+                                                                addFamily();
+
+
+                                                                ?>
+
                                         </section>
+
                                     </div>
                                     <!-- /content -->
                                 </div>
+                                <script type="text/javascript">
+                                    google.charts.load('current', {
+                                        'packages': ['bar']
+                                    });
+                                    google.charts.setOnLoadCallback(drawChart);
+
+                                    function drawChart() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ['Months', 'Income', 'Expenses', 'Profit/Loss'],
+                                            <?php
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 1 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $january_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 1 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $january_expenses = $row['value_sum'];
+                                            $january_profit = ($january_income - $january_expenses);
+
+
+                                            echo "['Jan', $january_income, $january_expenses, $january_profit],";
+
+
+
+                                            // february analysis
+
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 2 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $feb_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 2 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $feb_expenses = $row['value_sum'];
+                                            $feb_profit = ($feb_income - $feb_expenses);
+
+
+                                            echo "['Feb', $feb_income, $feb_expenses, $feb_profit],";
+
+
+                                            // March analysis
+
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 3 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $march_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 3 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $march_expenses = $row['value_sum'];
+                                            $march_profit = ($march_income - $march_expenses);
+
+
+                                            echo "['March', $march_income, $march_expenses, $march_profit],";
+
+
+                                            // April analysis
+
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 4 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $april_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 4 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $april_expenses = $row['value_sum'];
+                                            $april_profit = ($april_income - $april_expenses);
+
+
+                                            echo "['April', $april_income, $april_expenses, $april_profit],";
+
+                                            // May analysis
+
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 5 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $may_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 5 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $may_expenses = $row['value_sum'];
+                                            $may_profit = ($may_income - $may_expenses);
+
+
+                                            echo "['May', $may_income, $may_expenses, $may_profit],";
+
+
+                                            //June analysis
+
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 6 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $june_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 6 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $june_expenses = $row['value_sum'];
+                                            $june_profit = ($june_income - $june_expenses);
+
+
+                                            echo "['June', $june_income, $june_expenses, $june_profit],";
+
+
+                                            //July analysis
+
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 7 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $july_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 7 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $july_expenses = $row['value_sum'];
+                                            $july_profit = ($july_income - $july_expenses);
+
+
+                                            echo "['July', $july_income, $july_expenses, $july_profit],";
+
+
+                                            //August analysis
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 8 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $august_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 8 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $august_expenses = $row['value_sum'];
+                                            $august_profit = ($august_income - $august_expenses);
+
+
+                                            echo "['Aug', $august_income, $august_expenses, $august_profit],";
+
+
+                                            //September analysis
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 9 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $september_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 9 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $september_expenses = $row['value_sum'];
+                                            $september_profit = ($september_income - $september_expenses);
+
+
+                                            echo "['Sept', $september_income, $september_expenses, $september_profit],";
+
+
+
+
+                                            //Octomber analysis
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 10 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $octomember_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 10 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $octomber_expenses = $row['value_sum'];
+                                            $octomber_profit = ($octomember_income - $octomber_expenses);
+
+
+                                            echo "['Oct', $octomember_income, $octomber_expenses, $octomber_profit],";
+
+
+
+                                            //November analysis
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 11 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $november_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 11 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $november_expenses = $row['value_sum'];
+                                            $november_profit = ($november_income - $november_expenses);
+
+
+                                            echo "['Nov', $november_income, $november_expenses, $november_profit],";
+
+
+
+                                            //December analysis
+
+
+
+
+
+                                            $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(transaction_date) = 12 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $december_income = $row['value_sum'];
+
+                                            $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(transaction_date) = 12 && year(transaction_date) = year(current_date)";
+                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                                            $december_expenses = $row['value_sum'];
+                                            $december_profit = ($december_income - $december_expenses);
+
+
+                                            echo "['Dec', $december_income, $december_expenses, $december_profit]";
+
+                                            ?>
+                                        ]);
+
+                                        var options = {
+                                            chart: {
+                                                title: 'Church Performance',
+                                                subtitle: 'Income, Expenses, and Profit: 2021',
+                                            }
+                                        };
+
+                                        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                                        chart.draw(data, google.charts.Bar.convertOptions(options));
+                                    }
+                                </script>
+
+                                <div id="columnchart_material" style="width: auto; height: 500px;"></div>
                                 <!-- /tabs -->
                             </section>
                             <!-- Tabstyle start -->
@@ -669,7 +953,7 @@ include('includes/function.php');
             </script>
 
             <!-- FILTER DATE SCRIPT -->
-            <!-- <script>
+            <script>
                 $(document).ready(function() {
                     $('#search_btn').click(function() {
 
@@ -682,6 +966,9 @@ include('includes/function.php');
                                 date_from: date_from,
                                 date_to: date_to
                             },
+                            beforeSend: function() {
+                                $(".table-data-filter-fetch").html('<h4>Loading...</h4>')
+                            },
                             success: function(data) {
                                 $(".table-data-filter-fetch").html(data)
                             }
@@ -691,7 +978,34 @@ include('includes/function.php');
 
                     })
                 })
-            </script> -->
+            </script>
+            <script>
+                $(document).ready(function() {
+                    $('#search_btn2').click(function() {
+
+                        const date_from = $(".date_from").val();
+                        const date_to = $(".date_to").val();
+                        $.ajax({
+                            url: "includes/fetch_expense_by_filter.php",
+                            method: "post",
+                            data: {
+                                date_from: date_from,
+                                date_to: date_to
+                            },
+                            beforeSend: function() {
+                                $(".table-data-filter-fetch_expense").html('<h4>Loading...</h4>')
+                            },
+                            success: function(data) {
+                                $(".table-data-filter-fetch_expense").html(data)
+                                console.log(data)
+                            }
+
+
+                        })
+
+                    })
+                })
+            </script>
 
 </body>
 

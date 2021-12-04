@@ -66,7 +66,7 @@ include('includes/function.php');
                                 ?>
 
                                 <?php
-                                $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(current_date) = month(transaction_date)";
+                                $lecrosoft = "SELECT SUM(income) as value_sum FROM income_and_expense WHERE month(current_date) = month(transaction_date) && year(current_date) = year(transaction_date)";
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                 $row = mysqli_fetch_assoc($query_lecrosoft);
                                 $sum_by_month = $row['value_sum'];
@@ -93,7 +93,7 @@ include('includes/function.php');
                                     $formated_expense = number_format($sum_expense);
                                     ?>
                                     <?php
-                                    $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(current_date) = month(transaction_date)";
+                                    $lecrosoft = "SELECT SUM(expense) as value_sum FROM income_and_expense WHERE month(current_date) = month(transaction_date) && year(current_date) = year(transaction_date)";
                                     $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                     $row = mysqli_fetch_assoc($query_lecrosoft);
                                     $sum_expense_by_month = $row['value_sum'];
@@ -592,7 +592,7 @@ include('includes/function.php');
                         },
                         success: function(data) {
                             if (data === "Success") {
-                                window.location = '/educate/admin/index.php'
+                                window.location = location.href
                             } else {
                                 alert('An Error Occurred');
                             }

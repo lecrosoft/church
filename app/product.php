@@ -48,43 +48,54 @@ include('includes/function.php');
                                 <div class="white-box">
                                     <div class="row d-flex justify-content-between px-3">
                                         <div class="sm-10">
-                                            <h3 class="box-title m-b-0">Asset</h3>
+                                            <h3 class="box-title m-b-0">Family List</h3>
                                             <p class="text-muted">this is the sample data here for crm</p>
                                         </div>
                                         <div class="sm-2">
-                                            <button class="btn btn-primary add-family">Add New Asset</button>
+                                            <button class="btn btn-primary add-family">Add New Family</button>
                                         </div>
                                     </div>
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
 
-                                                    <th>Asset Name</th>
-                                                    <th>Description</th>
-                                                    <th>Estimated Cost</th>
 
-                                                    <th class="text-nowrap">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                    <form action="" method="post" class="d-flex">
+
+                                        <div class="form-group">
+                                            <select name="" id="product" class="form-control form-select">
+                                                <option value="" selected disabled>---select product---</option>
                                                 <?php
-                                                selectAsset();
+                                                $sql = "SELECT * FROM products";
+                                                $query_sql = mysqli_query($con, $sql);
+                                                while ($row = mysqli_fetch_assoc($query_sql)) {
+                                                    extract($row);
+                                                    echo "<option value='$product_id'>$product_name</option>";
+                                                }
                                                 ?>
 
+                                            </select>
+                                        </div>
 
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        <div class="form-group">
+                                            <input type="number" value="" id="price" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" value="" id="qty" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" value="" id="total" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="button" id="button" value="Add" class="btn btn-success">
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <?php
-                            deleteFamily();
+
                             ?>
 
                             <?php
 
-                            addFamily();
+
 
 
                             ?>
@@ -109,12 +120,12 @@ include('includes/function.php');
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Asset</h5>
+                            <h5 class="modal-title">Family Details</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" id="asset_content">
+                        <div class="modal-body" id="family_content">
 
                         </div>
 
@@ -122,12 +133,12 @@ include('includes/function.php');
                     </div>
                 </div>
             </div>
-            <!-- ADD ASSET -->
+            <!-- ADD FAMILY -->
             <div id="dataModal2" class="modal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Asset</h5>
+                            <h5 class="modal-title">Family Details</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -135,22 +146,31 @@ include('includes/function.php');
                         <div class="modal-body" id="">
                             <form method="POST">
                                 <div class="form-group mb-3">
-                                    <label for="">Asset Name</label>
-                                    <input type="text" class="form-control" name="asset_name" placeholder="Enter Asset Name" required>
+                                    <input type="text" class="form-control" name="fname" placeholder="Enter Family Name" required>
 
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="">Description</label>
-                                    <input type="text" class="form-control" name="description" placeholder="Enter description" required>
+                                    <input type="text" class="form-control" name="fleader" placeholder="Enter Family Leader " required>
 
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="">Estimated Cost</label>
-                                    <input type="number" class="form-control" name="cost" placeholder="Enter asset Cost" required>
+                                    <input type="text" class="form-control" name="fquantity" placeholder="Enter Family Quantity" required>
+
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" name="fcontact" placeholder="Enter Contact">
+
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" name="address" placeholder="Enter Address">
 
                                 </div>
 
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" name="jtime" placeholder="Enter Join Time">
+
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" name="add">Save changes</button>
@@ -181,19 +201,22 @@ include('includes/function.php');
 
 
 
-                $asset_name = $_POST['asset_name'];
+                $fname = $_POST['fname'];
 
-                $description = $_POST['description'];
-                $cost = $_POST['cost'];
-
-
-                $lecrosoft = "INSERT INTO `asset`(`asset_name`, `asset_description`, `asset_cost`) VALUES ('$asset_name','$description','$cost')";
-                $query_lecrosoft = mysqli_query($con, $lecrosoft);
-                if ($query_lecrosoft) {
-                    echo '<script type="text/javascript">location = "asset.php"</script>';
-                } else {
-                    die("QUERY ERROR" . mysqli_error($con));
-                    recordDangerMessage();
+                $fleader = $_POST['fleader'];
+                $fquantity = $_POST['fquantity'];
+                $fcontact = $_POST['fcontact'];
+                $address  = $_POST['address'];
+                $jtime = $_POST['jtime'];
+                if (!empty($fname)) {
+                    $lecrosoft = "INSERT INTO family(family_name,family_leader,family_quantity,family_contact,address,join_date) VALUES ('$fname','$fleader',$fquantity,'$fcontact','$address','$jtime')";
+                    $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                    if ($query_lecrosoft) {
+                        echo '<script type="text/javascript">location = "family.php"</script>';
+                    } else {
+                        die("QUERY ERROR" . mysqli_error($con));
+                        recordDangerMessage();
+                    }
                 }
             }
             ?>
@@ -204,18 +227,18 @@ include('includes/function.php');
             <script>
                 $(document).ready(function() {
                     $(".view_data").click(function() {
-                        var asset_id = $(this).attr("id");
+                        var family_id = $(this).attr("id");
                         $.ajax({
-                            url: "fetch_asset.php",
+                            url: "fetch_family.php",
                             method: "post",
                             data: {
-                                asset_id: asset_id,
+                                family_id: family_id,
 
 
                             },
                             success: function(data) {
                                 // console.log('mydata', data)
-                                $("#asset_content").html(data);
+                                $("#family_content").html(data);
                                 $('#dataModal').modal("show");
 
                             },
@@ -294,7 +317,35 @@ include('includes/function.php');
                 // }
             </script>
 
+            <script>
+                $('#product').change(function() {
+                    var product_id = $(this).val();
 
+                    var qty = $('#qty').val();
+                    var price = $('#price').val();
+                    $('#total').val(qty * price)
+
+                    $.ajax({
+                        url: "ajax_product.php",
+                        method: "post",
+                        data: {
+                            product_id: product_id
+                        },
+                        success: function(data) {
+                            $('#price').val(data);
+
+                            $('#qty').change(function() {
+                                var qty = $(this).val();
+                                var price = $('#price').val();
+                                $('#total').val(qty * price)
+                            })
+
+                        }
+
+
+                    })
+                })
+            </script>
 
 
 </body>
