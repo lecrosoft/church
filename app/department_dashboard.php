@@ -135,7 +135,20 @@ include('includes/function.php');
                                         <ul class="list-inline two-part">
                                             <li><i class="ti-wallet text-success"></i></li>
                                             <li class="text-right">
-                                                <span class="counter">117</span>
+                                                <?php
+                                                $lecrosoft = "SELECT SUM(income) as income_value FROM department_income WHERE department_id = $depart_id";
+                                                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                                $row = mysqli_fetch_assoc($query_lecrosoft);
+                                                $income_sum = $row['income_value'];
+                                                ?>
+                                                <span class="counter"><?php
+                                                                        if ($income_sum > 0) {
+                                                                            echo $income_sum;
+                                                                        } else {
+                                                                            echo 0;
+                                                                        }
+                                                                        ?>
+                                                </span>
                                             </li>
                                         </ul>
                                     </div>
@@ -318,7 +331,7 @@ include('includes/function.php');
                                                 </div>
                                             </div>
                                             <div class="table-responsive">
-                                                <table id="myTable" class="table table-bordered">
+                                                <table id="newProjectTable" class="table table-bordered">
                                                     <thead>
                                                         <tr>
 
@@ -389,11 +402,10 @@ include('includes/function.php');
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
-                                            <th>Diseases</th>
+                                            <th>Transaction Title</th>
+                                            <th>Amount</th>
+                                            <th>Pay. Method</th>
+                                            <th>Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -422,10 +434,10 @@ include('includes/function.php');
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>ECG</th>
-                                            <th>Result</th>
+                                            <th>Transaction Title</th>
+                                            <th>Amount</th>
+                                            <th>Pay. Method</th>
+                                            <th>Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>

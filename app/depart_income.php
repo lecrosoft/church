@@ -384,6 +384,10 @@ include('includes/function.php');
                                                     <h5>Monthly Income Report</h5>
                                                 </div>
                                                 <form action="" method="post">
+
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="department_id" value="<?php echo $depart_id ?>" hidden>
+                                                    </div>
                                                     <div class="d-flex justify-content-between">
                                                         <div class="form-group  px-2">
                                                             <label for="">Filter by transaction category</label>
@@ -392,12 +396,12 @@ include('includes/function.php');
                                                                 <option value="all">All</option>
 
                                                                 <?php
-                                                                $lecrosoft = "SELECT * FROM income_expence_category WHERE type ='income'";
+                                                                $lecrosoft = "SELECT * FROM department_income_category ";
                                                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                                                                 while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                                                     extract($row);
-                                                                    echo "<option value='$id'>$category_name</option>";
+                                                                    echo "<option value='$department_income_cat_id'>$title</option>";
                                                                 }
                                                                 ?>
 
@@ -485,7 +489,7 @@ include('includes/function.php');
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        selectIncomeByMonth()
+                                                        selectDepartmentIncomeByMonth()
                                                         ?>
 
 
@@ -505,6 +509,9 @@ include('includes/function.php');
                                                     <h5>Yearly Income Report</h5>
                                                 </div>
                                                 <form action="" method="post">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="department_id" value="<?php echo $depart_id ?>" hidden>
+                                                    </div>
                                                     <div class="d-flex justify-content-between">
                                                         <div class="form-group  px-2">
                                                             <label for="">Filter by transaction category</label>
@@ -513,20 +520,18 @@ include('includes/function.php');
                                                                 <option value="all">All</option>
 
                                                                 <?php
-                                                                $lecrosoft = "SELECT * FROM income_expence_category WHERE type ='income'";
+                                                                $lecrosoft = "SELECT * FROM department_income_category ";
                                                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                                                                 while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                                                     extract($row);
-                                                                    echo "<option value='$id'>$category_name</option>";
+                                                                    echo "<option value='$department_income_cat_id'>$title</option>";
                                                                 }
                                                                 ?>
 
 
                                                             </select>
                                                         </div>
-
-
 
                                                         <div class="form-group px-2">
                                                             <label for="">Filter by payment method</label>
@@ -591,7 +596,7 @@ include('includes/function.php');
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        selectIncomeByYear()
+                                                        selectDepartmentIncomeByYear();
                                                         ?>
 
 
@@ -616,6 +621,9 @@ include('includes/function.php');
                                                         <h5>Custome Income Report</h5>
                                                     </div>
                                                     <form action="" method="post">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="department_id" value="<?php echo $depart_id ?>" hidden>
+                                                        </div>
                                                         <div class="d-flex justify-content-between">
                                                             <div class="form-group  px-2">
                                                                 <label for="">Filter by transaction category</label>
@@ -624,12 +632,12 @@ include('includes/function.php');
                                                                     <option value="all">All</option>
 
                                                                     <?php
-                                                                    $lecrosoft = "SELECT * FROM income_expence_category WHERE type ='income'";
+                                                                    $lecrosoft = "SELECT * FROM department_income_category ";
                                                                     $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                                                                     while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                                                         extract($row);
-                                                                        echo "<option value='$id'>$category_name</option>";
+                                                                        echo "<option value='$department_income_cat_id'>$title</option>";
                                                                     }
                                                                     ?>
 
@@ -778,7 +786,7 @@ include('includes/function.php');
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header bg-success">
-                            <h5 class="modal-title text-white">New Income Transaction</h5>
+                            <h5 class="modal-title text-white">New <?php echo $department ?> Department Income Transaction</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -791,11 +799,11 @@ include('includes/function.php');
                                     <select class="form-select form-control" name="tcategory" required>
                                         <option value="">Select Transaction category</option>
                                         <?php
-                                        $lecrosoft = "SELECT * FROM income_expence_category WHERE type = 'income' ";
+                                        $lecrosoft = "SELECT * FROM department_income_category";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                         while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                             extract($row);
-                                            echo " <option value='$id'>$category_name</option>";
+                                            echo " <option value='$department_income_cat_id'>$title</option>";
                                         }
 
                                         ?>
@@ -803,6 +811,11 @@ include('includes/function.php');
 
                                     </select>
 
+
+                                </div>
+                                <div class="form-group mb-3">
+                                    <!-- <label for="" hiden>Entered By<span class="text-danger ">*</span></label> -->
+                                    <input type="text" class="form-control" name="department_id" value="<?php echo $depart_id ?>" hidden>
 
                                 </div>
                                 <div class="form-group mb-3">
@@ -831,7 +844,7 @@ include('includes/function.php');
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="">Amount<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="amount" placeholder="Enter Amount" required>
+                                    <input type="text" class="form-control" name="income_amount" placeholder="Enter Amount" required>
 
                                 </div>
                                 <div class="form-group mb-3">
@@ -844,6 +857,7 @@ include('includes/function.php');
                                     <input type="text" class="form-control" name="created_by" value="<?php echo $_SESSION['first_name'] . "  " . $_SESSION['last_name'] ?>" hidden>
 
                                 </div>
+
 
 
                                 <div class="modal-footer">
@@ -862,13 +876,15 @@ include('includes/function.php');
             <?php
             if (isset($_POST['add'])) {
                 $tcategory = $_POST['tcategory'];
+                $department_id = $_POST['department_id'];
                 $note = $_POST['note'];
                 $payment_method = $_POST['payment_method'];
-                $amount = $_POST['amount'];
+                $income_amount = $_POST['income_amount'];
                 $tdate  = $_POST['tdate'];
                 $created_by = $_POST['created_by'];
 
-                $lecrosoft = "INSERT INTO `income_and_expense`(`income_and_expenses_category_id`, `note`, `transaction_date`, `payment_method_id`, `income`,`entered_by`) VALUES ($tcategory,'$note','$tdate',$payment_method,'$amount','$created_by')";
+
+                $lecrosoft = "INSERT INTO `department_income`(`department_id`, `department_income_cat_id`, `note`, `transaction_date`, `payment_method_id`, `income`, `entered_by`) VALUES ($department_id,$tcategory,'$note','$tdate',$payment_method,'$income_amount','$created_by')";
                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
                 if ($query_lecrosoft) {
                     echo '<script type="text/javascript">location = location.href</script>';
@@ -1251,6 +1267,7 @@ include('includes/function.php');
             <!-- MONTHLY INCOME -->
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val();
                     $('#transaction_cat').change(function() {
                         var transaction_cat = $(this).val();
                         var payment_mtd = $('#payment_mtd').val();
@@ -1259,7 +1276,7 @@ include('includes/function.php');
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_month.php",
+                            url: `includes/fetch_department_income_filter_by_month.php?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1279,6 +1296,7 @@ include('includes/function.php');
             </script>
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val();
                     $('#payment_mtd').change(function() {
                         var payment_mtd = $(this).val();
                         var transaction_cat = $('#transaction_cat').val();
@@ -1287,7 +1305,7 @@ include('includes/function.php');
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_month.php",
+                            url: `includes/fetch_department_income_filter_by_month.php?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1307,6 +1325,7 @@ include('includes/function.php');
             </script>
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val();
                     $('.month').change(function() {
                         var month = $(this).val();
                         var payment_mtd = $('#payment_mtd').val();
@@ -1315,7 +1334,7 @@ include('includes/function.php');
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_month.php",
+                            url: `includes/fetch_department_income_filter_by_month.php?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1338,6 +1357,7 @@ include('includes/function.php');
 
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val();
                     $('.year').change(function() {
                         var year = $(this).val();
                         var month = $('.month').val();
@@ -1347,7 +1367,7 @@ include('includes/function.php');
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_month.php",
+                            url: `includes/fetch_department_income_filter_by_month.php?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1375,6 +1395,7 @@ YEARLY INCOME -->
 
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val();
                     $('#transaction_cat2').change(function() {
                         var transaction_cat = $(this).val();
                         var payment_mtd = $('#payment_mtd2').val();
@@ -1383,7 +1404,7 @@ YEARLY INCOME -->
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_year.php",
+                            url: `includes/fetch_department_income_filter_by_year.php?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1403,6 +1424,7 @@ YEARLY INCOME -->
             </script>
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val();
                     $('#payment_mtd2').change(function() {
                         var payment_mtd = $(this).val();
                         var transaction_cat = $("#transaction_cat2").val();
@@ -1412,7 +1434,7 @@ YEARLY INCOME -->
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_year.php",
+                            url: `includes/fetch_department_income_filter_by_year.php?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1432,6 +1454,7 @@ YEARLY INCOME -->
             </script>
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val();
                     $('.year_only').change(function() {
                         var year = $(this).val();
                         var payment_mtd = $('#payment_mtd2').val();
@@ -1442,7 +1465,7 @@ YEARLY INCOME -->
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_year.php",
+                            url: `includes/fetch_department_income_filter_by_year.php?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1464,6 +1487,7 @@ YEARLY INCOME -->
             <!-- by date range -->
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val();
                     $('#transaction_cat3').change(function() {
                         var transaction_cat = $(this).val();
                         var payment_mtd = $('#payment_mtd3').val();
@@ -1471,14 +1495,14 @@ YEARLY INCOME -->
                         var from = $('#from').val();
                         var to = $('#to').val();
 
-                        alert(transaction_cat + '' + payment_mtd + '' + from + '' + to)
+
 
 
 
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_date.php",
+                            url: `includes/fetch_department_income_filter_by_date?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1498,20 +1522,21 @@ YEARLY INCOME -->
             </script>
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val()
                     $('#payment_mtd3').change(function() {
                         var payment_mtd = $('this').val();
                         var transaction_cat = $('#transaction_cat3').val();
                         var from = $('#from').val();
                         var to = $('#to').val();
 
-                        alert(transaction_cat + '' + payment_mtd + '' + from + '' + to)
+
 
 
 
 
 
                         $.ajax({
-                            url: "includes/fetch_income_filter_by_date.php",
+                            url: `includes/fetch_department_income_filter_by_date?d_id=${depart_id}`,
                             method: "post",
                             data: {
                                 transaction_cat: transaction_cat,
@@ -1531,6 +1556,79 @@ YEARLY INCOME -->
             </script>
             <script>
                 $(document).ready(function() {
+                    var depart_id = $('#department_id').val()
+                    $('#from').change(function() {
+                        var from = $('#from').val();
+                        var to = $('#to').val();
+                        var payment_mtd = $('#payment_mtd3').val();
+                        var transaction_cat = $('#transaction_cat3').val();
+
+
+                        alert(from);
+
+
+
+
+
+
+                        $.ajax({
+                            url: `includes/fetch_department_income_filter_by_date?d_id=${depart_id}`,
+                            method: "post",
+                            data: {
+                                transaction_cat: transaction_cat,
+                                payment_mtd: payment_mtd,
+                                from: from,
+                                to: to
+                            },
+                            beforeSend: function() {
+                                $('.table-data-filter-fetch').html('<h4>Loading...</h4>')
+                            },
+                            success: function(data) {
+                                $('.table-data-filter-fetch').html(data)
+                            }
+                        })
+                    })
+                })
+            </script>
+            <script>
+                $(document).ready(function() {
+                    var depart_id = $('#department_id').val()
+                    $('#to').change(function() {
+                        var from = $('#from').val();
+                        var to = $('#to').val();
+                        var payment_mtd = $('#payment_mtd3').val();
+                        var transaction_cat = $('#transaction_cat3').val();
+
+
+
+
+
+
+
+
+
+                        $.ajax({
+                            url: `includes/fetch_department_income_filter_by_date?d_id=${depart_id}`,
+                            method: "post",
+                            data: {
+                                transaction_cat: transaction_cat,
+                                payment_mtd: payment_mtd,
+                                from: from,
+                                to: to
+                            },
+                            beforeSend: function() {
+                                $('.table-data-filter-fetch').html('<h4>Loading...</h4>')
+                            },
+                            success: function(data) {
+                                $('.table-data-filter-fetch').html(data)
+                            }
+                        })
+                    })
+                })
+            </script>
+            <script>
+                $(document).ready(function() {
+                    var depart_id = $('#department_id').val()
                     $('#search_btn2').click(function() {
 
                         const date_from = $(".date_from").val();
