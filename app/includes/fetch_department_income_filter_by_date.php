@@ -69,8 +69,8 @@
         } else {
 
     ?>
-         <table id="example-transation4" class="display nowrap example-transation3" style="width:100%">
-             <thead>
+         <table id="example-transation4" class="table display table-bordered table-striped example-transation3" style="width:100%">
+             <thead class="bg-gradient-primary text-white">
                  <tr>
 
                      <th>Ref_id</th>
@@ -120,6 +120,7 @@
             echo "<td></td>";
             echo "<td></td>";
             echo "<td class='font-weight-bold'>$formated_sum_income</td>";
+            echo "<td></td>";
             echo "<td></td>";
             echo "<td></td>";
             echo "</tr>";

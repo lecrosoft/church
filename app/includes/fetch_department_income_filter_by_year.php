@@ -65,7 +65,7 @@
     ?>
          <table id="example-transation4" class="display nowrap example-transation3" style="width:100%">
              <thead>
-                 <tr>
+                 <tr class="bg-gradient-primary">
 
                      <th>Ref_id</th>
                      <th>Category</th>

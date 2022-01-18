@@ -46,6 +46,21 @@ if (isset($_POST['fund_purpose']) and isset($_POST['description']) and isset($_P
     $lecrosft_update_pledge = "UPDATE pledges SET `ammount_paid` = `ammount_paid` + $amount WHERE member_id = $pledger_name && campaign_id = $fund_purpose";
     $query_update_pledge = mysqli_query($con, $lecrosft_update_pledge);
 
+    // FETCH BALANCE
+    if ($query_update_pledge) {
+        $lecrosft_Send_balance_pledge = "SELECT * FROM `pledges` WHERE member_id = $pledger_name && campaign_id = $fund_purpose";
+        $query_sendbalance = mysqli_query($con, $lecrosft_Send_balance_pledge);
+        $row = mysqli_fetch_assoc($query_sendbalance);
+        $total_amt_pledge = $row['amount'];
+
+        $total_amt_paid = $row['ammount_paid'];
+
+        $current_balance = $total_amt_pledge - $total_amt_paid;
+
+
+        $lecrosft_update_balance = "UPDATE pledges SET `balance` = $current_balance WHERE member_id = $pledger_name && campaign_id = $fund_purpose";
+        $query_update_pledge_balance = mysqli_query($con, $lecrosft_update_balance);
+    }
     // ADD TO INCOME TABLE
 
     $lecrosoft_add_to_income = "INSERT INTO `income_and_expense`(`income_and_expenses_category_id`, `note`, `transaction_date`, `payment_method_id`, `income`,`entered_by`) VALUES ($pledge_category,'$description','$payment_date',$paymethod,'$amount','$created_by')";

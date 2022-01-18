@@ -99,18 +99,23 @@ function selectFamily()
 
     $family_leader = $row['family_leader'];
     echo "<tr>";
+    echo "<td>" . " <div class='form-check form-check-flat form-check-primary mt-1 py-1'>" .
+      "<label class='form-check-label'>" .
+      " <input type='checkbox' name='check_box_array[]' class='form-check-input my_check_box'>" . " </label>" .
+      "</div>" . "</td>";
     echo "<td>$family_name</td>";
     echo "<td>$family_leader</td>";
     echo "<td>$family_quantity</td>";
     echo "<td>$family_contact</td>";
-    echo "<td>$address</td>";
+
     echo "<td>$join_date</td>";
     echo "<td>$status</td>";
 
-    echo "<td class='text-nowrap'><a type='button'  id='$family_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='$family_id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "<td class='text-nowrap'><a type='button'  id='$family_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-border-color text-warning m-r-10'></i> </a> <a id='$family_id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete-forever text-danger'></i> </a> </td>";
     echo "</tr>";
   }
 }
+
 function
 deleteFamily()
 
@@ -222,6 +227,7 @@ function selectIncomeByMonth()
   $lecrosoft = "SELECT * FROM income_and_expense LEFT JOIN income_expence_category ON income_and_expense.income_and_expenses_category_id=income_expence_category.id LEFT JOIN payment_method ON income_and_expense.payment_method_id = payment_method.id WHERE income !=0 && month(transaction_date) = month(current_date) AND year(transaction_date) = year(current_date)";
   $query_lecrosoft = mysqli_query($con, $lecrosoft);
   $sum_income = 0;
+  $formated_sum_income = '';
   while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
 
     extract($row);
@@ -303,7 +309,10 @@ selectIncomeByYear()
   echo "</tr>";
   echo "</tfoot>";
 }
-// SELECT INCOME by YEAR
+// END OF SELECT INCOME BY YEAR
+
+
+// SELECT INCOME by DATE
 function
 selectIncomeByDate()
 {
@@ -351,7 +360,7 @@ selectIncomeByDate()
 }
 // SELECT EXPENSE TRANSACTION
 
-// SELECT INCOME by MONTH
+// SELECT EXPENSE by MONTH
 function selectExpenseByMonth()
 {
   global $con;
@@ -432,6 +441,109 @@ function selectTransactionExpense()
   echo "<tfoot>";
   echo "<tr>";
   echo "<td class='font-weight-bold'>Total Expense</td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td class='font-weight-bold'>$formated_sum_expense</td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "</tr>";
+  echo "</tfoot>";
+}
+
+
+
+
+
+
+// SELECT EXPENSE by YEAR
+function
+selectExpenseByYear()
+{
+  global $con;
+
+
+  $lecrosoft = "SELECT * FROM income_and_expense LEFT JOIN income_expence_category ON income_and_expense.income_and_expenses_category_id=income_expence_category.id LEFT JOIN payment_method ON income_and_expense.payment_method_id = payment_method.id WHERE expense !=0 && year(transaction_date) = year(current_date)";
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+  $sum_expense = 0;
+  $formated_sum_expense = "";
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+
+    extract($row);
+
+    echo "<tr>";
+
+    echo "<td>$income_and_expense_id</td>";
+    echo "<td>$category_name</td>";
+    echo "<td>$note</td>";
+    echo "<td>$transaction_date</td>";
+    echo "<td>$payment_method</td>";
+    $formated_expense = number_format($expense);
+    echo "<td>$formated_expense</td>";
+
+    echo "<td>$entered_by</td>";
+    echo "<td>$created_at</td>";
+    $sum_expense += $expense;
+    $formated_sum_expense = number_format($sum_expense);
+    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='sa-warning'   data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
+
+  echo "<tfoot>";
+  echo "<tr>";
+  echo "<td class='font-weight-bold'>Total Income</td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td class='font-weight-bold'>$formated_sum_expense</td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "</tr>";
+  echo "</tfoot>";
+}
+// ================== END OF SELECT EXPENSE BY YEAR =====================
+
+
+
+
+// SELECT INCOME by DATE
+function
+selectExpenseByDate()
+{
+  global $con;
+
+
+  $lecrosoft = "SELECT * FROM income_and_expense LEFT JOIN income_expence_category ON income_and_expense.income_and_expenses_category_id=income_expence_category.id LEFT JOIN payment_method ON income_and_expense.payment_method_id = payment_method.id WHERE expense !=0 && transaction_date = date(current_date)";
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+  $sum_expense = 0;
+  $formated_sum_expense = "";
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+
+    extract($row);
+
+    echo "<tr>";
+
+    echo "<td>$income_and_expense_id</td>";
+    echo "<td>$category_name</td>";
+    echo "<td>$note</td>";
+    echo "<td>$transaction_date</td>";
+    echo "<td>$payment_method</td>";
+    $formated_expense = number_format($expense);
+    echo "<td>$formated_expense</td>";
+
+    echo "<td>$entered_by</td>";
+    echo "<td>$created_at</td>";
+    $sum_expense += $expense;
+    $formated_sum_expense = number_format($sum_expense);
+    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='sa-warning'   data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
+
+  echo "<tfoot>";
+  echo "<tr>";
+  echo "<td class='font-weight-bold'>Total Income</td>";
   echo "<td></td>";
   echo "<td></td>";
   echo "<td></td>";
@@ -557,7 +669,7 @@ selectPledgesByUnderCampaign()
       echo "<td>$pledge_date</td>";
       echo "<td>$pledge_due_date</td>";
       echo "<td>$ammount_paid</td>";
-      $balance = ($amount - $ammount_paid);
+
       echo "<td>" . $balance . "</td>";
       // echo "<td>$status</td>";
       echo "<td class='text-nowrap'><button $disabled type='button'  id='$pledges_id' class='view_data btn $btn_color btn-sm' data-toggle='tooltip' data-original-title='Add payment for this pledger' > <i class='fa $faplus text-inverse m-r-10'></i> $btn_label </button> </td>";
@@ -631,7 +743,7 @@ function selectAsset()
     echo "<td>$asset_cost</td>";
 
 
-    echo "<td class='text-nowrap'><a type='button'  id='$asset_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='$asset_id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "<td class='text-nowrap'><a type='button'  id='$asset_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-border-color text-warning m-r-10'></i> </a> <a id='$asset_id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete-forever text-danger'></i> </a> </td>";
     echo "</tr>";
   }
 }
@@ -661,7 +773,7 @@ selectDepartmentMember()
   }
 }
 function
-selectDepartmentPledge()
+selectDepartmentProject()
 {
   global $con;
 
@@ -688,13 +800,43 @@ selectDepartmentPledge()
 }
 
 
+// department open projects
+
+function
+selectDepartmentOpenProject()
+{
+  global $con;
+
+
+  $depart_id = $_GET['d_id'];
+
+
+  $lecrosoft = "SELECT * FROM `department_project` WHERE department_id = $depart_id and status != 'Completed' ";
+
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+    extract($row);
+    $formatted_extimation = number_format($project_extimation);
+    echo "<tr>";
+    echo "<td>$project_title</td>";
+    echo "<td>$project_description</td>";
+    echo "<td>$formatted_extimation</td>";
+    echo "<td>$priority</td>";
+    echo "<td>$status</td>";
+
+    echo "<td class='text-nowrap'><a type='button'  id='$project_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='$project_id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
+}
+
 
 // ================ DEPARTMENT CODES STARTS HERE =============================================
 
 
 // ================ DEPARTMENT INCOME ====================
 
-// SELECT INCOME by MONTH
+// SELECT DEPARTMENT INCOME by MONTH
 function selectDepartmentIncomeByMonth()
 {
   global $con;
@@ -783,4 +925,79 @@ selectDepartmentIncomeByYear()
   echo "<td></td>";
   echo "</tr>";
   echo "</tfoot>";
+}
+
+// =========== DEPARTMENT EXPENSES =============
+
+// SELECT INCOME by MONTH
+function selectDepartmentExpenseByMonth()
+{
+  global $con;
+
+  $depart_id = $_GET['d_id'];
+  $lecrosoft = "SELECT * FROM department_expense LEFT JOIN department_expense_category ON department_expense.department_expense_cat_id=department_expense_category.department_expense_cat_id LEFT JOIN payment_method ON department_expense.payment_method_id = payment_method.id WHERE department_id = $depart_id  && month(transaction_date) = month(current_date) AND year(transaction_date) = year(current_date)";
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+  $sum_expense = 0;
+  $formated_sum_expense = "";
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+
+    extract($row);
+
+    echo "<tr>";
+
+    echo "<td>$id</td>";
+    echo "<td>$title</td>";
+    echo "<td>$note</td>";
+    echo "<td>$transaction_date</td>";
+    echo "<td>$payment_method</td>";
+    $formated_expense = number_format($expense);
+    echo "<td>$formated_expense</td>";
+
+    echo "<td>$entered_by</td>";
+    echo "<td>$created_at</td>";
+    $sum_expense += $expense;
+    $formated_sum_expense = number_format($sum_expense);
+    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='sa-warning'   data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
+
+  echo "<tfoot>";
+  echo "<tr>";
+  echo "<td class='font-weight-bold'>Total Income</td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "<td class='font-weight-bold'>$formated_sum_expense</td>";
+  echo "<td></td>";
+  echo "<td></td>";
+  echo "</tr>";
+  echo "</tfoot>";
+}
+
+
+// ============ Attendance Type =============
+
+function
+selectAttendanceType()
+{
+  global $con;
+
+
+  $lecrosoft = "SELECT * FROM `attendance_type`";
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+    extract($row);
+
+    echo "<tr>";
+    echo "<td>" . " <div class='form-check form-check-flat form-check-primary mt-1 py-1'>" .
+      "<label class='form-check-label'>" .
+      " <input type='checkbox' name='check_box_array[]' class='form-check-input my_check_box'>" . " </label>" .
+      "</div>" . "</td>";
+    echo "<td>$attendance_type</td>";
+
+    echo "<td class='text-nowrap'><a type='button'  id='$attendance_type_id' class='view_data_attendance' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-border-color text-warning m-r-10'></i> </a> <a id='$attendance_type_id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete-forever text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
 }

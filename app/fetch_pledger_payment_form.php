@@ -35,6 +35,11 @@ if (isset($_POST['pledger_id'])) {
                     <input type="text" class="form-control" id="amount_pledged" value='<?php echo $amount ?>' disabled hidden>
 
                 </div>
+                <div class="form-group mb-3">
+                    <label for="" hidden>amount</label>
+                    <input type="text" class="form-control" id="current_balance" value='<?php echo $balance ?>' disabled hidden>
+
+                </div>
                 <!-- the real canpaign select  bellow-->
                 <select id="fund_purpose" class="form-control form-select" hidden disabled>
 
@@ -103,7 +108,7 @@ if (isset($_POST['pledger_id'])) {
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary add-payment" id="" name="add-payment-btn">Add Payment</button>
+                <button type="submit" class="btn btn-primary add-payment-for-pledger" id="" name="add-payment-btn">Add Payment</button>
             </div>
 
 
@@ -159,7 +164,7 @@ if (isset($_POST['pledger_id'])) {
 ?>
 <script>
     $(document).ready(function() {
-        $('.add-payment').click(function(e) {
+        $('.add-payment-for-pledger').click(function(e) {
             e.preventDefault();
 
 
@@ -171,15 +176,16 @@ if (isset($_POST['pledger_id'])) {
             let payment_date = document.getElementById("payment_date").value;
             let created_by = document.getElementById("created_by").value;
             let amount_pledged = document.getElementById("amount_pledged").value;
+            let current_balance = document.getElementById("current_balance").value;
             let fund_purpose_to_add_pledge_to_income = document.getElementById("fund_purpose_to_add_pledge_to_income").value;
 
-            if (amount > amount_pledged) {
-                console.log('hjhkjhkjhk');
+            if (amount > current_balance) {
+
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'The amount you entered is more than the pledge amount!',
-                    footer: '<a href="">Why do I have this issue?</a>'
+                    text: 'The amount you entered is more than your balance !'
+                    // footer: '<a href="">Why do I have this issue?</a>'
                 })
 
             } else {
@@ -208,7 +214,7 @@ if (isset($_POST['pledger_id'])) {
                                 text: data["message"],
 
                             })
-                            location = location.href;
+                            location = window.location.href;
                         } else {
 
                             Swal.fire({
