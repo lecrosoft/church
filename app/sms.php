@@ -106,7 +106,7 @@ include('includes/function.php');
                                                 <div class="message_count"> Total SMS sent ()</div>
                                             </div>
                                         </div>
-                                        <div class="table-responsive">
+                                        <!-- <div class="table-responsive">
 
                                             <table class="table table-bordered">
                                                 <thead>
@@ -136,15 +136,14 @@ include('includes/function.php');
 
                                                 </tbody>
                                             </table>
-                                        </div>
+                                        </div> -->
 
                                         <?php
-                                        deleteFamily();
+
                                         ?>
 
                                         <?php
 
-                                        addFamily();
 
 
                                         ?>

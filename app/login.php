@@ -54,6 +54,7 @@
                   $db_password = $row['password'];
                   $db_user_role = $row['user_role'];
                   $db_photo = $row['photo'];
+                  $db_phone = $row['phone_number_one'];
                 }
                 // $email == $db_email && $password == $db_password && $db_user_role == "Admin"
                 if ($email == $db_email && $password == $db_password) {
@@ -66,6 +67,7 @@
                   $_SESSION['email'] = $db_email;
                   $_SESSION['user_role'] = $db_user_role;
                   $_SESSION['photo'] = $db_photo;
+                  $_SESSION['phone_number_one'] = $db_phone;
                   echo '<div class="alert alert-success" id="success-alert">
    <button type="button" class="close" data-dismiss="alert">x</button>
    <strong>Success!</strong>

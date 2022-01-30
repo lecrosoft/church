@@ -143,8 +143,31 @@ include('includes/function.php');
                                             </div>
                                             <hr>
 
-                                            <div class="table-responsive attendance_content">
+                                            <div class="table-responsive attendance_content" id="attendance_content">
 
+                                                <table class="table table-bordered mytable">
+                                                    <thead>
+                                                        <tr class="bg-gradient-primary text-white">
+
+                                                            <th>Member id</th>
+                                                            <th>Full Name</th>
+                                                            <th>Phone Number</th>
+                                                            <th>Email</th>
+                                                            <th>
+                                                                <div class="form-check form-check-flat form-check-primary">
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input"> Select All </label>
+                                                                </div>
+                                                            </th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+
+                                                    </tbody>
+                                                </table>
 
                                             </div>
 
@@ -384,7 +407,7 @@ include('includes/function.php');
                 let departmentId = $('.department_id').val();
                 let attendanceType = $('.attendance_type').val();
                 $.ajax({
-                    url: "includes/fetch_attendance.php",
+                    url: "includes/attendance_new.php",
                     method: "post",
                     data: {
                         attendanceDate: attendanceDate,
@@ -392,11 +415,38 @@ include('includes/function.php');
                         attendanceType: attendanceType
                     },
                     beforeSend: function() {
-                        $('.attendance_content').html("<h4 class='text-center text-primary'><i class='mdi mdi-timer-sand'></i> Loading...</h4>")
+                        // $('.attendance_content').html("<h4 class='text-center text-primary'><i class='mdi mdi-timer-sand'></i> Loading...</h4>")
                     },
                     success: function(data) {
 
-                        $('.attendance_content').html(data)
+                        console.log(JSON.parse(data));
+
+                        var dataset = '';
+
+                        JSON.parse(data).forEach((d) => {
+                            dataset += `
+                                       <tr>
+                                            <td>${d.member_id}</td>
+                                             <td>${d.first_name} ${d.last_name} </td>
+                                             <td>${d.phone_number_one} </td>
+                                             <td>${d.email}</td>
+                                             <td>
+                                                <div class='form-check form-check-flat form-check-primary mt-1 py-1'>
+                                                    <label class='form-check-label'>
+                                                         <input type='checkbox' id='${d.member_id}' value='${d.member_id}'  name='check_box_array' class='form-check-input attendance_check_box'>
+                                                    </label>
+                                                </div>
+                                             </td>
+                                       </tr> 
+                        
+                                    `
+
+
+                        })
+                        $('tbody').html(dataset);
+                        console.log(dataset)
+
+                        // $('.attendance_content').html(data)
                     }
                 })
             })
@@ -432,59 +482,8 @@ include('includes/function.php');
 
     <script>
         var attendance = [];
-        document.querySelector('.attendance_content').addEventListener('click', function(e) {
-            if (e.target.classList.contains('attendance_check_box')) {
-
-                if (e.target.checked) {
-
-                    const items = {
-                        id: e.target.id.toString(),
-                        attendance: 1
-                    }
-
-                    // const attendance = ['71', 110, 89]
-
-                    if (attendance.length > 0) {
-
-                        for (var x = 0; x < attendance.length; x++) {
-
-                            if (attendance[x].id.includes(e.target.id.toString())) {
-                                console.log('AlreadyExist', attendance[x].id)
-                                console.log(attendance)
-                                return false;
-                            } else {
-                                attendance.push(items)
-                                console.log(attendance)
-                                return false;
-
-                            }
-                        }
-                    } else {
-                        attendance.push(items)
-
-                    }
-                    console.log('Attendance', attendance)
-
-
-                    // else {
-                    //     attendance.push(items)
-                    //     console.log('attendanceNewly', attendance);
-                    // }
-
-                    // console.log('Attendance', attendance)
-
-
-                } else {
-                    attendance.filter(function(el) {
-                        return el.id !== e.target.id
-                    })
-                    console.log('Item has been removed')
-                    console.log('After Removal', attendance)
-                }
-
-
-            }
-        })
+        var parentElem = document.getElementById('attendance_content');
+        console.log(parentElem.children)
     </script>
 
 

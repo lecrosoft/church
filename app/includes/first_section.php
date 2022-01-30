@@ -35,7 +35,7 @@
             <div class="card-body">
                 <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                 <h4 class="font-weight-normal mb-3">
-                    Total Expenses
+                    <span style="font-weight:bold;text-decoration:underline">This year </span>Expenses
                     <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                 </h4>
 
@@ -63,7 +63,7 @@
             <div class="card-body">
                 <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                 <h4 class="font-weight-normal mb-3">
-                    Current Balance
+                    <span style="font-weight:bold;text-decoration:underline">This year </span>Balance
                     <i class="mdi mdi-diamond mdi-24px float-right"></i>
                 </h4>
                 <?php

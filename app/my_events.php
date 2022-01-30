@@ -66,7 +66,7 @@ include('includes/function.php');
                                                     <label class='badge badge-$badge_color'>$status</label>
                                                 </td>";
 
-                                                echo " <td class='text-nowrap'><a id='$event_id' data-toggle='tooltip' data-original-title='View'> <i class='mdi mdi-message text-success m-r-10'></i> </a> <a href='edit_event.php?editid=$event_id' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-lead-pencil text-warning m-r-10'></i> </a> <a class='delete_first_timer' id='$event_id' data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete text-danger'></i> </a> </td>";
+                                                echo " <td class='text-nowrap'><a id='$event_id' data-toggle='tooltip' data-original-title='View'> <i class='mdi mdi-message text-success m-r-10'></i> </a> <a href='edit_event.php?editid=$event_id' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-lead-pencil text-warning m-r-10'></i> </a> <a class='delete_event' id='$event_id' data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete text-danger'></i> </a> </td>";
 
                                                 echo " </tr>";
                                             }
@@ -127,6 +127,67 @@ include('includes/function.php');
 
             });
         });
+    </script>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('.delete_event').click(function() {
+                let eventId = $(this).attr('id');
+
+
+
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-gradient-primary',
+                        cancelButton: 'btn btn-gradient-danger'
+                    },
+                    buttonsStyling: false
+                })
+
+                swalWithBootstrapButtons.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "includes/delete_personal_event.php",
+                            method: "post",
+                            data: {
+                                eventId: eventId
+
+                            },
+                            success: function(data) {
+                                swalWithBootstrapButtons.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                                location = window.location.href
+                            }
+
+                        })
+
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire(
+                            'Cancelled',
+                            'Your imaginary file is safe :)',
+                            'error'
+                        )
+                    }
+                })
+            })
+        })
     </script>
     <!-- End custom js for this page -->
 </body>

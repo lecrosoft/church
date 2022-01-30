@@ -407,6 +407,36 @@ include('includes/function.php');
 
     <!-- CODE TO VIEW FAMILY DETAILS IN MODAL START -->
 
+
+    <!-- ================ PERSONAL PLEDGE HISTORY ============== -->
+
+    <script>
+        $(document).ready(function() {
+            $('.pledge_details').click(function() {
+                const campaignId = $(this).attr('id');
+                const member_id = $('.member_id').val();
+
+
+
+                $.ajax({
+
+                    url: "includes/pledges_payment_history.php",
+                    method: "post",
+                    data: {
+                        campaignId: campaignId,
+                        member_id: member_id
+                    },
+                    success: function(data) {
+                        $('#pledges_payment_content').html(data);
+                        $('#dataModal2').modal("show");
+                    }
+                })
+
+
+            })
+        })
+    </script>
+
     <script>
         $(document).ready(function() {
             $(".view_data").click(function() {

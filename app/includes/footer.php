@@ -5,7 +5,7 @@
                   d-block
                   text-center text-sm-left
                   d-sm-inline-block
-                ">Copyright © www.lecrosoft.com <?php echo date('Y') ?></span>
+                ">Copyright © Glory Of God Church <?php echo date('Y') ?></span>
           <span class="
                   float-none float-sm-right
                   d-block
@@ -13,7 +13,7 @@
                   text-center
                 ">
 
-              <a href="https://www.lecrosoft.com" target="_blank">Powered By Lecrosoft Technologies
+              <a href="https://www.lecrosoft.com" target="_blank">Developed By Lecrosoft Technologies
               </a>
               www.lecrosoft.com</span>
       </div>

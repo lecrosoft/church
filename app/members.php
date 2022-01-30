@@ -112,6 +112,34 @@ include('includes/function.php');
     <!-- End custom js for this page -->
 
 
+    <!-- ================ PERSONAL PLEDGE HISTORY ============== -->
+
+    <script>
+        $(document).ready(function() {
+            $('.pledge_details').click(function() {
+                const campaignId = $(this).attr('id');
+                const member_id = $('.member_id').val();
+
+
+
+                $.ajax({
+
+                    url: "includes/pledges_payment_history.php",
+                    method: "post",
+                    data: {
+                        campaignId: campaignId,
+                        member_id: member_id
+                    },
+                    success: function(data) {
+                        $('#pledges_payment_content').html(data);
+                        $('#dataModal2').modal("show");
+                    }
+                })
+
+
+            })
+        })
+    </script>
     <script>
         $('#my-table').DataTable({
             dom: 'Bfrtip',

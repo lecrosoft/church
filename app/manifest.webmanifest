@@ -1,0 +1,20 @@
+{
+  "name": "The Glory of God Prayer and Power Ministry",
+  "short_name": "GGPPM",
+  "start_url": "http://localhost/church/app/index.php",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A church management App.",
+  "icons": [
+    {
+      "src": "assets/images/church_single_logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/church_single_logo_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

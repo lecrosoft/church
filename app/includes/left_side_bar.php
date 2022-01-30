@@ -37,7 +37,7 @@
               <a class="nav-link" data-toggle="collapse" href="#events" aria-expanded="false" aria-controls="members">
                   <span class="menu-title">Events</span>
                   <i class="menu-arrow"></i>
-                  <i class="mdi mdi-account-check menu-icon"></i>
+                  <i class="mdi mdi-calendar-multiple menu-icon"></i>
               </a>
               <div class="collapse" id="events">
                   <ul class="nav flex-column sub-menu">
@@ -63,28 +63,49 @@
               </div>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="member_pledge.php">
-                  <span class="menu-title">Make a Pledge</span>
-                  <i class="mdi mdi-account-multiple menu-icon"></i>
+              <a class="nav-link" href="offering_box.php">
+                  <span class="menu-title">Offering Box</span>
+                  <i class="mdi mdi-dropbox menu-icon"></i>
               </a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#mypledge" aria-expanded="false" aria-controls="members">
+                  <span class="menu-title">Pledges</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-cash-multiple menu-icon"></i>
+              </a>
+              <div class="collapse" id="mypledge">
+                  <ul class="nav flex-column sub-menu">
+                      <li class="nav-item">
+                          <a class="nav-link" href="user_donation_campaign.php">Make a Pledge</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="my_pledges.php">My Pledges</a>
+                      </li>
+
+
+
+
+
+                  </ul>
+              </div>
+          </li>
+
 
 
 
           <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#wallet" aria-expanded="false" aria-controls="members">
-                  <span class="menu-title">My Wallet</span>
+                  <span class="menu-title">Wallet</span>
                   <i class="menu-arrow"></i>
-                  <i class="mdi mdi-account-check menu-icon"></i>
+                  <i class="mdi mdi-wallet menu-icon"></i>
               </a>
               <div class="collapse" id="wallet">
                   <ul class="nav flex-column sub-menu">
-                      <li class="nav-item">
-                          <a class="nav-link" href="events.php">Payment History</a>
+                      <li <?php echo $hidden ?> class="nav-item">
+                          <a class="nav-link" href="pending_wallet.php">Incoming Wallet payment</a>
                       </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="events.php">Pending Payment</a>
-                      </li>
+
                       <li class="nav-item">
                           <a class="nav-link" href="fund_wallet.php">Fund Wallet</a>
                       </li>
@@ -97,12 +118,15 @@
               <a class="nav-link" data-toggle="collapse" href="#prayer-request" aria-expanded="false" aria-controls="members">
                   <span class="menu-title">Prayer Request</span>
                   <i class="menu-arrow"></i>
-                  <i class="mdi mdi-account-check menu-icon"></i>
+                  <i class="mdi mdi-email menu-icon"></i>
               </a>
               <div class="collapse" id="prayer-request">
                   <ul class="nav flex-column sub-menu">
                       <li class="nav-item">
-                          <a class="nav-link" href="prayer_request.php">Manage your Prayer requests</a>
+                          <a <?php echo $hidden ?> class="nav-link" href="all_prayer_requests.php">Manage All Prayer requests</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="my_prayer_requests.php">Manage your Prayer requests</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="add_prayer_request.php">Add New request</a>
@@ -116,15 +140,15 @@
               <a class="nav-link" data-toggle="collapse" href="#testimonial" aria-expanded="false" aria-controls="members">
                   <span class="menu-title">Testimonies</span>
                   <i class="menu-arrow"></i>
-                  <i class="mdi mdi-account-check menu-icon"></i>
+                  <i class="mdi mdi-microphone-variant menu-icon"></i>
               </a>
               <div class="collapse" id="testimonial">
                   <ul class="nav flex-column sub-menu">
                       <li class="nav-item">
-                          <a class="nav-link" href="prayer_request.php">All Testimonies</a>
+                          <a class="nav-link" href="my_testimonies.php">All Testimonies</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="add_prayer_request.php">Share New Testimony</a>
+                          <a class="nav-link" href="add_testimony.php">Share New Testimony</a>
                       </li>
 
 
@@ -154,7 +178,7 @@
               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Finance</span>
                   <i class="menu-arrow"></i>
-                  <i class="mdi mdi-wallet menu-icon"></i>
+                  <i class="mdi mdi-cash-usd menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic">
                   <ul class="nav flex-column sub-menu">

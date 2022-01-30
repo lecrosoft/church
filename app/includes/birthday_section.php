@@ -9,7 +9,7 @@
 
                             <div class="panel-body">
                                 <ul class="nav nav-pills m-b-30 ">
-                                    <li class="active nav-item"> <a href="#navpills-1" class="nav-link" data-toggle="tab" aria-expanded="false">Today Celebrants</a> </li>
+                                    <li class="active nav-item"> <a href="#navpills-1" class="nav-link active" data-toggle="tab" aria-expanded="false">Today Celebrants</a> </li>
                                     <li class="nav-item"> <a href="#navpills-2" class="nav-link" data-toggle="tab" aria-expanded="false">This Week Celebrant</a> </li>
                                     <li class="nav-item"> <a href="#navpills-3" class="nav-link" data-toggle="tab" aria-expanded="true">This Month</a> </li>
                                 </ul>
@@ -75,7 +75,7 @@
                                                         echo "<td>$email</td>";
                                                         echo "<td> $date </td>";
                                                         echo "<td><div class='btn-group'>
-                                                                <button type='button' class='btn btn-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                                <button type='button' class='btn btn-outline-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                                                 Message
                                                                 </button>
                                                                 <div class='dropdown-menu'>
@@ -161,7 +161,7 @@
                                                         echo "<td>$email</td>";
                                                         echo "<td> $date </td>";
                                                         echo "<td><div class='btn-group'>
-                                                                <button type='button' class='btn btn-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                                <button type='button' class='btn btn-outline-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                                                 Message
                                                                 </button>
                                                                 <div class='dropdown-menu'>
@@ -245,7 +245,7 @@
                                                         echo "<td>$email</td>";
                                                         echo "<td> $date </td>";
                                                         echo "<td><div class='btn-group'>
-                                                                    <button type='button' class='btn btn-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                                    <button type='button' class='btn btn-outline-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                                                     Message
                                                                     </button>
                                                                     <div class='dropdown-menu'>

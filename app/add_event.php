@@ -42,7 +42,7 @@ include('includes/function.php');
                                         $folder = "assets/images/event_pics/" . $img;
 
                                         move_uploaded_file($temp_file, $folder);
-                                        $lecrosoft = "INSERT INTO `event`(`event_title`, `start_date`, `event_time`, `location`, `photo`, `description`, `member_id`,`end_date`) VALUES ('$title','$start_date','$time','$location','$img','$description',$member_id,'$end_date')";
+                                        $lecrosoft = "INSERT INTO `event`(`event_title`, `start_date`, `event_time`, `location`, `event_photo`, `description`, `member_id`,`end_date`) VALUES ('$title','$start_date','$time','$location','$img','$description',$member_id,'$end_date')";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
 

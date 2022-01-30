@@ -224,7 +224,7 @@ function selectIncomeByMonth()
   global $con;
 
 
-  $lecrosoft = "SELECT * FROM income_and_expense LEFT JOIN income_expence_category ON income_and_expense.income_and_expenses_category_id=income_expence_category.id LEFT JOIN payment_method ON income_and_expense.payment_method_id = payment_method.id WHERE income !=0 && month(transaction_date) = month(current_date) AND year(transaction_date) = year(current_date)";
+  $lecrosoft = "SELECT * FROM income_and_expense LEFT JOIN income_expence_category ON income_and_expense.income_and_expenses_category_id=income_expence_category.id LEFT JOIN payment_method ON income_and_expense.payment_method_id = payment_method.id WHERE income !=0 && month(transaction_date) = month(current_date) AND year(transaction_date) = year(current_date) ORDER BY income_and_expense.income_and_expense_id DESC ";
   $query_lecrosoft = mysqli_query($con, $lecrosoft);
   $sum_income = 0;
   $formated_sum_income = '';
@@ -644,6 +644,48 @@ selectPledgesByUnderCampaign()
     $cp_id = $_GET['cp_id'];
 
     $lecrosoft = "SELECT pledges.*,campaign,first_name,last_name,note,amount,pledge_date,pledge_due_date FROM pledges LEFT JOIN campaign ON pledges.campaign_id=campaign.campaign_id LEFT JOIN members ON pledges.member_id = members.member_id WHERE pledges.campaign_id =$cp_id ";
+    $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+
+
+    while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+
+
+      extract($row);
+      if ($amount == $ammount_paid) {
+        $disabled = "disabled";
+        $btn_label = "Payment made";
+        $btn_color = "btn-success";
+        $faplus = "fa-check";
+      } else {
+        $disabled = "";
+        $btn_label = "Add Payment";
+        $btn_color = "btn-warning";
+        $faplus = "fa-plus";
+      }
+      echo "<tr>";
+      echo "<td>" . "$last_name" . " " . "$first_name" . "</td>";
+      echo "<td>$amount</td>";
+      echo "<td>$pledge_date</td>";
+      echo "<td>$pledge_due_date</td>";
+      echo "<td>$ammount_paid</td>";
+
+      echo "<td>" . $balance . "</td>";
+      // echo "<td>$status</td>";
+      echo "<td class='text-nowrap'><button $disabled type='button'  id='$pledges_id' class='view_data btn $btn_color btn-sm' data-toggle='tooltip' data-original-title='Add payment for this pledger' > <i class='fa $faplus text-inverse m-r-10'></i> $btn_label </button> </td>";
+      echo "</tr>";
+    }
+  }
+}
+function
+selectContributorsUnderEvent()
+{
+  global $con;
+
+  if (isset($_GET['event_id'])) {
+    $event_id = $_GET['event_id'];
+
+    $lecrosoft = "SELECT pledges.*,campaign,first_name,last_name,note,amount,pledge_date,pledge_due_date FROM pledges LEFT JOIN campaign ON pledges.campaign_id=campaign.campaign_id LEFT JOIN members ON pledges.member_id = members.member_id WHERE pledges.campaign_id =$event_id ";
     $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
 

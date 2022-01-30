@@ -17,9 +17,9 @@ if (isset($_POST['pledger_id'])) {
 
         <form method="POST">
             <div class="form-group mb-3">
-                <label for="">Fund raising purpose</label>
+                <label for="" hidden>Fund raising purpose</label>
                 <!-- just to add pledges to income -->
-                <select id="fund_purpose_to_add_pledge_to_income" class="form-control form-select" hidden disabled>
+                <select hidden id="fund_purpose_to_add_pledge_to_income" class="form-control form-select" hidden disabled>
 
                     <?php
 
@@ -51,7 +51,7 @@ if (isset($_POST['pledger_id'])) {
 
                     <!-- to display the campaign it self -->
 
-                    <input type="text" class="form-control" value="<?php echo $campaign ?>" disabled>
+                    <input hidden type="text" class="form-control" value="<?php echo $campaign ?>" disabled>
 
 
             </div>
@@ -62,10 +62,10 @@ if (isset($_POST['pledger_id'])) {
             </div>
 
             <div class="form-group mb-3">
-                <label for="">Pledge By</label>
-                <input type="text" class="form-control" value="<?php echo $last_name . " " . $first_name ?>" disabled>
+                <label for="" hidden>Pledge By</label>
+                <input hidden type="text" class="form-control" value="<?php echo $last_name . " " . $first_name ?>" disabled>
 
-                <select id="pledger_name" class="form-control form-select" hidden disabled>
+                <select hidden id="pledger_name" class="form-control form-select" hidden disabled>
                     <?php
 
                     echo " <option class='selected' value='$member_id'>$last_name  $first_name </option>";

@@ -7,6 +7,10 @@ include('includes/function.php');
 
 <body>
     <div class="container-scroller">
+
+
+
+
         <!-- partial:partials/_navbar.html -->
         <?php include('includes/top_nav.php') ?>
         <!-- partial -->

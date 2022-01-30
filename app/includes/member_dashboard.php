@@ -22,5 +22,5 @@
 
 
   <!-- =================== SECOND SECTION TO DISPLAY BIRTRHDAY  STARTS HERE ============ -->
-  <?php include('includes/birthday_section.php') ?>
+  <?php include('includes/member_birthday_section.php') ?>
   <!-- =================== FIRST SECTION TO DISPLAY BIRTHDAY ENDSHERE ============ -->

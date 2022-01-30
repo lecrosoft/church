@@ -48,20 +48,22 @@ include('includes/function.php');
                                         $time = $_POST['time'];
                                         $location = $_POST['location'];
                                         $description = $_POST['description'];
+                                        $status = $_POST['status'];
                                         $img = $_FILES['img']['name'];
                                         $temp_file = $_FILES['img']['tmp_name'];
                                         $folder = "assets/images/event_pics/" . $img;
 
                                         move_uploaded_file($temp_file, $folder);
-                                        $lecrosoft = "UPDATE `event` SET `event_title`=[value-2],`start_date`=[value-3],`event_time`=[value-4],`location`=[value-5],`photo`=[value-6],`description`=[value-7],`member_id`=[value-8],`applicant_count`=[value-9],`end_date`=[value-10],`status`=[value-11] WHERE event_id = $event_id";
+                                        $lecrosoft = "UPDATE `event` SET `event_title`='$title',`start_date`='$start_date',`event_time`='$time',`location`='$location',`event_photo`='$img',`description`='$description',`end_date`='$end_date',`status`='$status' WHERE event_id = $event_id";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
-
-                                        echo '<div class="alert alert-success" id="success-alert">
+                                        if ($query_lecrosoft) {
+                                            echo '<div class="alert alert-success" id="success-alert">
    <button type="button" class="close" data-dismiss="alert">x</button>
    <strong>Success!</strong>
-   Your event has been added successfully!
+   Your event has been updated successfully!
 </div>';
+                                        }
                                     }
                                     ?>
                                     <p class="card-description"> Your Event will be publish to other members </p>
@@ -109,18 +111,35 @@ include('includes/function.php');
                                             <label>File upload</label>
                                             <input type="file" name="img" class="file-upload-default">
                                             <div class="input-group col-xs-12">
-                                                <input type="text" class="form-control file-upload-info" disabled value="<?php echo $photo ?>" placeholder="Upload Image">
+                                                <input type="text" class="form-control file-upload-info" disabled value="<?php echo $event_photo ?>" placeholder="Upload Image">
                                                 <span class="input-group-append">
                                                     <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
                                                 </span>
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label>status</label>
+                                            <select name="status" id="" class="form-control form-select">
+                                                <option value="Active"><?php echo $status ?></option>
 
+                                                <?php
+                                                if ($status == 'Active') {
+                                                    echo  "<option value='Closed'>Closed</option>";
+                                                } elseif ($status == 'Closed') {
+                                                    echo  "<option value='Active'>Active</option>";
+                                                }
+                                                ?>
+
+
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Description</label>
                                             <textarea class="form-control" name="description" id="summernote" cols="30" placeholder="Enter full details of the event here" rows="10"><?php echo $description ?></textarea>
                                         </div>
+
+
 
                                         <button type="submit" name="update_event" class="btn btn-gradient-primary mr-2">Submit</button>
 
