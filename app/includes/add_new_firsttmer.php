@@ -61,7 +61,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Phone Number</label>
-                            <input type="text" class="form-control" name="phonenumber" id="" placeholder="dd/mm/yyyy" />
+                            <input type="text" class="form-control" name="phonenumber" id="" placeholder="Enter phone number" required />
                         </div>
                     </div>
                     <!--/span-->
@@ -89,7 +89,7 @@
                                     echo "<option value='$member_id'>$last_name $first_name</option>";
                                 }
                                 ?>
-
+                                <option value="">None</option>
 
                             </select>
                         </div>
@@ -114,14 +114,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Date of visit</label>
-                            <input type="date" class="form-control" name="date_of_visit" id="" placeholder="dd/mm/yyyy" />
+                            <input type="date" class="form-control" name="date_of_visit" id="" placeholder="dd/mm/yyyy" required />
                         </div>
                     </div>
                     <!--/span-->
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input type="email" class="form-control" name="email" id="" placeholder="Enter yiur mail" />
+                            <input type="email" class="form-control" name="email" id="" placeholder="Enter your mail" />
                         </div>
                     </div>
                     <!--/span-->
@@ -140,7 +140,7 @@
 
                         <div class="form-group">
                             <label class="control-label">Address</label>
-                            <input type="text" id="" name="address" class="form-control" />
+                            <input type="text" id="" name="address" class="form-control" placeholder="Enter Address" />
 
                         </div>
                     </div>
@@ -151,13 +151,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
 
-                            <label class="control-label">Assign to</label>
+                            <label class="control-label">Assign to (Assign an existing member to follow up with this visitor</label>
                             <?php
                             $lecrosoft = "SELECT * FROM members";
                             $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                             ?>
-                            <select class="form-control" name="asign_to" id="asign_to" data-placeholder="Choose a Category" tabindex="1">
+                            <select class="form-control select2" name="asign_to" id="asign_to" data-placeholder="Choose a Category" tabindex="1">
                                 <option value="">Select State</option>
                                 <?php
                                 while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
@@ -187,7 +187,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Prayer Request</label>
-                            <textarea name="prayer_request" id="" cols="30" rows="10" class="form-control">Enter prayer request</textarea>
+                            <textarea name="prayer_request" id="" cols="30" rows="10" class="form-control" placeholder="Enter prayer request"></textarea>
                         </div>
                     </div>
                 </div>
@@ -223,7 +223,16 @@
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $gender = $_POST['gender'];
+
+            $phone_with_country_code = '';
             $phonenumber = $_POST['phonenumber'];
+            $first_character_of_phone = substr($phonenumber, 0, 1);
+            if ($first_character_of_phone == 0) {
+                $phone_with_country_code = preg_replace('/0/', '234', $phonenumber, 1);
+            } else {
+                $phone_with_country_code = $phonenumber;
+            }
+
             $member = $_POST['member'];
             $maritalstatus = $_POST['maritalstatus'];
             $date_of_visit = $_POST['date_of_visit'];
@@ -234,7 +243,7 @@
             $asign_to = $_POST['asign_to'];
 
 
-            $lecrosoft = "INSERT INTO `first_timers`(`title`, `first_name`, `last_name`, `address`, `phone_number`, `email`, `reffered_by_member`, `prayer_request`, `visit_reason`, `date_of_visit`,`gender`, `marital_status`,`asign_to`) VALUES ('$title','$firstname','$lastname','$address','$phonenumber','$email',$member,'$prayer_request','$visit_reason','$date_of_visit','$gender','$maritalstatus',$asign_to)";
+            $lecrosoft = "INSERT INTO `first_timers`(`title`, `first_name`, `last_name`, `address`, `phone_number`, `email`, `reffered_by_member`, `prayer_request`, `visit_reason`, `date_of_visit`,`gender`, `marital_status`,`asign_to`) VALUES ('$title','$firstname','$lastname','$address','$phone_with_country_code','$email',$member,'$prayer_request','$visit_reason','$date_of_visit','$gender','$maritalstatus',$asign_to)";
             $query_lecrosoft = mysqli_query($con, $lecrosoft);
         }
 

@@ -682,10 +682,10 @@ selectContributorsUnderEvent()
 {
   global $con;
 
-  if (isset($_GET['event_id'])) {
-    $event_id = $_GET['event_id'];
+  if (isset($_GET['cp_id'])) {
+    $cp_id = $_GET['cp_id'];
 
-    $lecrosoft = "SELECT pledges.*,campaign,first_name,last_name,note,amount,pledge_date,pledge_due_date FROM pledges LEFT JOIN campaign ON pledges.campaign_id=campaign.campaign_id LEFT JOIN members ON pledges.member_id = members.member_id WHERE pledges.campaign_id =$event_id ";
+    $lecrosoft = "SELECT pledges.*,campaign,first_name,last_name,note,amount,pledge_date,pledge_due_date FROM pledges LEFT JOIN campaign ON pledges.campaign_id=campaign.campaign_id LEFT JOIN members ON pledges.member_id = members.member_id WHERE pledges.campaign_id =$cp_id ";
     $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
 

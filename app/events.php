@@ -144,11 +144,22 @@ mdi mdi-alert-circle-outline
                                                             "></i>&nbsp;Full Details</button>
 
                                                     </div>
-                                                    <div class="d-flex justify-content-between">
+                                                    <div class="d-flex justify-content-between mb-2">
 
 
-                                                        <a href="event_contribution.php?event_id=<?php echo $event_id ?>" class="btn btn-sm btn-primary register d-flex">Contributions</a>
+                                                        <a <?php echo $hidden ?> href="event_contribution.php?event_id=<?php echo $event_id ?>" class="btn btn-sm btn-primary ">Contributions</a>
 
+
+
+
+
+                                                    </div>
+                                                    <div class="d-flex  mb-2">
+
+                                                        <button <?php echo $hidden ?> type="button" class="btn btn-sm btn-success">
+
+                                                            Amt contributed <span class="badge badge-primary">N <?php echo number_format($amount_collected) ?></span>
+                                                        </button>
 
                                                     </div>
                                                 </div>

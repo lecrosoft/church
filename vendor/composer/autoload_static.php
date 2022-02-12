@@ -20,12 +20,18 @@ class ComposerStaticInit897d56acb01c3b9fda2923e2420fcadc
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+        ),
+        'A' => 
+        array (
+            'AfricasTalking\\SDK\\Tests\\' => 25,
+            'AfricasTalking\\SDK\\' => 19,
         ),
     );
 
@@ -47,6 +53,10 @@ class ComposerStaticInit897d56acb01c3b9fda2923e2420fcadc
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -59,6 +69,18 @@ class ComposerStaticInit897d56acb01c3b9fda2923e2420fcadc
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'AfricasTalking\\SDK\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/africastalking/africastalking/tests',
+        ),
+        'AfricasTalking\\SDK\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/africastalking/africastalking/src',
+        ),
+    );
+
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -66,6 +88,7 @@ class ComposerStaticInit897d56acb01c3b9fda2923e2420fcadc
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit897d56acb01c3b9fda2923e2420fcadc::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit897d56acb01c3b9fda2923e2420fcadc::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit897d56acb01c3b9fda2923e2420fcadc::$classMap;
 
         }, null, ClassLoader::class);
     }

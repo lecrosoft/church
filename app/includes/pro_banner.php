@@ -22,7 +22,7 @@
              <p>
              <h4 class="page-title"><?php echo $greetings ?><span> <?php echo $_SESSION['first_name']  ?> </span></h4>
              </p>
-             <a href="https://lecrosoft.com" target="_blank" class="btn download-button purchase-button ml-auto">Check for Updates</a>
+             <a href="https://lecrosoft.com" target="_blank" class="btn btn-sm download-button purchase-button ml-auto">Check for Updates</a>
              <i class="mdi mdi-close" id="bannerClose"></i>
          </span>
      </div>

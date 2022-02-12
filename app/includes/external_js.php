@@ -30,3 +30,9 @@
 <script src="select2/js/select2.min.js"></script>
 <script src="pwa_script.js"></script>
 <!-- End of data tables -->
+
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    })
+</script>

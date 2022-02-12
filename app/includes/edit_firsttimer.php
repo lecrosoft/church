@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
                                 $query_lecrosoft_reffered = mysqli_query($con, $lecrosoft);
 
                                 ?>
-                                <select class="form-control" name="member" id="member" data-placeholder="Choose a Category" tabindex="1">
+                                <select class="form-control select2" name="member" id="member" data-placeholder="Choose a Category" tabindex="1">
 
                                     <?php
                                     $row = mysqli_fetch_assoc($query_lecrosoft_reffered);
@@ -170,7 +170,7 @@ if (isset($_GET['id'])) {
 
                             <div class="form-group">
                                 <label class="control-label">Address</label>
-                                <input type="text" id="" name="address" value="<?php echo $address ?>" class="form-control" />
+                                <input type="text" id="" name="address" value="<?php echo $address ?>" class="form-control" placeholder="Enter Address" />
 
                             </div>
                         </div>
@@ -181,14 +181,14 @@ if (isset($_GET['id'])) {
                         <div class="col-md-6">
                             <div class="form-group">
 
-                                <label class="control-label">Assign to</label>
+                                <label class="control-label">Assign to (Assign an existing member to follow up with this visitor</label>
 
                                 <?php
                                 $lecrosoft = "SELECT * FROM members WHERE member_id = $asign_to";
                                 $query_lecrosoft_assigned_to = mysqli_query($con, $lecrosoft);
 
                                 ?>
-                                <select class="form-control" name="asign_to" id="asign_to" data-placeholder="Choose a Category" tabindex="1">
+                                <select class="form-control select2" name="asign_to" id="asign_to" data-placeholder="Choose a Category" tabindex="1">
 
                                     <?php
                                     $row = mysqli_fetch_assoc($query_lecrosoft_assigned_to);
@@ -310,7 +310,16 @@ if (isset($_POST['update_firstimer'])) {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $gender = $_POST['gender'];
+
+    $phone_with_country_code = '';
     $phonenumber = $_POST['phonenumber'];
+    $first_character_of_phone = substr($phonenumber, 0, 1);
+    if ($first_character_of_phone == 0) {
+        $phone_with_country_code = preg_replace('/0/', '234', $phonenumber, 1);
+    } else {
+        $phone_with_country_code = $phonenumber;
+    }
+
     $member = $_POST['member'];
     $maritalstatus = $_POST['maritalstatus'];
     $date_of_visit = $_POST['date_of_visit'];
@@ -326,13 +335,13 @@ if (isset($_POST['update_firstimer'])) {
     if ($status == 'member') {
         $sql =
             "INSERT INTO `members`(`first_name`, `last_name`, `phone_number_one`,`email`, `title`,`marrital_status`, `address`,`gender`) VALUES
-     ('$firstname','$lastname','$phonenumber','$email','$title','$maritalstatus','$address','$gender')";
+     ('$firstname','$lastname','$phone_with_country_code','$email','$title','$maritalstatus','$address','$gender')";
 
         $query_sql = mysqli_query($con, $sql) or die(mysqli_error($con));
     }
 
 
-    $lecrosoft = "UPDATE `first_timers` SET `title`='$title',`first_name`='$firstname',`last_name`='$lastname',`address`='$address',`phone_number`='$phonenumber',`email`='$email',`reffered_by_member`=$member,`prayer_request`='$prayer_request',`visit_reason`='$visit_reason',`date_of_visit`='$date_of_visit',`status`='$status',`gender`='$gender',`marital_status`='$maritalstatus',`asign_to`= $asign_to WHERE first_timmer_id = $id ";
+    $lecrosoft = "UPDATE `first_timers` SET `title`='$title',`first_name`='$firstname',`last_name`='$lastname',`address`='$address',`phone_number`='$phone_with_country_code',`email`='$email',`reffered_by_member`=$member,`prayer_request`='$prayer_request',`visit_reason`='$visit_reason',`date_of_visit`='$date_of_visit',`status`='$status',`gender`='$gender',`marital_status`='$maritalstatus',`asign_to`= $asign_to WHERE first_timmer_id = $id ";
     $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
 

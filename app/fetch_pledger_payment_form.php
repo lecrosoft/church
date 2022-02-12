@@ -36,8 +36,8 @@ if (isset($_POST['pledger_id'])) {
 
                 </div>
                 <div class="form-group mb-3">
-                    <label for="" hidden>amount</label>
-                    <input type="text" class="form-control" id="current_balance" value='<?php echo $balance ?>' disabled hidden>
+                    <label for="" hidden>current balanve</label>
+                    <input type="number" class="form-control" id="current_balance" value='<?php echo $balance ?>' disabled hidden>
 
                 </div>
                 <!-- the real canpaign select  bellow-->
@@ -76,7 +76,7 @@ if (isset($_POST['pledger_id'])) {
             </div>
             <div class="form-group mb-3">
                 <label for="">Amount<span class="text-danger">*</span></label>
-                <input type="number" class="form-control" id="amount" placeholder="Enter the amount to pay here" required>
+                <input type="number" class="form-control" id="amount" placeholder="Enter the amount to pay here" min="1" max="<?php echo $balance ?>" required>
 
             </div>
             <div class="form-group mb-3">
@@ -164,8 +164,8 @@ if (isset($_POST['pledger_id'])) {
 ?>
 <script>
     $(document).ready(function() {
-        $('.add-payment-for-pledger').click(function(e) {
-            e.preventDefault();
+        $('.add-payment-for-pledger').click(function() {
+            // e.preventDefault();
 
 
             let fund_purpose = document.getElementById("fund_purpose").value;
@@ -179,7 +179,29 @@ if (isset($_POST['pledger_id'])) {
             let current_balance = document.getElementById("current_balance").value;
             let fund_purpose_to_add_pledge_to_income = document.getElementById("fund_purpose_to_add_pledge_to_income").value;
 
-            if (amount > current_balance) {
+            // alert(amount + ' ' + current_balance)
+            if ($('#amount').val().length === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Amount field cannot be empty !'
+                    // footer: '<a href="">Why do I have this issue?</a>'
+                })
+            } else if ($('#paymethod').val().length === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Payment method cannot be empty !'
+                    // footer: '<a href="">Why do I have this issue?</a>'
+                })
+            } else if ($('#payment_date').val().length === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Payment date cannot be empty !'
+                    // footer: '<a href="">Why do I have this issue?</a>'
+                })
+            } else if (amount > current_balance) {
 
                 Swal.fire({
                     icon: 'error',

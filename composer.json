@@ -7,6 +7,8 @@
         }
     ],
     "require": {
-        "pusher/pusher-php-server": "^7.0"
+        "pusher/pusher-php-server": "^7.0",
+        "phpmailer/phpmailer": "^6.5",
+        "africastalking/africastalking": "^3.0"
     }
 }

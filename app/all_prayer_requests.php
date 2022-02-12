@@ -27,7 +27,7 @@ include('includes/function.php');
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">My Events</h4>
+                                    <h4 class="card-title">All Prayer Requests</h4>
                                     <!-- <p class="card-description"> Horizontal form layout </p> -->
                                     <table class="table ">
                                         <thead>
@@ -35,7 +35,6 @@ include('includes/function.php');
 
                                                 <th>Title</th>
                                                 <th>Created</th>
-                                                <th>Description</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -59,7 +58,6 @@ include('includes/function.php');
                                                 $date = date('d M Y', strtotime($created_at));
                                                 echo "<td>$date</td>";
 
-                                                echo "<td>$description</td>";
 
                                                 echo " <td>
 

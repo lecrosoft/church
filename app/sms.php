@@ -62,91 +62,70 @@ include('includes/function.php');
                                         </h4>
 
                                         <!-- ====================== tab starts ============================= -->
-                                        <div class="page_button d-flex justify-content-between ">
-                                            <div class="d-flex">
+                                        <form action="send_sms.php" method="POST" enctype="multipart/form-data">
 
-                                                <div class="form-group pr-2">
-                                                    <label for="">Which group do you want to send SMS to</label>
-                                                    <select name="" id="" class="form-control form-select">
-                                                        <option value="">All Members </option>
-                                                        <option value="">All Pastors </option>
-                                                        <option value="">All First Timers </option>
-
-                                                    </select>
+                                            <div class="row">
+                                                <?php
+                                                $mail_sql = "SELECT * FROM `sms_settings`";
+                                                $query_sql = mysqli_query($con, $mail_sql);
+                                                $row = mysqli_fetch_assoc($query_sql);
+                                                extract($row);
+                                                ?>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" name="user_name" class="receipient_email_array form-control" placeholder="Sender Name" Value="<?php echo $sender_name ?>">
                                                 </div>
-
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" name="sender_api" class=" form-control" placeholder="Api" Value="<?php echo $api_key ?>">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" name="sender_id" class=" form-control" placeholder="Sender ID" Value="<?php echo $sender_id ?>">
+                                                </div>
                                             </div>
-                                            <div class="">
-                                                <div class="form-group">
+                                            <div class="page_button d-flex justify-content-between ">
+                                                <div class="d-flex">
+
+                                                    <div class="form-group pr-2">
+                                                        <label for="">Which group do you want to send Email to</label>
+                                                        <select name="select_contact" id="select_contact" class="form-control form-select">
+                                                            <option disable selected value="">===Select Group === </option>
+                                                            <option value="members_only">Members Only </option>
+                                                            <option value="pastors_only">Pastors Only </option>
+                                                            <option value="members_and_pastors">Members and Pastors </option>
+                                                            <option value="first_timers">All First Timers </option>
+
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div class="">
+                                                    <!-- <div class="form-group">
                                                     <button type="button" class="btn btn-gradient-primary">
                                                         SMS Unit Balance &nbsp; <span class="badge badge-light text-dark">400</span>
                                                     </button>
+                                                </div> -->
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <input type="hidden" class="receipient_contacts_array form-control">
-                                        </div>
-                                        <div class="message-content">
-                                            <div class="form-group">
-                                                <label for="">Message Text</label>
-                                                <textarea class="form-control" name="" id="summernote" cols="30" rows="10"></textarea>
+
+                                            <div class="message-content">
+                                                <div class="form-group">
+                                                    <label for="">Message Text</label>
+                                                    <textarea class="form-control" name="body" id="" cols="30" rows="10" placeholder="Enter your message here"></textarea>
+                                                </div>
+                                                <button type="submit" name="send" class="btn btn-gradient-primary">SEND </button>
                                             </div>
-                                            <button type="submit" class="btn btn-gradient-primary">SEND </button>
-                                        </div>
-
+                                        </form>
 
 
                                         <div class="sms_details mt-4  p-4 text-white bg-gradient-primary">
                                             <div class="d-flex justify-content-between">
                                                 <div class="message_history">
-                                                    Message History
+                                                    Mail History
                                                 </div>
-                                                <div class="message_count"> Total SMS sent ()</div>
+                                                <div class="message_count"> Total Email sent ()</div>
                                             </div>
                                         </div>
-                                        <!-- <div class="table-responsive">
 
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="form-check form-check-flat form-check-primary">
-                                                                <label class="form-check-label">
-                                                                    <input type="checkbox" class="form-check-input"> Select All </label>
-                                                            </div>
-                                                        </th>
-                                                        <th>SM ID</th>
-                                                        <th>Time</th>
-                                                        <th>Content</th>
-                                                        <th>Destination</th>
-                                                        <th>SMS Cost</th>
-
-
-                                                        <th>Balance</th>
-                                                        <th class="text-nowrap">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    selectFamily();
-                                                    ?>
-
-
-                                                </tbody>
-                                            </table>
-                                        </div> -->
-
-                                        <?php
-
-                                        ?>
-
-                                        <?php
-
-
-
-                                        ?>
 
 
                                         <!-- ====================== tab starts ============================= -->
@@ -349,14 +328,15 @@ include('includes/function.php');
         //     )
         // }
     </script>
-    <!-- DELETE ALERT STOPS HERE -->
 
-
-    <!-- summernote -->
-
-
-
-    <!-- ========== J QUERY CODE END HERE ========= -->
+    <script>
+        // $(document).ready(function() {
+        //     $('#select_contact').change(function() {
+        //         let groupID = $(this).val();
+        //         alert(groupID)
+        //     })
+        // })
+    </script>
 </body>
 
 </html>

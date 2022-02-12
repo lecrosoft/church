@@ -246,7 +246,7 @@ include('includes/function.php');
                                         <label for="">
                                             Position
                                         </label>
-                                        <select name="department_position" id="" class="form-select form-control">
+                                        <select required name="department_position" id="" class="form-select form-control" required>
                                             <option value="" selected disabled>---Select position---</option>
 
                                             <?php

@@ -76,7 +76,7 @@
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                                 ?>
-                                <select class="form-control" name="stateoforigin" data-placeholder="Choose a Category" tabindex="1">
+                                <select class="form-control select2" name="stateoforigin" data-placeholder="Choose a Category" tabindex="1">
                                     <option value="Category 2">Select State</option>
                                     <?php
                                     while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
@@ -184,7 +184,7 @@
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                                 ?>
-                                <select class="form-control" name="state" data-placeholder="Choose a Category" tabindex="1">
+                                <select class="form-control select2" name="state" data-placeholder="Choose a Category" tabindex="1">
                                     <option value="">Select State</option>
                                     <?php
                                     while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
@@ -212,7 +212,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Country</label>
-                                <select class="form-control" name="country">
+                                <select class="form-control select2" name="country">
                                     <option>--Select your Country--</option>
                                     <option>Nigeria</option>
 

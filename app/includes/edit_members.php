@@ -15,7 +15,8 @@ if (isset($_GET['id'])) {
     <div class="col-12  stretch-card">
 
         <div class="card">
-            <form action="" method="POST" class="forms-sample" enctype="multipart/form-data">
+            <form action="" autocomplete="off" method="POST" class="forms-sample" enctype="multipart/form-data">
+                <input type="hidden" autocomplete="false">
                 <div class="form-body">
                     <h3 class="box-title">Personal Info</h3>
                     <hr />
@@ -89,7 +90,7 @@ if (isset($_GET['id'])) {
                     <!--/row-->
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group ">
 
                                 <label class="control-label">State of Origin</label>
                                 <?php
@@ -97,7 +98,7 @@ if (isset($_GET['id'])) {
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                                 ?>
-                                <select class="form-control" name="stateoforigin" data-placeholder="Choose a Category" tabindex="1">
+                                <select class="form-control select2" name="stateoforigin" data-placeholder="Choose a Category" tabindex="1">
                                     <option value="<?php echo $state_of_origin ?>"><?php echo $state_of_origin ?></option>
                                     <?php
                                     while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
@@ -206,7 +207,7 @@ if (isset($_GET['id'])) {
                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                                 ?>
-                                <select class="form-control" name="state" data-placeholder="Choose a Category" tabindex="1">
+                                <select class="form-control select2" name="state" data-placeholder="Choose a Category" tabindex="1">
                                     <option value="<?php echo $state ?>"><?php echo $state ?></option>
                                     <?php
                                     while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
@@ -234,7 +235,7 @@ if (isset($_GET['id'])) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Country</label>
-                                <select class="form-control" name="country">
+                                <select class="form-control select2" name="country">
                                     <option value="<?php echo $country ?>"><?php echo $country ?></option>
                                     <option>Nigeria</option>
 
@@ -399,7 +400,7 @@ if (isset($_GET['id'])) {
 
 
                                 <label class="control-label">Username</label>
-                                <input type="text" class="form-control" name="username" value="<?php echo $username ?>">
+                                <input type="text" autocomplete="off" class="form-control" name="username" value="<?php echo $username ?>">
 
                             </div>
                         </div>
@@ -409,7 +410,7 @@ if (isset($_GET['id'])) {
 
 
                                 <label class="control-label">Password</label>
-                                <input type="password" class="form-control" name="password" value="<?php echo $password ?>">
+                                <input type="password" autocomplete="off" class="form-control" name="password" value="<?php echo $password ?>">
 
 
                             </div>

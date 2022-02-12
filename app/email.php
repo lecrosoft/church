@@ -62,44 +62,77 @@ include('includes/function.php');
                                         </h4>
 
                                         <!-- ====================== tab starts ============================= -->
-                                        <div class="page_button d-flex justify-content-between ">
-                                            <div class="d-flex">
+                                        <form action="send_mail.php" method="POST" enctype="multipart/form-data">
 
-                                                <div class="form-group pr-2">
-                                                    <label for="">Which group do you want to send Email to</label>
-                                                    <select name="" id="" class="form-control form-select">
-                                                        <option value="">All Members </option>
-                                                        <option value="">All Pastors </option>
-                                                        <option value="">All First Timers </option>
-
-                                                    </select>
+                                            <div class="row">
+                                                <?php
+                                                $mail_sql = "SELECT * FROM `email_settings`";
+                                                $query_sql = mysqli_query($con, $mail_sql);
+                                                $row = mysqli_fetch_assoc($query_sql);
+                                                extract($row);
+                                                ?>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" name="sender_name" class="receipient_email_array form-control" placeholder="Sender Name" Value="<?php echo $sender_name ?>">
                                                 </div>
-
+                                                <div class="form-group col-md-6">
+                                                    <input type="email" name="sender_mail" class="receipient_email_array form-control" placeholder="Sender Name" Value="<?php echo $sender_mail ?>">
+                                                </div>
                                             </div>
-                                            <div class="">
-                                                <!-- <div class="form-group">
+                                            <div class="page_button d-flex justify-content-between ">
+                                                <div class="d-flex">
+
+                                                    <div class="form-group pr-2">
+                                                        <label for="">Which group do you want to send Email to</label>
+                                                        <select name="select_contact" id="select_contact" class="form-control form-select">
+                                                            <option disable selected value="">===Select Group === </option>
+                                                            <option value="members_only">Members Only </option>
+                                                            <option value="pastors_only">Pastors Only </option>
+                                                            <option value="members_and_pastors">Members and Pastors </option>
+                                                            <option value="first_timers">All First Timers </option>
+
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div class="">
+                                                    <!-- <div class="form-group">
                                                     <button type="button" class="btn btn-gradient-primary">
                                                         SMS Unit Balance &nbsp; <span class="badge badge-light text-dark">400</span>
                                                     </button>
                                                 </div> -->
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <input type="hidden" class="receipient_email_array form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Subject</label>
-                                            <input type="text" class="receipient_email_array form-control">
-                                        </div>
-                                        <div class="message-content">
                                             <div class="form-group">
-                                                <label for="">Message Text</label>
-                                                <textarea class="form-control" name="" id="summernote" cols="30" rows="10"></textarea>
+                                                <input type="hidden" class="receipient_email_array form-control">
                                             </div>
-                                            <button type="submit" class="btn btn-gradient-primary">SEND </button>
-                                        </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Subject</label>
+                                                    <input type="text" name="subject" class="form-control" placeholder="Enter Subject">
+                                                </div>
 
+
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Attachement (You can upload multiple files)</label>
+                                                    <input type="file" name="attachements[]" multiple class="file-upload-default">
+                                                    <div class="input-group col-xs-12">
+                                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload attachements">
+                                                        <span class="input-group-append">
+                                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload Files</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="message-content">
+                                                <div class="form-group">
+                                                    <label for="">Message Text</label>
+                                                    <textarea class="form-control" name="body" id="summernote" cols="30" rows="10"></textarea>
+                                                </div>
+                                                <button type="submit" name="send" class="btn btn-gradient-primary">SEND </button>
+                                            </div>
+                                        </form>
 
 
                                         <div class="sms_details mt-4  p-4 text-white bg-gradient-primary">
@@ -110,48 +143,7 @@ include('includes/function.php');
                                                 <div class="message_count"> Total Email sent ()</div>
                                             </div>
                                         </div>
-                                        <div class="table-responsive">
 
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="form-check form-check-flat form-check-primary">
-                                                                <label class="form-check-label">
-                                                                    <input type="checkbox" class="form-check-input"> Select All </label>
-                                                            </div>
-                                                        </th>
-                                                        <th>Mail ID</th>
-                                                        <th>Time</th>
-                                                        <th>Content</th>
-                                                        <th>to</th>
-                                                        <th>Subject</th>
-
-
-                                                        <th>Balance</th>
-                                                        <th class="text-nowrap">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    selectFamily();
-                                                    ?>
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                        <?php
-                                        deleteFamily();
-                                        ?>
-
-                                        <?php
-
-                                        addFamily();
-
-
-                                        ?>
 
 
                                         <!-- ====================== tab starts ============================= -->
@@ -354,14 +346,15 @@ include('includes/function.php');
         //     )
         // }
     </script>
-    <!-- DELETE ALERT STOPS HERE -->
 
-
-    <!-- summernote -->
-
-
-
-    <!-- ========== J QUERY CODE END HERE ========= -->
+    <script>
+        // $(document).ready(function() {
+        //     $('#select_contact').change(function() {
+        //         let groupID = $(this).val();
+        //         alert(groupID)
+        //     })
+        // })
+    </script>
 </body>
 
 </html>

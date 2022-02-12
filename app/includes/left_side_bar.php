@@ -1,8 +1,15 @@
   <?php
     $hidden = "";
+    $hide_for_admin = "";
     if ($_SESSION['user_role'] == 'member') {
         $hidden = 'hidden';
     }
+    if ($_SESSION['user_role'] == 'Admin') {
+        $hide_for_admin = 'hidden';
+    }
+
+
+
 
     ?>
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -44,7 +51,7 @@
                       <li class="nav-item">
                           <a class="nav-link" href="events.php">All Events</a>
                       </li>
-                      <li class="nav-item">
+                      <li class="nav-item" <?php echo $hide_for_admin  ?>>
                           <a class="nav-link" href="my_events.php">My Events</a>
                       </li>
                       <li class="nav-item">
@@ -62,13 +69,13 @@
                   </ul>
               </div>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" <?php echo $hide_for_admin  ?>>
               <a class="nav-link" href="offering_box.php">
                   <span class="menu-title">Offering Box</span>
                   <i class="mdi mdi-dropbox menu-icon"></i>
               </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" <?php echo $hide_for_admin  ?>>
               <a class="nav-link" data-toggle="collapse" href="#mypledge" aria-expanded="false" aria-controls="members">
                   <span class="menu-title">Pledges</span>
                   <i class="menu-arrow"></i>
@@ -126,7 +133,7 @@
                           <a <?php echo $hidden ?> class="nav-link" href="all_prayer_requests.php">Manage All Prayer requests</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="my_prayer_requests.php">Manage your Prayer requests</a>
+                          <a class="nav-link" href="my_prayer_requests.php" <?php echo $hide_for_admin  ?>>Manage your Prayer requests</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="add_prayer_request.php">Add New request</a>
@@ -308,6 +315,12 @@
                   <i class="mdi mdi-bell-ring menu-icon"></i>
               </a>
           </li> -->
+          <li class="nav-item">
+              <a class="nav-link" href="suggestion_box.php">
+                  <span class="menu-title">Suggestion Box</span>
+                  <i class="mdi mdi-home menu-icon"></i>
+              </a>
+          </li>
 
 
           <li class="nav-item sidebar-actions" <?php echo $hidden ?>>
@@ -329,11 +342,6 @@
                   </div>
               </span>
           </li>
-          <li class="nav-item">
-              <a class="nav-link" href="suggestion_box.php">
-                  <span class="menu-title">Suggestion Box</span>
-                  <i class="mdi mdi-home menu-icon"></i>
-              </a>
-          </li>
+
       </ul>
   </nav>

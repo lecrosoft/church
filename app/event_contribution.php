@@ -92,7 +92,7 @@ include('includes/function.php');
                                             </div>
                                             <div class="">
                                                 <div class="form-group">
-                                                    <button type="button" class="btn btn-primary add-pledge">
+                                                    <button type="button" class="btn btn-primary add-contribution">
                                                         New Contributor
                                                     </button>
                                                 </div>
@@ -110,8 +110,7 @@ include('includes/function.php');
 
                                                         <th>Member Name</th>
                                                         <th>Amt(₦)</th>
-                                                        <th>Pledge Date</th>
-                                                        <th>Due Date</th>
+                                                        <th>Date</th>
                                                         <th>Amt payed</th>
                                                         <th>Balance</th>
                                                         <!-- <th>Status</th> -->
@@ -168,31 +167,30 @@ include('includes/function.php');
 
                                         <?php
                                         if (isset($_POST['add'])) {
-                                            $campaign = $_POST['campaign'];
-                                            $note = $_POST['note'];
-                                            $pledge_by = $_POST['pledge_by'];
+                                            $event_title = $_POST['event_title'];
+                                            $contribution_by = $_POST['contribution_by'];
                                             $amount = $_POST['amount'];
-                                            $pdate  = $_POST['pdate'];
-                                            $pduedate = $_POST['pduedate'];
+                                            $contribution_date  = $_POST['contribution_date'];
 
-                                            //  to prevent redundancy fro add new pledger
-                                            $sql = "SELECT * FROM pledges WHERE member_id = $pledge_by && campaign_id = $cp_id";
+
+                                            //  to prevent redundancy from add new contributor
+                                            $sql = "SELECT * FROM `contributions` WHERE `member_id` = $contribution_by && `event_id` = $event_title";
                                             $query_sql = mysqli_query($con, $sql);
                                             $row = mysqli_fetch_assoc($query_sql);
                                             $member_id = $row['member_id'];
-                                            $campaign_id = $row['campaign_id'];
-                                            if ($member_id == $pledge_by && $campaign_id == $cp_id) {
-                                                echo "<script>alert('This User has Already Pledged under this category')</script>";
+                                            $event_id = $row['event_id'];
+                                            if ($member_id == $contribution_by && $event_id == $event_title) {
+                                                echo "<script>alert('This User has Already been added as a contributor under this event')</script>";
                                                 // echo "Already Pledged";
                                             } else {
 
-                                                $lecrosoft = "INSERT INTO `pledges`(`campaign_id`, `member_id`, `note`, `amount`, `pledge_date`, `pledge_due_date`,`balance`) VALUES ('$campaign','$pledge_by','$note','$amount','$pdate','$pduedate',$amount)";
+                                                $lecrosoft = "INSERT INTO `contributions`(`event_id`, `member_id`, `amount_to_contribute`, `contribution_date`) VALUES ($event_title,$contribution_by,'$amount','$contribution_date')";
 
                                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
-                                                $lecrosft_update_campaign = "UPDATE campaign SET `amount_pledged` = `amount_pledged` + $amount WHERE campaign_id = $cp_id";
-                                                $query_update_campaign = mysqli_query($con, $lecrosft_update_campaign);
-                                                if ($query_update_campaign) {
+                                                $lecrosft_update_event = "UPDATE event SET `amount_promised` = `amount_promised` + $amount WHERE event_id = $event_title";
+                                                $query_update_event = mysqli_query($con, $lecrosft_update_event);
+                                                if ($query_update_event) {
                                                     echo "<script type='text/javascript'>location=location.href</script>";
                                                 }
                                             }
@@ -238,7 +236,7 @@ include('includes/function.php');
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body" id="pledge-payment-form">
+                            <div class="modal-body" id="contribution-payment-form">
 
                             </div>
 
@@ -259,7 +257,7 @@ ADD PLEDGER -->
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header bg-success">
-                                <h5 class="modal-title text-white">New Pledge By member</h5>
+                                <h5 class="modal-title text-white">New Contribution member</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -268,21 +266,21 @@ ADD PLEDGER -->
                                 <form method="POST">
                                     <div class="form-group mb-3">
 
-                                        <label for="">Campaign<span class="text-danger">*</span></label>
-                                        <select class="form-select form-control" name="campaign" required>
+                                        <label for="">Event Title<span class="text-danger">*</span></label>
+                                        <select class="form-select form-control" name="event_title" required>
                                             <?php
-                                            if (isset($_GET['cp_id'])) {
-                                                $campaign_id_selected = $_GET['cp_id'];
+                                            if (isset($_GET['event_id'])) {
+                                                $event_id = $_GET['event_id'];
                                             }
 
                                             ?>
 
                                             <?php
-                                            $lecrosoft = "SELECT * FROM campaign WHERE campaign_id = $campaign_id_selected";
+                                            $lecrosoft = "SELECT * FROM event WHERE event_id = $event_id";
                                             $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                             while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                                 extract($row);
-                                                echo " <option value='$campaign_id'>$campaign</option >";
+                                                echo " <option value='$event_id'>$event_title</option >";
                                             }
 
                                             ?>
@@ -292,15 +290,11 @@ ADD PLEDGER -->
 
 
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <label for="">Note<span class="text-danger">*</span></label>
-                                        <textarea id="" cols="30" rows="10" required class="form-control" name="note"></textarea>
 
-                                    </div>
 
                                     <div class="form-group mb-3">
                                         <label for="">Pledge by<span class="text-danger">*</span></label>
-                                        <select class="form-select form-control select2" required name="pledge_by" style="width:100%;padding:2rem;height:300px !important">
+                                        <select class="form-select form-control select2" required name="contribution_by" style="width:100%;padding:2rem;height:300px !important">
                                             <option value="">Select pledger name</option>
                                             <?php
                                             $lecrosoft = "SELECT * FROM members";
@@ -317,20 +311,16 @@ ADD PLEDGER -->
 
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="">Amount<span class="text-danger">*</span></label>
+                                        <label for="">Amount to contribute<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="amount" placeholder="Enter Amount" required>
 
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="">Pledge Date<span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" name="pdate" required>
+                                        <label for="">Congtribution Date<span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" name="contribution_date" value="<?php echo date('Y-m-d') ?>">
 
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <label for="">Pledge due Date<span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" name="pduedate" required>
 
-                                    </div>
 
 
 
@@ -382,18 +372,18 @@ ADD PLEDGER -->
     <script>
         $(document).ready(function() {
             $(".view_data").click(function() {
-                var pledger_id = $(this).attr("id");
+                var contributor_id = $(this).attr("id");
                 $.ajax({
-                    url: "fetch_pledger_payment_form.php",
+                    url: "fetch_contributor_payment_form.php",
                     method: "post",
                     data: {
-                        pledger_id: pledger_id,
+                        contributor_id: contributor_id,
 
 
                     },
                     success: function(data) {
                         // console.log('mydata', data)
-                        $("#pledge-payment-form").html(data);
+                        $("#contribution-payment-form").html(data);
                         $('#dataModal').modal("show");
 
                     },
@@ -427,7 +417,7 @@ ADD PLEDGER -->
 
     <script>
         $(document).ready(function() {
-            $('.add-pledge').click(function() {
+            $('.add-contribution').click(function() {
                 $('#dataModal2').modal("show");
             })
         })

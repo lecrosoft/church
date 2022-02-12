@@ -168,7 +168,7 @@ include('includes/function.php');
 
                                                     </tbody>
                                                 </table>
-
+                                                <button class="btn btn-md btn-secondary mt-4" id="submitAttendance">Submit</button>
                                             </div>
 
                                         </form>
@@ -400,6 +400,8 @@ include('includes/function.php');
 
     <script>
         $(document).ready(function() {
+            const needful = [];
+            const sorted = [];
             $('#browse_btn').click(function(e) {
                 e.preventDefault();
 
@@ -419,9 +421,8 @@ include('includes/function.php');
                     },
                     success: function(data) {
 
-                        console.log(JSON.parse(data));
-
                         var dataset = '';
+                        needful.push(JSON.parse(data));
 
                         JSON.parse(data).forEach((d) => {
                             dataset += `
@@ -431,9 +432,9 @@ include('includes/function.php');
                                              <td>${d.phone_number_one} </td>
                                              <td>${d.email}</td>
                                              <td>
-                                                <div class='form-check form-check-flat form-check-primary mt-1 py-1'>
+                                                <div>
                                                     <label class='form-check-label'>
-                                                         <input type='checkbox' id='${d.member_id}' value='${d.member_id}'  name='check_box_array' class='form-check-input attendance_check_box'>
+                                                         <input type='checkbox' id='${d.member_id}' value='${d.member_id}'>
                                                     </label>
                                                 </div>
                                              </td>
@@ -444,10 +445,40 @@ include('includes/function.php');
 
                         })
                         $('tbody').html(dataset);
-                        console.log(dataset)
+
 
                         // $('.attendance_content').html(data)
                     }
+                })
+
+                $('tbody').on('click', function(e) {
+
+                    needful.forEach((d) => {
+                        console.log(d.member_id);
+                        if (e.target.checked) {
+                            if (e.target.value === d.member_id) {
+                                var dataset = {
+                                    'id': d.member_id,
+                                    'state': 1
+                                }
+                                if (sorted.includes(dataset)) {
+                                    console.log('Obj Already Exist')
+                                } else {
+                                    sorted.push(dataset)
+                                }
+
+                            } else {
+                                console.log('Wel', e.target.value);
+                                console.log('okay', d.member_id)
+                            }
+                        }
+                    })
+                })
+
+                $('#submitAttendance').on('click', function(e) {
+                    e.preventDefault();
+
+                    console.log('Sorted', sorted)
                 })
             })
         })
@@ -479,16 +510,63 @@ include('includes/function.php');
 
         })
     </script>
-
+    <!-- 
     <script>
-        var attendance = [];
-        var parentElem = document.getElementById('attendance_content');
-        console.log(parentElem.children)
-    </script>
+        const Elemento = []
+
+        document.querySelector('tbody').addEventListener('click', function(e) {
+            // e.preventDefault();
+
+            // if (Elemento.length > 0) {
+
+            // } else {
+            //     if (e.target.checked) {
+            //         var dataset = {
+            //             'state': '1',
+            //             'userid': e.target.value
+            //         }
+            //     } else {
+            //         var dataset = {
+            //             'state': '0',
+            //             'userid': e.target.value
+            //         }
+            //         Elemento.push(dataset)
+
+            //     }
+
+            // }
+
+
+            if (e.target.checked) {
+                var dataset = {
+                    'state': '1',
+                    'userid': e.target.value
+                }
+                console.log(e.target.value)
+                Elemento.push(dataset)
+            } else {
+                var dataset = {
+                    'state': '0',
+                    'userid': e.target.value
+                }
+                Elemento.push(dataset)
+
+            }
 
 
 
-    <!-- ========== J QUERY CODE END HERE ========= -->
+            console.log('Elemento', Elemento)
+
+
+
+
+
+        })
+    </script> -->
+
+
+
+    <!-- ========== JQUERY CODE END HERE ========= -->
 </body>
 
 </html>

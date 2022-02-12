@@ -42,12 +42,15 @@ include('includes/function.php');
                                         $lecrosoft = "INSERT INTO `wallet`(`member_id`, `payment_date`, `amount`, `payment_method`, `received_by_id`, `pop`) VALUES ($member_id,now(),'$amount',$payment_method,$approved_by,'$img')";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
-
-                                        echo '<div class="alert alert-success" id="success-alert">
+                                        if ($query_lecrosoft) {
+                                            echo '<div class="alert alert-success" id="success-alert">
    <button type="button" class="close" data-dismiss="alert">x</button>
    <strong>Success!</strong>
    your fund has been added successfully.It will reflect on your wallet when yor payment has been confirmed!
 </div>';
+                                            sleep(6);
+                                            echo '<script type="text/javascript"> location = location.href</script>';
+                                        }
                                     }
                                     ?>
                                     <p class="card-description"> Basic form layout </p>
@@ -73,8 +76,9 @@ include('includes/function.php');
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">To be approved by</label>
-                                            <select name="approved_by" id="" class="form-control form-select">
+                                            <label for="exampleInputPassword1">To be approved by (Select the person incharge of the collection of your wallet fee</label>
+                                            <select name="approved_by" id="" class="form-control form-select select2">
+                                                <option value=''>Select Approval </option>
                                                 <?php
                                                 $sql = "SELECT * FROM members";
                                                 $query_sql = mysqli_query($con, $sql);
@@ -88,10 +92,10 @@ include('includes/function.php');
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>File upload</label>
+                                            <label>Upload Proof Of Payment</label>
                                             <input type="file" name="img" class="file-upload-default">
                                             <div class="input-group col-xs-12">
-                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image/PDF">
                                                 <span class="input-group-append">
                                                     <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
                                                 </span>
