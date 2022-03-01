@@ -115,6 +115,60 @@ function selectFamily()
     echo "</tr>";
   }
 }
+function select_Income_and_expense_category()
+{
+  global $con;
+
+
+  $lecrosoft = "SELECT * FROM `income_expence_category`";
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+    extract($row);
+    echo "<tr>";
+    echo "<td>" . " <div class='form-check form-check-flat form-check-primary mt-1 py-1'>" .
+      "<label class='form-check-label'>" .
+      " <input type='checkbox' name='check_box_array[]' class='form-check-input my_check_box'>" . " </label>" .
+      "</div>" . "</td>";
+    echo "<td>$category_name</td>";
+    echo "<td>$description</td>";
+    echo "<td>$type</td>";
+
+
+
+
+    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-border-color text-warning m-r-10'></i> </a> <a id='$id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete-forever text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
+}
+function select_wallet_acceptor()
+{
+  global $con;
+
+
+  $lecrosoft = "SELECT account_fullname,bank_name,account_number,first_name,last_name.*, FROM `wallet_payment_receiver` LEFT JOIN `members` ON wallet_payment_receiver.member_id = members.member_id";
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+    extract($row);
+    echo "<tr>";
+    echo "<td>" . " <div class='form-check form-check-flat form-check-primary mt-1 py-1'>" .
+      "<label class='form-check-label'>" .
+      " <input type='checkbox' name='check_box_array[]' class='form-check-input my_check_box'>" . " </label>" .
+      "</div>" . "</td>";
+    echo "<td>$last_name $first_name</td>";
+    echo "<td>$account_fullname</td>";
+    echo "<td>$bank_name</td>";
+    echo "<td>$account_number</td>";
+
+
+
+
+
+    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-border-color text-warning m-r-10'></i> </a> <a id='$id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete-forever text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
+}
 
 function
 deleteFamily()
@@ -561,7 +615,7 @@ function selectCampaign()
   global $con;
 
 
-  $lecrosoft = "SELECT * FROM campaign";
+  $lecrosoft = "SELECT * FROM campaign ORDER BY campaign_id  DESC";
   $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
   while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
@@ -775,19 +829,32 @@ function selectAsset()
 
   $lecrosoft = "SELECT * FROM asset";
   $query_lecrosoft = mysqli_query($con, $lecrosoft);
-
+  $sum_asset = 0;
   while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
 
     extract($row);
+
+    $formated_cost = number_format($asset_cost);
+    $sum_asset += $asset_cost;
     echo "<tr>";
     echo "<td>$asset_name</td>";
     echo "<td>$asset_description</td>";
-    echo "<td>$asset_cost</td>";
+    echo "<td>$formated_cost</td>";
 
 
     echo "<td class='text-nowrap'><a type='button'  id='$asset_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-border-color text-warning m-r-10'></i> </a> <a id='$asset_id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete-forever text-danger'></i> </a> </td>";
     echo "</tr>";
   }
+
+  echo "<tfoot>";
+  echo "<tr>";
+  echo "<td colspan='' style='font-weight:bold'>Total Cost of assets:</td>";
+
+  $formated_sum_asset = number_format($sum_asset);
+  echo "<td colspan='3' class='text-center' style='font-weight:bold'> N $formated_sum_asset </td>";
+
+  echo "</tr>";
+  echo   "</tfoot>";
 }
 function
 selectDepartmentMember()
@@ -810,7 +877,7 @@ selectDepartmentMember()
 
     echo "<td>$status</td>";
 
-    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='$id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-border-color text-warning m-r-10'></i> </a> <a id='$id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete-forever text-danger'></i> </a> </td>";
     echo "</tr>";
   }
 }
@@ -854,6 +921,33 @@ selectDepartmentOpenProject()
 
 
   $lecrosoft = "SELECT * FROM `department_project` WHERE department_id = $depart_id and status != 'Completed' ";
+
+  $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+  while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+    extract($row);
+    $formatted_extimation = number_format($project_extimation);
+    echo "<tr>";
+    echo "<td>$project_title</td>";
+    echo "<td>$project_description</td>";
+    echo "<td>$formatted_extimation</td>";
+    echo "<td>$priority</td>";
+    echo "<td>$status</td>";
+
+    echo "<td class='text-nowrap'><a type='button'  id='$project_id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='fa fa-pencil text-inverse m-r-10'></i> </a> <a id='$project_id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='fa fa-trash-o text-danger'></i> </a> </td>";
+    echo "</tr>";
+  }
+}
+function
+selectDepartmentCompletedProject()
+{
+  global $con;
+
+
+  $depart_id = $_GET['d_id'];
+
+
+  $lecrosoft = "SELECT * FROM `department_project` WHERE department_id = $depart_id and status = 'Completed' ";
 
   $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
