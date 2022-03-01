@@ -29,55 +29,57 @@ include('includes/function.php');
                                 <div class="card-body">
                                     <h4 class="card-title">All Prayer Requests</h4>
                                     <!-- <p class="card-description"> Horizontal form layout </p> -->
-                                    <table class="table ">
-                                        <thead>
-                                            <tr>
+                                    <div class="table-responsive">
+                                        <table id="all_prayer_request_table" class="table ">
+                                            <thead>
+                                                <tr>
 
-                                                <th>Title</th>
-                                                <th>Created</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $session_id = $_SESSION['member_id'];
-                                            $lecrosoft = "SELECT * FROM `prayer_request` ORDER BY `prayer_request_id` DESC";
+                                                    <th>Title</th>
+                                                    <th>Created</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $session_id = $_SESSION['member_id'];
+                                                $lecrosoft = "SELECT * FROM `prayer_request` ORDER BY `prayer_request_id` DESC";
 
-                                            $query_lecrosoft_my_events = mysqli_query($con, $lecrosoft);
+                                                $query_lecrosoft_my_events = mysqli_query($con, $lecrosoft);
 
-                                            while ($row = mysqli_fetch_assoc($query_lecrosoft_my_events)) {
-                                                extract($row);
-                                                if ($status == 'Active') {
-                                                    $badge_color = 'warning';
-                                                } elseif ($status == 'Closed') {
-                                                    $badge_color = 'danger';
-                                                }
-                                                echo " <tr>";
-                                                echo "<td>$prayer_title</td>";
-                                                $date = date('d M Y', strtotime($created_at));
-                                                echo "<td>$date</td>";
+                                                while ($row = mysqli_fetch_assoc($query_lecrosoft_my_events)) {
+                                                    extract($row);
+                                                    if ($status == 'Active') {
+                                                        $badge_color = 'warning';
+                                                    } elseif ($status == 'Closed') {
+                                                        $badge_color = 'danger';
+                                                    }
+                                                    echo " <tr>";
+                                                    echo "<td>$prayer_title</td>";
+                                                    $date = date('d M Y', strtotime($created_at));
+                                                    echo "<td>$date</td>";
 
 
-                                                echo " <td>
+                                                    echo " <td>
 
                                                     <label class='badge badge-$badge_color'>$status</label>
                                                 </td>";
 
-                                                echo " <td class='text-nowrap'><a id='$prayer_request_id' data-toggle='tooltip' data-original-title='View'> <i class='mdi mdi-message text-success m-r-10'></i> </a> <a href='edit_event.php?editid=$prayer_request_id' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-lead-pencil text-warning m-r-10'></i> </a> <a class='delete_event' id='$prayer_request_id' data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete text-danger'></i> </a> </td>";
+                                                    echo " <td class='text-nowrap'><a  href='view_prayer_request.php?editid=$prayer_request_id' id='$prayer_request_id' data-toggle='tooltip' data-original-title='View'> <i class='mdi mdi-message text-success m-r-10'></i> </a> <a href='edit_prayer_request.php?editid=$prayer_request_id' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-lead-pencil text-warning m-r-10'></i> </a> <a class='delete_prayer' id='$prayer_request_id' data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete text-danger'></i> </a> </td>";
 
-                                                echo " </tr>";
-                                            }
-                                            ?>
-
-
+                                                    echo " </tr>";
+                                                }
+                                                ?>
 
 
 
 
 
-                                        </tbody>
-                                    </table>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -115,6 +117,19 @@ include('includes/function.php');
     <!-- ======= dashboard script comes in =========== -->
     <?php include('includes/dashboard_js.php')
     ?>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#all_prayer_request_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
@@ -132,8 +147,8 @@ include('includes/function.php');
 
     <script>
         $(document).ready(function() {
-            $('.delete_event').click(function() {
-                let eventId = $(this).attr('id');
+            $('.delete_prayer').click(function() {
+                let prayerId = $(this).attr('id');
 
 
 
@@ -156,10 +171,10 @@ include('includes/function.php');
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "includes/delete_personal_event.php",
+                            url: "includes/delete_prayer.php",
                             method: "post",
                             data: {
-                                eventId: eventId
+                                prayerId: prayerId
 
                             },
                             success: function(data) {

@@ -15,6 +15,26 @@ if (isset($_GET['id'])) {
         <div class="white-box">
             <div class="user-bg mb-4"> <img width="100%" alt="user" height="300px" src="assets/images/users/<?php echo $photo ?>"> </div>
             <div class="user-btm-box">
+
+                <button type='button' class='mb-3  btn btn-gradient-primary btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    Send Message to this member
+                </button>
+                <div class='dropdown-menu'>
+                    <a id="<?php echo $member_id ?>" class='dropdown-item personal-sms'>SMS</a>
+                    <?php
+                    $use = " ";
+                    $whatsapp_number = $phone_number_two;
+
+                    if ($whatsapp_number == '') {
+                        $use = $phone_number_one;
+                    } else {
+                        $use = $whatsapp_number;
+                    }
+                    ?>
+                    <a target="_blank" class='dropdown-item' href='https://wa.me/<?php echo $use ?>?text=Hello <?php echo $title . " " . $first_name . " " . $last_name ?>'>Whatsapp</a>
+                    <a id="<?php echo $member_id ?>" class='dropdown-item personal-email'>Email</a>
+
+                </div>
                 <!-- .row -->
                 <div class="row text-center m-t-10">
                     <div class="col-md-6 b-r"><strong>Salary</strong>
@@ -141,3 +161,201 @@ if (isset($_GET['id'])) {
 
     <!-- /.row -->
     <!-- .right-sidebar -->
+    <!-- ========== SMS MODAL =============== -->
+
+    <div id="sms_modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient-primary">
+                    <?php
+                    $lecrosoft = "SELECT phone_number_one,first_name,last_name FROM members WHERE member_id = $member_id";
+                    $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                    $row = mysqli_fetch_assoc($query_lecrosoft);
+                    extract($row);
+
+                    ?>
+                    <h5 class="modal-title text-white">New SMS to <?php echo $first_name . " " . $last_name ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="">
+                    <form action="send_single_sms.php" method="POST" enctype="multipart/form-data">
+
+                        <div class="row">
+                            <?php
+                            $mail_sql = "SELECT * FROM `sms_settings`";
+                            $query_sql = mysqli_query($con, $mail_sql);
+                            $row = mysqli_fetch_assoc($query_sql);
+                            extract($row);
+                            ?>
+                            <div class="form-group col-md-6">
+                                <input type="text" hidden name="user_name" class="receipient_email_array form-control" placeholder="Sender Name" Value="<?php echo $sender_name ?>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" hidden name="sender_api" class=" form-control" placeholder="Api" Value="<?php echo $api_key ?>">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <label for="">Select Sender ID</label>
+                                <select name="sender_id" class=" form-control form-select" id="">
+                                    <?php $sql = "SELECT * FROM `sms_sender_id`";
+                                    $query_sql = mysqli_query($con, $sql);
+
+                                    while ($row = mysqli_fetch_assoc($query_sql)) {
+                                        extract($row);
+                                        echo "<option value='$sender_id'>$sender_id</option>";
+                                    }
+                                    ?>
+
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="">Receipient Contact</label>
+                                <?php
+
+                                $lecrosoft = "SELECT phone_number_one,first_name,last_name FROM members  WHERE member_id = $member_id";
+                                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                $row = mysqli_fetch_assoc($query_lecrosoft);
+                                extract($row);
+
+                                ?>
+                                <input type="text" class="form-control" name="select_contact" id="select_contact" value="<?php echo $phone_number_one ?>">
+
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <!-- <div class="form-group">
+                                                    <button type="button" class="btn btn-gradient-primary">
+                                                        SMS Unit Balance &nbsp; <span class="badge badge-light text-dark">400</span>
+                                                    </button>
+                                                </div> -->
+                        </div>
+
+
+
+                        <div class="message-content">
+                            <div class="form-group">
+                                <label for="">Message Text</label>
+                                <textarea class="form-control" name="body" id="" cols="30" rows="10" placeholder="Enter your message here"></textarea>
+                            </div>
+                            <button type="submit" name="send" class="btn btn-gradient-primary">SEND </button>
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ======END OF SMS MODAL====== -->
+
+
+
+
+    <!-- ========== EMAIL MODAL =============== -->
+
+    <div id="email_modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient-primary">
+                    <?php
+                    $lecrosoft = "SELECT email,phone_number_one,first_name,last_name FROM members WHERE member_id = $member_id";
+                    $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                    $row = mysqli_fetch_assoc($query_lecrosoft);
+                    extract($row);
+
+                    ?>
+                    <h5 class="modal-title text-white">New Mail to <?php echo $first_name . " " . $last_name ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="">
+                    <form action="send_single_mail.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="first_name" id="" class="form-control" value="<?php echo $first_name ?>">
+                        <input type="hidden" name="last_name" id="" class="form-control" value="<?php echo $last_name ?>">
+                        <div class="row">
+                            <?php
+                            $mail_sql = "SELECT * FROM `email_settings`";
+                            $query_sql = mysqli_query($con, $mail_sql);
+                            $row = mysqli_fetch_assoc($query_sql);
+                            extract($row);
+                            ?>
+                            <div class="form-group col-md-6">
+                                <input type="text" name="sender_name" class="receipient_email_array form-control" placeholder="Sender Name" Value="<?php echo $sender_name ?>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" name="sender_mail" class="receipient_email_array form-control" placeholder="Sender Name" Value="<?php echo $sender_mail ?>">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group pr-2">
+                            <?php
+                            $lecrosoft = "SELECT email,phone_number_one,first_name,last_name FROM members WHERE member_id = $member_id";
+                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                            $row = mysqli_fetch_assoc($query_lecrosoft);
+                            extract($row);
+
+                            ?>
+                            <label for="">Receipient mail</label>
+                            <input type="email" name="select_contact" id="select_contact" class="form-control" value="<?php echo $email ?>">
+
+                        </div>
+                        <div class="">
+                            <!-- <div class="form-group">
+                                                    <button type="button" class="btn btn-gradient-primary">
+                                                        SMS Unit Balance &nbsp; <span class="badge badge-light text-dark">400</span>
+                                                    </button>
+                                                </div> -->
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="hidden" class="receipient_email_array form-control">
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="">Subject</label>
+                            <input type="text" name="subject" class="form-control" placeholder="Enter Subject">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label>Attachement (You can upload multiple files)</label>
+                            <input type="file" name="attachements[]" multiple class="file-upload-default">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload attachements">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload Files</button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="message-content">
+                            <div class="form-group">
+                                <label for="">Message Text</label>
+                                <textarea class="form-control" name="body" id="summernote" cols="30" rows="10"></textarea>
+                            </div>
+                            <button type="submit" name="send" class="btn btn-gradient-primary">SEND </button>
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ======END OF EMAIL MODAL====== -->

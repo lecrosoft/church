@@ -62,21 +62,22 @@ include('includes/function.php');
                                         </h4>
 
                                         <!-- ====================== tab starts ============================= -->
-                                        <div class="page_button d-flex justify-content-between ">
-                                            <div class="d-flex">
+                                        <div class="page_button row ">
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="form-group pr-2 col-md-9">
 
-                                                <div class="form-group pr-2">
-
-                                                    <select name="" id="" class="form-control form-select">
-                                                        <option value="">Bulk Action </option>
-                                                        <option value="">Delete </option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn-gradient-primary send_attendance">Send</button>
+                                                        <select name="" id="" class="form-control form-select">
+                                                            <option value="">Bulk Action </option>
+                                                            <option value="">Delete </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <button class="btn btn-gradient-primary send_attendance">Send</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <button class="btn btn-gradient-primary add-family">Add New Attendance Type</button>
                                                 </div>
@@ -85,14 +86,14 @@ include('includes/function.php');
 
                                         <form action="" method="POST">
 
-                                            <div class="d-flex justify-content-center ">
-                                                <div class="boxes m-4">
+                                            <div class="row">
+                                                <div class="boxes col-md-3">
                                                     <div class="form-group">
                                                         <label for="">Attendance Date</label>
                                                         <input name="attendance_date" id="attendance_date" type="date" class="form-control attendance_date">
                                                     </div>
                                                 </div>
-                                                <div class="boxes m-4">
+                                                <div class="boxes col-md-3">
                                                     <div class="form-group">
                                                         <label for="">Attendance Group</label>
                                                         <select name="department_id" id="department_id" class="form-select form-control department_id">
@@ -112,7 +113,7 @@ include('includes/function.php');
                                                     </div>
 
                                                 </div>
-                                                <div class="boxes m-4">
+                                                <div class="boxes col-md-3">
                                                     <div class="form-group">
                                                         <label for="">Attendance Type</label>
 
@@ -132,7 +133,7 @@ include('includes/function.php');
                                                     </div>
                                                 </div>
 
-                                                <div class="boxes m-4">
+                                                <div class="boxes col-md-3">
                                                     <div class="form-group">
                                                         <label for="">Attendance Type</label>
 
@@ -145,7 +146,7 @@ include('includes/function.php');
 
                                             <div class="table-responsive attendance_content" id="attendance_content">
 
-                                                <table class="table table-bordered mytable">
+                                                <table id="attendanceTable" class="table table-bordered mytable">
                                                     <thead>
                                                         <tr class="bg-gradient-primary text-white">
 
@@ -371,7 +372,17 @@ include('includes/function.php');
 
         });
     </script>
-    <!-- CODE TO VIEW FAMILY DETAILS IN MODAL END -->
+    <script>
+        $(document).ready(function() {
+            $('#attendanceTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
+        });
+    </script>
 
 
     <!-- CODE TO SHOW FAMILY ADD FORM START -->

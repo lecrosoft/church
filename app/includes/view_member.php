@@ -67,3 +67,14 @@
     </div>
     <!-- /.row -->
     <!-- .right-sidebar -->
+
+    <script>
+        $(document).ready(function() {
+            $('#member-table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>

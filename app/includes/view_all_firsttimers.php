@@ -8,7 +8,7 @@
             </p>
 
             <div class="table-responsive">
-                <table id="myTable" class="table table-striped toggle-circle table-hover">
+                <table id="firsttimer_table" class="table table-striped toggle-circle table-hover">
                     <thead>
                         <tr class="bg-gradient-primary text-white">
 

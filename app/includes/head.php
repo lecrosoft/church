@@ -57,4 +57,20 @@ if (!isset($_SESSION['user_role'])) {
     <link rel="stylesheet" href="select2/css/select2.min.css" />
 
 
+
+
+    <!-- 
+    for calender -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" /> -->
+
+
+
+
+
+
+
+
 </head>

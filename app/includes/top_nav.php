@@ -14,8 +14,8 @@
             align-items-center
             justify-content-center
           ">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/church_logo.png" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/church_single_logo.png" alt="logo" /></a>
+        <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo_long_mini.png" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo_long_mini.png" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">

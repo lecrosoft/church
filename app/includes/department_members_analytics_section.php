@@ -59,18 +59,18 @@
      </div>
 
      <div class="col-md-3 col-sm-6">
-         <a href="department_open_project.php?d_id=<?php echo $depart_id ?>">
+         <a href="department_completed_project.php?d_id=<?php echo $depart_id ?>">
              <div class="counter_display">
                  <div class="r-icon-stats icon_div"> <i class="mdi mdi-account-multiple bg-gradient-primary p-4 rounded-circle counter_icon"></i>
                      <?php
-                        $lecrosoft = "SELECT * FROM `department_project` WHERE department_id = $depart_id and status != 'Completed' ";
+                        $lecrosoft = "SELECT * FROM `department_project` WHERE department_id = $depart_id and status = 'Completed' ";
 
                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
-                        $count_pending_project = mysqli_num_rows($query_lecrosoft);
+                        $count_completed_project = mysqli_num_rows($query_lecrosoft);
                         ?>
                      <div class="bodystate">
-                         <h4><?php echo $family_count; ?></h4> <span class="text-muted">Completed Projects</span>
+                         <h4><?php echo $count_completed_project; ?></h4> <span class="text-muted">Completed Projects</span>
                      </div>
 
                  </div>

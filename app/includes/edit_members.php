@@ -372,8 +372,8 @@ if (isset($_GET['id'])) {
 
                                     <?php
                                     if ($user_role == "Admin") {
-                                        echo "<option value='User'>User</option>";
-                                    } elseif ($user_role == "User") {
+                                        echo "<option value='member'>member</option>";
+                                    } elseif ($user_role == "member") {
                                         echo "<option value='Admin'>Admin</option>";
                                     }
                                     ?>
@@ -415,6 +415,39 @@ if (isset($_GET['id'])) {
 
                             </div>
                         </div>
+                        <!--/span-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+
+
+                                <label class="control-label" <?php echo $hidden ?>>Can accept wallent payment?</label>
+                                <select name="can_accept_wallet" class="form-select form-control" id="" <?php echo $hidden ?>>
+                                    <option value="<?php echo $can_accept_wallet_payment ?>"><?php echo $can_accept_wallet_payment ?></option>
+
+                                    <?php
+                                    if ($can_accept_wallet_payment == "No") {
+                                        echo "<option value='Yes'>Yes</option>";
+                                    } elseif ($can_accept_wallet_payment == "Yes") {
+                                        echo "<option value='No'>No</option>";
+                                    }
+                                    ?>
+                                </select>
+
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <!-- <div class="col-md-6">
+                            <div class="form-group">
+
+
+                                <label class="control-label">Password</label>
+                                <input type="password" autocomplete="off" class="form-control" name="password" value="<?php echo $password ?>">
+
+
+                            </div>
+                        </div> -->
                         <!--/span-->
                     </div>
                 </div>

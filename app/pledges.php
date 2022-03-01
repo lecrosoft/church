@@ -130,12 +130,10 @@ include('includes/function.php');
                                         </div>
 
                                         <?php
-                                        deleteFamily();
+
                                         ?>
 
                                         <?php
-
-                                        addFamily();
 
 
                                         ?>
@@ -186,7 +184,7 @@ include('includes/function.php');
                                                 // echo "Already Pledged";
                                             } else {
 
-                                                $lecrosoft = "INSERT INTO `pledges`(`campaign_id`, `member_id`, `note`, `amount`, `pledge_date`, `pledge_due_date`,`balance`) VALUES ('$campaign','$pledge_by','$note','$amount','$pdate','$pduedate',$amount)";
+                                                $lecrosoft = "INSERT INTO `pledges`(`campaign_id`, `member_id`, `note`, `amount`, `pledge_date`, `pledge_due_date`) VALUES ('$campaign','$pledge_by','$note','$amount','$pdate','$pduedate')";
 
                                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
 

@@ -108,12 +108,16 @@ include('includes/function.php');
     <!-- End custom js for this page -->
 
 
+
     <script>
-        $('#example23').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
+        $(document).ready(function() {
+            $('#firsttimer_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
         });
     </script>
 

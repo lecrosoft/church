@@ -85,7 +85,20 @@
                                                         echo 0;
                                                     }
                                                     ?> </h6>
+
+
+
+                <li class="breadcrumb-item active text-white" aria-current="page">
+                    <a href="depart_expense.php?d_id=<?php echo $depart_id ?>"><span></span>Overview
+                        <i class="
+                        mdi mdi-alert-circle-outline
+                        icon-sm
+                        text-primary
+                        align-middle
+                      "></i></a>
+                </li>
             </div>
+
         </div>
     </div>
     <div class="col-md-4 stretch-card grid-margin">

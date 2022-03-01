@@ -62,21 +62,22 @@ include('includes/function.php');
                                         </h4>
 
                                         <!-- ====================== tab starts ============================= -->
-                                        <div class="page_button d-flex justify-content-between ">
-                                            <div class="d-flex">
+                                        <div class="page_button row">
+                                            <div class="col-md-7">
+                                                <div class="row">
+                                                    <div class="form-group pr-2 col-md-7">
 
-                                                <div class="form-group pr-2">
-
-                                                    <select name="" id="" class="form-control form-select">
-                                                        <option value="">Bulk Action </option>
-                                                        <option value="">Delete </option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn-gradient-primary">Send</button>
+                                                        <select name="" id="" class="form-control form-select">
+                                                            <option value="">Bulk Action </option>
+                                                            <option value="">Delete </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-5">
+                                                        <button class="btn btn-gradient-primary">Send</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="">
+                                            <div class="col-md-5">
                                                 <div class="form-group">
                                                     <button class="btn btn-gradient-primary add-family">Add New Attendance Type</button>
                                                 </div>
@@ -84,7 +85,7 @@ include('includes/function.php');
                                         </div>
 
                                         <div class="table-responsive">
-                                            <table class="table table-bordered">
+                                            <table id="attendance_type_table" class="table table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>
@@ -280,7 +281,17 @@ include('includes/function.php');
 
     <!-- ========== J QUERY CODE STARTS HERE ========= -->
 
-    <!-- CODE TO VIEW FAMILY DETAILS IN MODAL START -->
+    <script>
+        $(document).ready(function() {
+            $('#attendance_type_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function() {

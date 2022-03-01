@@ -59,6 +59,32 @@ include('includes/function.php');
     <?php include('includes/dashboard_js.php')
     ?>
     <!-- End custom js for this page -->
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('.month_select').change(function() {
+                let visitMonth = $(this).val();
+
+                $.ajax({
+                    url: "first_timmers_by_month.php",
+                    method: "POST",
+                    data: {
+                        visitMonth: visitMonth
+                    },
+                    beforeSend: function() {
+                        $('.firstimer_table_content').html('Loading...')
+                    },
+                    success: function(data) {
+                        $('.firstimer_table_content').html(data);
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>

@@ -39,7 +39,7 @@ include('includes/function.php');
                                         $folder = "assets/images/pop/" . $img;
 
                                         move_uploaded_file($temp_file, $folder);
-                                        $lecrosoft = "INSERT INTO `wallet`(`member_id`, `payment_date`, `amount`, `payment_method`, `received_by_id`, `pop`) VALUES ($member_id,now(),'$amount',$payment_method,$approved_by,'$img')";
+                                        $lecrosoft = "INSERT INTO `wallet`(`member_id`, `payment_date`, `amount`, `payment_method_id`, `received_by_id`, `pop`) VALUES ($member_id,now(),'$amount',$payment_method,$approved_by,'$img')";
                                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
                                         if ($query_lecrosoft) {
@@ -53,7 +53,7 @@ include('includes/function.php');
                                         }
                                     }
                                     ?>
-                                    <p class="card-description"> Basic form layout </p>
+                                    <!-- <p class="card-description"> Basic form layout </p> -->
                                     <form method="POST" class="forms-sample" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Amount</label>
@@ -80,7 +80,7 @@ include('includes/function.php');
                                             <select name="approved_by" id="" class="form-control form-select select2">
                                                 <option value=''>Select Approval </option>
                                                 <?php
-                                                $sql = "SELECT * FROM members";
+                                                $sql = "SELECT * FROM members WHERE can_accept_wallet_payment ='Yes'";
                                                 $query_sql = mysqli_query($con, $sql);
                                                 while ($row = mysqli_fetch_assoc($query_sql)) {
                                                     extract($row);

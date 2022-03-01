@@ -67,7 +67,8 @@ include('includes/function.php');
 
 
                     <!-- =================== SECOND SECTION TO DISPLAY INCOME AND EXPENSES AND CHARTS AND MARITAL STATUS  STARTS HERE ============ -->
-                    <?php include('includes/department_second_section.php') ?>
+                    <?php //include('includes/department_second_section.php') 
+                    ?>
                     <!-- =================== FIRST SECTION TO DISPLAY INCOME AND EXPENSES AND BALANCE SUM ENDSHERE ============ -->
 
                     <!-- =================== SECOND SECTION TO DISPLAY MEMBERS,USERS,DEPARTMENTS  STARTS HERE ============ -->

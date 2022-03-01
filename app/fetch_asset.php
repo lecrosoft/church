@@ -12,16 +12,16 @@ if (isset($_POST['asset_id'])) {
 ?>
 <form method="POST">
     <div class="form-group mb-3">
-        <input type="text" class="form-control" id="fname" value='<?php echo $asset_name ?>'>
+        <input type="text" class="form-control" id="asset_name" value='<?php echo $asset_name ?>'>
 
     </div>
     <div class="form-group mb-3">
-        <input type="text" class="form-control" id="fleader" value='<?php echo $asset_description ?>'>
+        <input type="text" class="form-control" id="asset_description" value='<?php echo $asset_description ?>'>
 
     </div>
 
     <div class="form-group mb-3">
-        <input type="text" class="form-control" id="fquantity" value='<?php echo $asset_cost ?>'>
+        <input type="text" class="form-control" id="asset_cost" value='<?php echo $asset_cost ?>'>
 
     </div>
 
@@ -49,25 +49,19 @@ if (isset($_POST['asset_id'])) {
     $(document).ready(function() {
         $('.update').click(function() {
             var id = $(this).attr("id");
-            let fname = document.getElementById("fname").value
-            let fleader = document.getElementById("fleader").value
-            let fquantity = document.getElementById("fquantity").value
-            let fcontact = document.getElementById("fcontact").value
-            let address = document.getElementById("address").value
-            let status = document.getElementById("status").value
-            let jtime = document.getElementById("jtime").value
+            let asset_name = document.getElementById("asset_name").value
+            let asset_description = document.getElementById("asset_description").value
+            let asset_cost = document.getElementById("asset_cost").value
+
             $.ajax({
-                url: "fetch_family.php",
+                url: "fetch_asset.php",
                 method: "POST",
                 data: {
                     id: id,
-                    fname: fname,
-                    fleader: fleader,
-                    fquantity: fquantity,
-                    fcontact: fcontact,
-                    address: address,
-                    status: status,
-                    jtime: jtime
+                    asset_name: asset_name,
+                    asset_description: asset_description,
+                    asset_cost: asset_cost
+
 
 
 
@@ -85,18 +79,15 @@ if (isset($_POST['asset_id'])) {
 <?php
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
-    $fname = $_POST['fname'];
-    $fleader = $_POST['fleader'];
-    $fquantity = $_POST['fquantity'];
-    $fcontact = $_POST['fcontact'];
-    $address  = $_POST['address'];
-    $status = $_POST['status'];
-    $jtime = $_POST['jtime'];
+    $asset_name = $_POST['asset_name'];
+    $asset_description = $_POST['asset_description'];
+    $asset_cost = $_POST['asset_cost'];
 
-    $lecrosoft = "UPDATE `family` SET `family_name`='$fname',`family_leader`='$fleader',`family_quantity`='$fquantity',`family_contact`='$fcontact',`address`='$address',`status`='$status',`join_date`='$jtime' WHERE family_id = $id";
+
+    $lecrosoft = "UPDATE `asset` SET `asset_name`='$asset_name',`asset_description`='$asset_description',`asset_cost`='$asset_cost' WHERE `asset_id` = $id ";
     $query_lecrosoft = mysqli_query($con, $lecrosoft);
     if ($query_lecrosoft) {
-        echo '<script type="text/javascript">location = "family.php"</script>';
+        echo '<script type="text/javascript">location = "asset.php"</script>';
     }
 }
 ?><?php

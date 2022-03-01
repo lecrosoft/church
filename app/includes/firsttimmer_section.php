@@ -3,11 +3,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">This Month First Timers</h4>
+                            <h4 class="card-title">First Timers</h4>
 
 
                             <div class="form-group" style="width:50%;">
-                                <select class="form-control form-select pull-right row b-none">
+                                <select class="form-control form-select month_select pull-right row b-none">
                                     <option value="<?php echo date('m') ?>"><?php echo date('F') ?></option>
                                     <?php
                                     $lecrosoft  = "SELECT * FROM months";
@@ -22,7 +22,7 @@
                         </div>
 
 
-                        <div class="table-responsive">
+                        <div class="table-responsive firstimer_table_content">
                             <table id="" class="table table-striped toggle-circle table-hover">
                                 <thead>
                                     <tr>
@@ -32,7 +32,7 @@
 
                                         <th>Phone number</th>
 
-                                        <th>Date of visit</th>
+                                        <!-- <th>Date of visit</th> -->
 
 
                                         <th>Actions</th>
@@ -42,7 +42,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $lecrosoft = "SELECT * FROM first_timers WHERE status='visitor' ORDER BY first_timmer_id DESC";
+                                    $lecrosoft = "SELECT * FROM first_timers WHERE status='visitor' AND month(current_date) = month(date_of_visit) ORDER BY first_timmer_id DESC";
                                     $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                     while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                         extract($row);
@@ -61,7 +61,7 @@
 
                                         echo "<td>$phone_number</td>";
 
-                                        echo "<td>$date_of_visit</td>";
+                                        // echo "<td>$date_of_visit</td>";
 
                                         //                     echo " <td>
                                         //     <span class='label label-table label-danger'>$status</span>

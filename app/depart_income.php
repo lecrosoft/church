@@ -49,11 +49,11 @@ include('includes/function.php');
                             <div class="card">
                                 <div class="card-body">
                                     <div class="clearfix">
-                                        <div class="d-flex justify-content-between">
-                                            <h4 class="card-title float-left">
+                                        <div class="row">
+                                            <h4 class="card-title float-left col-md-9">
                                                 <span class="text-danger"><?php echo $department ?></span> Department Income Reports
                                             </h4>
-                                            <button type="button" class="btn btn-primary add-income">
+                                            <button type="button" class="btn btn-primary add-income col-md-3">
                                                 New Transaction
                                             </button>
 

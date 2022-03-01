@@ -26,7 +26,27 @@ include('includes/function.php');
 
 
                     <!-- ================== PAGE HEADER COMES IN ==================== -->
-                    <?php include('includes/page_header.php') ?>
+                    <div class="page-header">
+                        <h3 class="page-title">
+                            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                <i class="mdi mdi-home"></i>
+                            </span>
+                            Assets
+                        </h3>
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <a href="#"><span></span>Overview
+                                        <i class="
+                        mdi mdi-alert-circle-outline
+                        icon-sm
+                        text-primary
+                        align-middle
+                      "></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                     <!-- ================== PAGE HEADER ENDS HERE ==================== -->
 
 
@@ -42,21 +62,23 @@ include('includes/function.php');
                                         </h4>
 
                                         <!-- ====================== tab starts ============================= -->
-                                        <div class="page_button d-flex justify-content-between ">
-                                            <div class="d-flex">
+                                        <div class="page_button row ">
+                                            <div class="col-md-9">
 
-                                                <div class="form-group pr-2">
+                                                <div class="row">
+                                                    <div class="form-group pr-2 col md-9">
 
-                                                    <select name="" id="" class="form-control form-select">
-                                                        <option value="">Bulk Action </option>
-                                                        <option value="">Delete </option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn-primary">Send</button>
+                                                        <select name="" id="" class="form-control form-select">
+                                                            <option value="">Bulk Action </option>
+                                                            <option value="">Delete </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <button class="btn btn-primary">Send</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <button class="btn btn-primary add-family">Add New Asset</button>
                                                 </div>
@@ -64,7 +86,7 @@ include('includes/function.php');
                                         </div>
 
                                         <div class="table-responsive">
-                                            <table class="table table-bordered">
+                                            <table id="asset_table" class="table table-bordered">
                                                 <thead>
                                                     <tr>
 
@@ -82,6 +104,7 @@ include('includes/function.php');
 
 
                                                 </tbody>
+
                                             </table>
                                         </div>
 
@@ -104,12 +127,12 @@ include('includes/function.php');
 
                                         <!-- DELETE FAMILY CODE START  -->
                                         <?php
-                                        if (isset($_POST['del_fam_id'])) {
-                                            $del_fam_id = $_POST['del_fam_id'];
-                                            $lecrosoft = "DELETE FROM family WHERE family_id =$del_fam_id";
+                                        if (isset($_POST['del_asset_id'])) {
+                                            $del_asset_id = $_POST['del_asset_id'];
+                                            $lecrosoft = "DELETE FROM `asset` WHERE `asset_id` =$del_asset_id";
                                             $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                             if ($query_lecrosoft) {
-                                                echo '<script type="text/javascript">location = "family.php"</script>';
+                                                echo '<script type="text/javascript">location = "asset.php"</script>';
                                             } else {
                                                 die("QUERY ERROR" . mysqli_error($con));
                                             }
@@ -231,7 +254,7 @@ include('includes/function.php');
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" name="add">Save changes</button>
+                                        <button type="submit" class="btn btn-primary" name="add">Add</button>
                                     </div>
                                 </form>
 
@@ -273,6 +296,19 @@ include('includes/function.php');
     <!-- ========== J QUERY CODE STARTS HERE ========= -->
 
     <!-- CODE TO VIEW ASSET DETAILS IN MODAL START -->
+
+
+    <script>
+        $(document).ready(function() {
+            $('#asset_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -341,10 +377,10 @@ include('includes/function.php');
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "family.php",
+                            url: "asset.php",
                             method: "post",
                             data: {
-                                del_fam_id: id
+                                del_asset_id: id
                             },
                             success: function(data) {
 
@@ -353,8 +389,8 @@ include('includes/function.php');
                                     'Your file has been deleted.',
                                     'success'
                                 )
-                                location = "/church/app/family.php"
-                                console.log(location)
+                                location = "asset.php"
+
 
 
 

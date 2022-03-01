@@ -43,48 +43,48 @@ include('includes/function.php');
                                         echo "<h1>You have no Testimonies  listed for now! </h1>";
                                     } else {
                                     ?>
+                                        <div class="table-responsive">
+                                            <table id="my_testimonies_table" class="table ">
+                                                <thead>
+                                                    <tr>
 
-                                        <table class="table ">
-                                            <thead>
-                                                <tr>
+                                                        <th>Title</th>
+                                                        <th>Created</th>
+                                                        <th>Description</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php
+                                                while ($row = mysqli_fetch_assoc($query_lecrosoft_my_prayer_request)) {
+                                                    extract($row);
 
-                                                    <th>Title</th>
-                                                    <th>Created</th>
-                                                    <th>Description</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php
-                                            while ($row = mysqli_fetch_assoc($query_lecrosoft_my_prayer_request)) {
-                                                extract($row);
+                                                    if ($status == 'Active') {
+                                                        $badge_color = 'warning';
+                                                    } elseif ($status == 'Closed') {
+                                                        $badge_color = 'danger';
+                                                    } else {
+                                                        $badge_color = '';
+                                                    }
+                                                    echo " <tr>";
+                                                    echo "<td>$testimony_title</td>";
+                                                    $date = date('d M Y', strtotime($created_at));
+                                                    echo "<td>$date</td>";
 
-                                                if ($status == 'Active') {
-                                                    $badge_color = 'warning';
-                                                } elseif ($status == 'Closed') {
-                                                    $badge_color = 'danger';
-                                                } else {
-                                                    $badge_color = '';
-                                                }
-                                                echo " <tr>";
-                                                echo "<td>$testimony_title</td>";
-                                                $date = date('d M Y', strtotime($created_at));
-                                                echo "<td>$date</td>";
+                                                    echo "<td>$description</td>";
 
-                                                echo "<td>$description</td>";
-
-                                                echo " <td>
+                                                    echo " <td>
 
                                                     <label class='badge badge-$badge_color'>$status</label>
                                                 </td>";
 
-                                                echo " <td class='text-nowrap'><a id='$testimonies_id' data-toggle='tooltip' data-original-title='View'> <i class='mdi mdi-message text-success m-r-10'></i> </a> <a class='edit_prayer' id='$testimonies_id' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-lead-pencil text-warning m-r-10'></i> </a> <a class='delete_prayer_request' id='$testimonies_id' data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete text-danger'></i> </a> </td>";
+                                                    echo " <td class='text-nowrap'><a id='$testimonies_id' data-toggle='tooltip' data-original-title='View'> <i class='mdi mdi-message text-success m-r-10'></i> </a> <a class='edit_prayer' id='$testimonies_id' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-lead-pencil text-warning m-r-10'></i> </a> <a class='delete_prayer_request' id='$testimonies_id' data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete text-danger'></i> </a> </td>";
 
-                                                echo " </tr>";
+                                                    echo " </tr>";
+                                                }
                                             }
-                                        }
-                                            ?>
+                                                ?>
 
 
 
@@ -92,8 +92,9 @@ include('includes/function.php');
 
 
 
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -157,6 +158,19 @@ include('includes/function.php');
     <!-- ======= dashboard script comes in =========== -->
     <?php include('includes/dashboard_js.php')
     ?>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#my_testimonies_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({

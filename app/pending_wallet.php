@@ -21,7 +21,7 @@ include('includes/function.php');
             <div class="main-panel">
                 <div class="content-wrapper">
 
-
+                    <?php $session_id = $_SESSION['member_id']; ?>
 
 
 
@@ -29,7 +29,7 @@ include('includes/function.php');
 
 
                     <!-- begining of second div -->
-
+                    <input type="text" id="approval_id" value="<?php echo $session_id ?>" hidden>
                     <div class="col-md-12 stretch-card">
                         <div class="card">
                             <div class="card-body">
@@ -37,34 +37,53 @@ include('includes/function.php');
                                 <!-- <p class="card-description"> Horizontal form layout </p> -->
 
                                 <div class="table-responsive">
-                                    <table class="table ">
+                                    <table id="pending_wallet" class="table ">
                                         <thead>
                                             <tr>
 
                                                 <th>Amt.</th>
+                                                <th>Paid by</th>
+                                                <th>Pay Meth</th>
                                                 <th>Created</th>
+                                                <th>Paid to</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $session_id = $_SESSION['member_id'];
-                                            $lecrosoft = "SELECT * FROM `wallet` WHERE status = 'pending' ORDER BY `payment_id` DESC";
+
+                                            $lecrosoft = "SELECT wallet.*,first_name,last_name,payment_method FROM wallet  LEFT JOIN members ON wallet.member_id = members.member_id  LEFT JOIN payment_method ON wallet.payment_method_id = payment_method.id WHERE wallet.status = 'pending' ORDER BY payment_id DESC";
 
                                             $query_lecrosoft_transanct_history = mysqli_query($con, $lecrosoft);
-
+                                            $receiver_first_name = "";
+                                            $receiver_last_name = "";
                                             while ($row = mysqli_fetch_assoc($query_lecrosoft_transanct_history)) {
                                                 extract($row);
-                                                if ($status == 'pending') {
+                                                $wallet_status = $row['status'];
+
+                                                $sql = "SELECT first_name,last_name FROM members WHERE member_id = $received_by_id";
+                                                $query_sql = mysqli_query($con, $sql);
+                                                while ($row = mysqli_fetch_assoc($query_sql)) {
+                                                    $receiver_first_name = $row['first_name'];
+                                                    $receiver_last_name = $row['last_name'];
+                                                }
+
+
+
+                                                if ($wallet_status == 'pending') {
                                                     $badge_color = 'danger';
-                                                } elseif ($status == 'confirmed') {
+                                                } elseif ($wallet_status == 'confirmed') {
                                                     $badge_color = 'success';
                                                 }
                                                 echo " <tr>";
                                                 echo "<td>$amount</td>";
+                                                echo "<td>$first_name" . " " . "$last_name</td>";
+                                                echo "<td>$payment_method</td>";
                                                 $date = date('d M Y', strtotime($payment_date));
                                                 echo "<td>$date</td>";
+
+                                                echo "<td>" . "<a href=#''>" . "$receiver_last_name" . " " . "$receiver_first_name" . "</a>" . "</td>";
 
                                                 echo " <td>
                                                 
@@ -136,17 +155,29 @@ include('includes/function.php');
     <?php include('includes/dashboard_js.php')
     ?>
     <!-- End custom js for this page -->
+    <script>
+        $(document).ready(function() {
+            $('#pending_wallet').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
 
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function() {
             $('.approve_wallet').click(function() {
                 let transacId = $(this).attr('id');
+                let approvalID = $('#approval_id').val();
                 $.ajax({
                     url: "includes/confirm_wallet_payment.php",
                     method: "post",
                     data: {
-                        transacId: transacId
+                        transacId: transacId,
+                        approvalID: approvalID
                     },
                     success: function(data) {
                         location = window.location.href

@@ -9,7 +9,7 @@
 
 
             <div class="table-responsive">
-                <table id="members" class="table display table-bordered table-striped">
+                <table id="all_members_table" class="table display table-bordered table-striped">
                     <!-- <table id="myTable" class="table table-striped toggle-circle table-hover"> -->
                     <thead>
                         <tr class="bg-gradient-primary">
@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $lecrosoft = "SELECT * FROM members ORDER BY last_name DESC";
+                        $lecrosoft = "SELECT * FROM members ORDER BY last_name ASC";
                         $query_lecrosoft = mysqli_query($con, $lecrosoft);
                         while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                             extract($row);
@@ -96,84 +96,5 @@
     ?>
 </div>
 <!-- /.row -->
-<?php include('includes/external_js.php') ?>
-
-
-
-<script>
-    $(document).ready(function() {
-
-        $('#example').DataTable();
-
-
-    });
-    $(document).ready(function() {
-
-        $('#text_btn').click(function() {
-
-            alert('good coder');
-
-
-        });
-
-
-    });
-</script>
-
-<script>
-    $(document).ready(function() {
-        $('.delete_member').click(function(e) {
-            e.preventDefault();
-            let memberId = $(this).attr('id');
-
-
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-gradient-primary',
-                    cancelButton: 'btn btn-gradient-danger'
-                },
-                buttonsStyling: false
-            })
-
-            swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "includes/delete_members.php",
-                        method: "post",
-                        data: {
-                            userId: memberId
-
-                        },
-                        success: function(data) {
-                            swalWithBootstrapButtons.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
-                            location = window.location.href
-                        }
-
-                    })
-
-                } else if (
-                    /* Read more about handling dismissals below */
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire(
-                        'Cancelled',
-                        'Your imaginary file is safe :)',
-                        'error'
-                    )
-                }
-            })
-        })
-    })
-</script>
+<?php //include('includes/external_js.php') 
+?>

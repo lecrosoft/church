@@ -4,12 +4,12 @@
  <br>
  <br>
  <div class="container">
-     <div class="d-flex justify-content-between">
+     <div class="">
 
          <form action="" method="post" class="text-center" style="padding-top:0px;padding-left:4rem;padding-right: 4rem;">
-             <div class="d-flex justify-content-between">
-                 <div class="form-group  px-2">
-                     <label for="">Filter by transaction category</label>
+             <div class="row">
+                 <div class="form-group px-2 col-md-3">
+                     <label for=""> by transaction category</label>
                      <select name="" id="transaction_cat" class="form-select form-control">
 
                          <option value="all">All</option>
@@ -30,8 +30,8 @@
 
 
 
-                 <div class="form-group px-2">
-                     <label for="">Filter by payment method</label>
+                 <div class="form-group px-2 col-md-3">
+                     <label for="">by payment method</label>
                      <select name="" id="payment_mtd" class="form-select form-control">
 
                          <option value="all">All</option>
@@ -47,8 +47,8 @@
 
                      </select>
                  </div>
-                 <div class="form-group px-2">
-                     <label for="">Filter By Month</label>
+                 <div class="form-group px-2 col-md-3">
+                     <label for="">By Month</label>
                      <select class="form-control form-select month">
                          <option value="<?php echo date('m') ?>"><?php echo date('F') ?></option>
                          <?php
@@ -64,8 +64,8 @@
 
                  </div>
 
-                 <div class="form-group px-2">
-                     <label for="">Filter By Year</label>
+                 <div class="form-group px-2 col-md-3 col-sm-12">
+                     <label for="">By Year</label>
 
                      <input type="text" id="datepicker_year3" class="form-control year" value='<?php echo date("Y") ?>'>
                  </div>

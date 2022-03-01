@@ -37,6 +37,8 @@ include('includes/function.php');
 
                     ?>
 
+
+
                     <!-- ================== PAGE HEADER COMES IN ==================== -->
                     <div class="page-header">
                         <h3 class="page-title">
@@ -74,29 +76,74 @@ include('includes/function.php');
                                         </h4>
 
                                         <!-- ====================== tab starts ============================= -->
-                                        <div class="page_button d-flex justify-content-between ">
-                                            <div class="d-flex">
+                                        <div class="page_button row">
+                                            <div class="col-md-4">
 
-                                                <div class="form-group pr-2">
+                                                <div class="row">
+                                                    <div class="form-group  col-md-6">
 
-                                                    <select name="" id="" class="form-control form-select">
-                                                        <option value="">Bulk Action </option>
-                                                        <option value="">Delete </option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn-gradient-primary">Send</button>
+                                                        <select name="" id="" class="form-control form-select">
+                                                            <option value="">Bulk Action </option>
+                                                            <option value="">Delete </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <button class="btn btn-gradient-primary">Send</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="">
-                                                <div class="form-group">
-                                                    <button class="btn btn-primary add-family">Add New Member</button>
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <button type='button' class='mb-1 btn btn-gradient-primary  dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                            Mesg All in <?php echo $department ?> dept.
+                                                        </button>
+
+                                                        <div class='dropdown-menu'>
+                                                            <?
+
+                                                            $depart_id = $_GET['d_id'];
+
+                                                            $lecrosoft = "SELECT * FROM department_member LEFT JOIN members ON department_member.member_id = members.member_id LEFT JOIN department_position ON department_member.department_position_id = department_position.department_position_id WHERE department_id = $depart_id";
+
+                                                            $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+                                                            while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
+                                                                extract($row);
+                                                            }
+                                                            ?>
+                                                            <a id="<?php echo $member_id ?>" class='dropdown-item personal-sms'>SMS</a>
+                                                            <?php
+                                                            // $use = " ";
+                                                            // $whatsapp_number = $phone_number_two;
+
+                                                            // if ($whatsapp_number == '') {
+                                                            //     $use = $phone_number_one;
+                                                            // } else {
+                                                            //     $use = $whatsapp_number;
+                                                            // }
+                                                            ?>
+                                                            <a target="_blank" class='dropdown-item' href='https://wa.me/<?php echo $use ?>?text=Hello <?php echo $title . " " . $first_name . " " . $last_name ?>'>Whatsapp Group</a>
+                                                            <a id="<?php echo $member_id ?>" class='dropdown-item personal-email'>Email</a>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <button class="btn btn-primary add-family">Add New Member</button>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
+
                                         </div>
 
                                         <div class="table-responsive">
-                                            <table id="myTable" class="table table-bordered">
+                                            <table id="department_member" class="table table-bordered">
                                                 <thead>
                                                     <tr>
 
@@ -335,8 +382,17 @@ include('includes/function.php');
 
     <!-- ========== J QUERY CODE STARTS HERE ========= -->
 
-    <!-- CODE TO VIEW FAMILY DETAILS IN MODAL START -->
+    <script>
+        $(document).ready(function() {
+            $('#department_member').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
 
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $(".view_data").click(function() {

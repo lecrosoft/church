@@ -172,11 +172,17 @@ if (isset($_POST['pledger_id'])) {
             let description = document.getElementById("description").value;
             let pledger_name = document.getElementById("pledger_name").value;
             let amount = document.getElementById("amount").value;
+
             let paymethod = document.getElementById("paymethod").value;
             let payment_date = document.getElementById("payment_date").value;
             let created_by = document.getElementById("created_by").value;
             let amount_pledged = document.getElementById("amount_pledged").value;
             let current_balance = document.getElementById("current_balance").value;
+
+            // ==========  here i converted the amount strings to interger ==========
+            let amountToInterger = parseFloat(amount);
+            let currentBalanceToInterger = parseFloat(current_balance);
+
             let fund_purpose_to_add_pledge_to_income = document.getElementById("fund_purpose_to_add_pledge_to_income").value;
 
             // alert(amount + ' ' + current_balance)
@@ -201,7 +207,7 @@ if (isset($_POST['pledger_id'])) {
                     text: 'Payment date cannot be empty !'
                     // footer: '<a href="">Why do I have this issue?</a>'
                 })
-            } else if (amount > current_balance) {
+            } else if (amountToInterger > currentBalanceToInterger) {
 
                 Swal.fire({
                     icon: 'error',

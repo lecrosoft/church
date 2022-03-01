@@ -26,7 +26,27 @@ include('includes/function.php');
 
 
                     <!-- ================== PAGE HEADER COMES IN ==================== -->
-                    <?php include('includes/page_header.php') ?>
+                    <div class="page-header">
+                        <h3 class="page-title">
+                            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                <i class="mdi mdi-home"></i>
+                            </span>
+                            Members
+                        </h3>
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <a href="#"><span></span>Overview
+                                        <i class="
+                        mdi mdi-alert-circle-outline
+                        icon-sm
+                        text-primary
+                        align-middle
+                      "></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                     <!-- ================== PAGE HEADER ENDS HERE ==================== -->
 
 
@@ -88,6 +108,17 @@ include('includes/function.php');
 
 
                 </div>
+
+
+
+
+
+                <!-- ====SMS MODAL === -->
+
+
+
+
+                <!-- ====SMS MODAL ENDS ==== -->
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
                 <!-- ========== footer starts here ========== -->
@@ -114,6 +145,79 @@ include('includes/function.php');
 
     <!-- ================ PERSONAL PLEDGE HISTORY ============== -->
 
+
+    <script>
+        $(document).ready(function() {
+            $('#all_members_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+            });
+        });
+    </script>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('.delete_member').click(function(e) {
+                e.preventDefault();
+                let memberId = $(this).attr('id');
+
+
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-gradient-primary',
+                        cancelButton: 'btn btn-gradient-danger'
+                    },
+                    buttonsStyling: false
+                })
+
+                swalWithBootstrapButtons.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "includes/delete_members.php",
+                            method: "post",
+                            data: {
+                                userId: memberId
+
+                            },
+                            success: function(data) {
+                                swalWithBootstrapButtons.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                                location = window.location.href
+                            }
+
+                        })
+
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire(
+                            'Cancelled',
+                            'Your imaginary file is safe :)',
+                            'error'
+                        )
+                    }
+                })
+            })
+        })
+    </script>
     <script>
         $(document).ready(function() {
             $('.pledge_details').click(function() {
@@ -140,23 +244,26 @@ include('includes/function.php');
             })
         })
     </script>
-    <script>
-        $('#my-table').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
-        });
-    </script>
+
+
+
+    <!-- send messages to single member -->
+
     <script>
         $(document).ready(function() {
-            $('#member-table').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
-            });
-        });
+            $('.personal-sms').click(function(e) {
+                e.preventDefault();
+                let memberID = $(this).attr('id');
+                $('#sms_modal').modal("show");
+            })
+        })
+        $(document).ready(function() {
+            $('.personal-email').click(function(e) {
+                e.preventDefault();
+                let memberID = $(this).attr('id');
+                $('#email_modal').modal("show");
+            })
+        })
     </script>
 </body>
 

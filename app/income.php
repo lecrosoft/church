@@ -37,11 +37,11 @@ include('includes/function.php');
                             <div class="card">
                                 <div class="card-body">
                                     <div class="clearfix">
-                                        <div class="d-flex justify-content-between">
-                                            <h4 class="card-title float-left">
+                                        <div class="row">
+                                            <h4 class="card-title float-left col-md-9">
                                                 Income Report
                                             </h4>
-                                            <button type="button" class="btn  btn-gradient-primary add-income">
+                                            <button type="button" class="btn  btn-gradient-primary add-income col-md-3">
                                                 New Transaction
                                             </button>
                                         </div>
