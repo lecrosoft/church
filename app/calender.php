@@ -4,6 +4,13 @@
 include('../connections/conn.php');
 include('includes/function.php');
 $member_to_fetch_id = $_SESSION['member_id'];
+
+
+
+
+
+
+
 ?>
 
 <body>
@@ -119,7 +126,7 @@ $member_to_fetch_id = $_SESSION['member_id'];
 
 
 
-                <div id="addPleder" class="modal" tabindex="-1">
+                <div id="show_event_details" class="modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header bg-gradient-primary">
@@ -128,7 +135,7 @@ $member_to_fetch_id = $_SESSION['member_id'];
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body pledger_content" id="">
+                            <div class="modal-body event_content" id="">
 
 
                             </div>
@@ -203,7 +210,7 @@ $member_to_fetch_id = $_SESSION['member_id'];
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay'
                     },
-                    events: 'load.php',
+                    events: 'load_event_to_calender.php',
 
                     selectable: true,
                     selectHelper: true,
@@ -213,7 +220,7 @@ $member_to_fetch_id = $_SESSION['member_id'];
                             var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                             var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                             $.ajax({
-                                url: "insert.php",
+                                url: "insert_event_from_calender.php",
                                 type: "POST",
                                 data: {
                                     title: title,
@@ -271,21 +278,39 @@ $member_to_fetch_id = $_SESSION['member_id'];
                     },
 
                     eventClick: function(event) {
-                        if (confirm("Are you sure you want to remove it?")) {
-                            var id = event.id;
-                            $.ajax({
-                                url: "delete.php",
-                                type: "POST",
-                                data: {
-                                    id: id
-                                },
-                                success: function() {
-                                    calendar.fullCalendar('refetchEvents');
-                                    alert("Event Removed");
-                                }
-                            })
-                        }
-                    },
+
+
+                        // if (confirm("Are you sure you want to remove it?")) {
+                        var id = event.id;
+
+
+
+                        $.ajax({
+                            url: "fetch_single_event_to_calender.php",
+                            type: "POST",
+                            data: {
+                                id: id
+                            },
+                            success: function(data) {
+                                $('.event_content').html(data);
+                                $('#show_event_details').modal('show');
+                            }
+                        })
+                    }
+
+                    // $.ajax({
+                    //     url: "delete_event_from_calender.php",
+                    //     type: "POST",
+                    //     data: {
+                    //         id: id
+                    //     },
+                    //     success: function() {
+                    //         calendar.fullCalendar('refetchEvents');
+                    //         alert("Event Removed");
+                    //     }
+                    // })
+                    // }
+
 
                 });
             });
@@ -311,27 +336,7 @@ $member_to_fetch_id = $_SESSION['member_id'];
             })
         </script>
 
-        <script>
-            $(document).ready(function() {
-                $('.register').click(function() {
 
-                    let eventId = $(this).attr('id');
-                    $.ajax({
-                        url: "register_for_events.php",
-                        method: "post",
-                        data: {
-                            eventId: eventId
-
-                        },
-                        success: function(data) {
-                            $(this).html('saved');
-                            location = window.location.href;
-
-                        }
-                    })
-                })
-            })
-        </script>
         <!-- End custom js for this page -->
 
 

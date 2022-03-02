@@ -99,7 +99,7 @@ include('includes/function.php');
                                             <select name="approved_by" id="approved_by" class="form-control form-select select2">
                                                 <option value=''>Select Approval </option>
                                                 <?php
-                                                $sql = "SELECT * FROM members WHERE can_accept_wallet_payment ='Yes'";
+                                                $sql = "SELECT wallet_payment_receiver.*,account_fullname,bank_name,account_number,first_name,last_name FROM `wallet_payment_receiver` LEFT JOIN `members` ON wallet_payment_receiver.member_id = members.member_id";
                                                 $query_sql = mysqli_query($con, $sql);
                                                 while ($row = mysqli_fetch_assoc($query_sql)) {
                                                     extract($row);
@@ -196,8 +196,8 @@ include('includes/function.php');
                         <div id="dataModal" class="modal" tabindex="-1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Receivers Account Details</h5>
+                                    <div class="modal-header bg-gradient-primary">
+                                        <h5 class="modal-title">Receiver's Account Details</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -242,9 +242,19 @@ include('includes/function.php');
         $(document).ready(function() {
             $('#approved_by').change(function() {
                 let userId = $(this).val();
+                $.ajax({
+                    url: "fetch_wallet_account_details.php",
+                    method: "POST",
+                    data: {
+                        userId: userId
+                    },
+                    success: function(data) {
+                        $('#dataModal').modal('show');
+                        $('#account_content').html(data);
+                    }
 
-                $('#dataModal').modal('show');
-                $('#account_content').html(userId);
+                })
+
             })
         })
     </script>

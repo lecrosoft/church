@@ -55,6 +55,23 @@ include('includes/function.php');
                                     ?>
                                     <!-- <p class="card-description"> Basic form layout </p> -->
                                     <form method="POST" class="forms-sample" enctype="multipart/form-data">
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">To be approved by (Select the person incharge of the collection of your wallet fee so you can get the account details to make your payment to</label>
+                                            <select name="approved_by" id="approved_by" class="form-control form-select select2">
+                                                <option value=''>Select The Account you want to make payment to </option>
+                                                <?php
+                                                $sql = "SELECT wallet_payment_receiver.*,account_fullname,bank_name,account_number,first_name,last_name FROM `wallet_payment_receiver` LEFT JOIN `members` ON wallet_payment_receiver.member_id = members.member_id";
+                                                $query_sql = mysqli_query($con, $sql);
+                                                while ($row = mysqli_fetch_assoc($query_sql)) {
+                                                    extract($row);
+                                                    echo "<option value='$member_id'>$last_name $first_name </option>";
+                                                }
+
+
+                                                ?>
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Amount</label>
                                             <input type="number" name="amount" class="form-control" id="exampleInputUsername1" placeholder="enter Amount" min="1">
@@ -75,22 +92,7 @@ include('includes/function.php');
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">To be approved by (Select the person incharge of the collection of your wallet fee</label>
-                                            <select name="approved_by" id="" class="form-control form-select select2">
-                                                <option value=''>Select Approval </option>
-                                                <?php
-                                                $sql = "SELECT * FROM members WHERE can_accept_wallet_payment ='Yes'";
-                                                $query_sql = mysqli_query($con, $sql);
-                                                while ($row = mysqli_fetch_assoc($query_sql)) {
-                                                    extract($row);
-                                                    echo "<option value='$member_id'>$last_name $first_name </option>";
-                                                }
 
-
-                                                ?>
-                                            </select>
-                                        </div>
                                         <div class="form-group">
                                             <label>Upload Proof Of Payment</label>
                                             <input type="file" name="img" class="file-upload-default">
@@ -170,6 +172,29 @@ include('includes/function.php');
                             </div>
                         </div>
 
+
+                        <div id="dataModal" class="modal" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-gradient-primary">
+                                        <h5 class="modal-title">Receiver's Account Details</h5>
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="container">
+                                        <h6 style="font-weight:bold">NOTE:</h6>
+                                        <p class="text-danger">Make your payment to the acount details below,after making the payment, close the pop-up and fill in the details of the payment you made, eg, amount and most importantly the Prove of payments,Your payment will reflect in your wallet when it has been approved by an admin or the receiver.</p>
+                                        <div class="modal-body" id="account_content">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <!-- content-wrapper ends -->
@@ -195,6 +220,29 @@ include('includes/function.php');
     <?php include('includes/dashboard_js.php')
     ?>
     <!-- End custom js for this page -->
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('#approved_by').change(function() {
+                let userId = $(this).val();
+                $.ajax({
+                    url: "fetch_wallet_account_details.php",
+                    method: "POST",
+                    data: {
+                        userId: userId
+                    },
+                    success: function(data) {
+                        $('#dataModal').modal('show');
+                        $('#account_content').html(data);
+                    }
+
+                })
+
+            })
+        })
+    </script>
 </body>
 
 </html>

@@ -146,7 +146,7 @@ function select_wallet_acceptor()
   global $con;
 
 
-  $lecrosoft = "SELECT account_fullname,bank_name,account_number,first_name,last_name.*, FROM `wallet_payment_receiver` LEFT JOIN `members` ON wallet_payment_receiver.member_id = members.member_id";
+  $lecrosoft = "SELECT wallet_payment_receiver.*,account_fullname,bank_name,account_number,first_name,last_name FROM `wallet_payment_receiver` LEFT JOIN `members` ON wallet_payment_receiver.member_id = members.member_id";
   $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
   while ($row = mysqli_fetch_assoc($query_lecrosoft)) {

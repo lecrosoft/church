@@ -31,7 +31,7 @@ include('includes/function.php');
                             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                                 <i class="mdi mdi-account-multiple"></i>
                             </span>
-                            Income and Expenses Categories
+                            Wallet payment receivers
                         </h3>
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb">
@@ -80,7 +80,7 @@ include('includes/function.php');
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <button class="btn btn-gradient-primary add-family">Add New Category</button>
+                                                    <button class="btn btn-gradient-primary add-family">Add New receiver</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,15 +157,26 @@ include('includes/function.php');
                                             $bankname = $_POST['bankname'];
 
                                             $accountnumber = $_POST['accountnumber'];
-                                            if (!empty($member_id)) {
+
+
+                                            $sql = "SELECT member_id FROM wallet_payment_receiver";
+                                            $query_sql = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($query_sql)) {
+                                                $db_member_id = $row['member_id'];
+                                            }
+
+
+                                            if ($member_id != $db_member_id) {
                                                 $lecrosoft = "INSERT INTO wallet_payment_receiver(member_id,account_fullname,bank_name,account_number) VALUES ($member_id,'$account_fullname','$bankname','$accountnumber')";
                                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                                 if ($query_lecrosoft) {
-                                                    echo '<script type="text/javascript">location = "window.location.href"</script>';
+                                                    echo '<script type="text/javascript">location = window.location.href</script>';
                                                 } else {
                                                     die("QUERY ERROR" . mysqli_error($con));
                                                     recordDangerMessage();
                                                 }
+                                            } else {
+                                                echo "Not added.Check your Input and try again";
                                             }
                                         }
                                         ?>

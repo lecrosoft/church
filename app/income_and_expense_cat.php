@@ -155,12 +155,11 @@ include('includes/function.php');
                                             $description = $_POST['description'];
                                             $type = $_POST['type'];
 
-                                            $jtime = $_POST['jtime'];
-                                            if (!empty($fname)) {
-                                                $lecrosoft = "INSERT INTO family(family_name,family_leader,family_quantity,family_contact,address,join_date) VALUES ('$fname','$fleader',$fquantity,'$fcontact','$address','$jtime')";
+                                            if (!empty($title)) {
+                                                $lecrosoft = "INSERT INTO income_expence_category(category_name,description,type) VALUES ('$title','$description','$type')";
                                                 $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                                 if ($query_lecrosoft) {
-                                                    echo '<script type="text/javascript">location = "family.php"</script>';
+                                                    echo '<script type="text/javascript">location = window.location.href</script>';
                                                 } else {
                                                     die("QUERY ERROR" . mysqli_error($con));
                                                     recordDangerMessage();
@@ -206,12 +205,12 @@ include('includes/function.php');
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Edit Family Details</h5>
+                                <h5 class="modal-title">Edit Income/Expenses category</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body" id="family_content">
+                            <div class="modal-body" id="income_expense_cat_content">
 
                             </div>
 
@@ -257,8 +256,8 @@ include('includes/function.php');
                                         <label for="">Category Type</label>
                                         <select name="type" class="form-select form-control">
                                             <option value="">Select Category Type</option>
-                                            <option value="income">Expense</option>
-                                            <option value="expense">Income</option>
+                                            <option value="expense">Expense</option>
+                                            <option value="income">Income</option>
 
                                         </select>
 
@@ -322,18 +321,18 @@ include('includes/function.php');
     <script>
         $(document).ready(function() {
             $(".view_data").click(function() {
-                var family_id = $(this).attr("id");
+                var income_expence_cat_id = $(this).attr("id");
                 $.ajax({
-                    url: "fetch_family.php",
+                    url: "income_expence_cat.php",
                     method: "post",
                     data: {
-                        family_id: family_id,
+                        income_expence_cat_id: income_expence_cat_id,
 
 
                     },
                     success: function(data) {
                         // console.log('mydata', data)
-                        $("#family_content").html(data);
+                        $("#income_expense_cat_content").html(data);
                         $('#dataModal').modal("show");
 
                     },
