@@ -39,7 +39,7 @@ include('includes/function.php');
                                     <div class="clearfix">
                                         <div class="d-flex justify-content-between">
                                             <h4 class="card-title float-left">
-                                                Income Report
+                                                Incomes , expenses and Profit Report
                                             </h4>
                                             <button type="button" class="btn  btn-gradient-primary add-income">
                                                 New Transaction

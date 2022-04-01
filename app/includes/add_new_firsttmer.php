@@ -9,6 +9,47 @@
 
         <form action="" method="POST">
             <div class="form-body">
+                <?php
+                if (isset($_POST['add'])) {
+                    $title = $_POST['title'];
+                    $firstname = $_POST['firstname'];
+                    $lastname = $_POST['lastname'];
+                    $gender = $_POST['gender'];
+
+                    $phone_with_country_code = '';
+                    $phonenumber = $_POST['phonenumber'];
+                    $first_character_of_phone = substr($phonenumber, 0, 1);
+                    if ($first_character_of_phone == 0) {
+                        $phone_with_country_code = preg_replace('/0/', '234', trim($phonenumber), 1);
+                    } else {
+                        $phone_with_country_code = trim($phonenumber);
+                    }
+
+                    $member = $_POST['member'];
+                    $maritalstatus = $_POST['maritalstatus'];
+                    $date_of_visit = $_POST['date_of_visit'];
+                    $email = $_POST['email'];
+                    $visit_reason = $_POST['visit_reason'];
+                    $address = $_POST['address'];
+                    $prayer_request = $_POST['prayer_request'];
+                    $asign_to = $_POST['asign_to'];
+
+
+                    $lecrosoft = "INSERT INTO `first_timers`(`title`, `first_name`, `last_name`, `address`, `phone_number`, `email`, `reffered_by_member`, `prayer_request`, `visit_reason`, `date_of_visit`,`gender`, `marital_status`,`asign_to`) VALUES ('$title','$firstname','$lastname','$address','$phone_with_country_code','$email',$member,'$prayer_request','$visit_reason','$date_of_visit','$gender','$maritalstatus',$asign_to)";
+                    $query_lecrosoft = mysqli_query($con, $lecrosoft) or die(mysqli_error($con));
+
+                    if ($query_lecrosoft) {
+                        echo '<div class="alert alert-success" id="success-alert">
+                                        <button type="button" class="close" data-dismiss="alert">x</button>
+                                        <strong>Success!</strong>
+                                        Record successfully added.
+                                        </div>';
+                    } else {
+                        echo "FAILED";
+                    }
+                }
+
+                ?>
                 <h3 class="box-title">Personal Info</h3>
                 <hr />
                 <div class="row">
@@ -82,11 +123,11 @@
                                 <?php
                                 while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                     $member_id = $row['member_id'];
-                                    $last_name = $row['last_name'];
-                                    $first_name = $row['first_name'];
+                                    $member_last_name = $row['last_name'];
+                                    $member_first_name = $row['first_name'];
 
 
-                                    echo "<option value='$member_id'>$last_name $first_name</option>";
+                                    echo "<option value='$member_id'>$member_last_name $member_first_name</option>";
                                 }
                                 ?>
                                 <option value="">None</option>
@@ -99,7 +140,7 @@
                         <div class="form-group">
 
                             <label class="control-label">Marital Status</label>
-                            <select class="form-control" name="maritalstatus" id="" required>
+                            <select class="form-control" name="maritalstatus" id="">
                                 <option value="">Select Marital Status</option>
                                 <option value="Married">Married</option>
                                 <option value="Single">Single</option>
@@ -161,12 +202,12 @@
                                 <option value="">Select State</option>
                                 <?php
                                 while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
-                                    $member_id = $row['member_id'];
-                                    $last_name = $row['last_name'];
-                                    $first_name = $row['first_name'];
+                                    $assign_member_id = $row['member_id'];
+                                    $assign_member_last_name = $row['last_name'];
+                                    $assign_member_first_name = $row['first_name'];
 
 
-                                    echo "<option value='$member_id'>$last_name $first_name</option>";
+                                    echo "<option value='$assign_member_id'> $assign_member_last_name $assign_member_first_name</option>";
                                 }
                                 ?>
 
@@ -217,37 +258,7 @@
             </div>
         </form>
 
-        <?php
-        if (isset($_POST['add'])) {
-            $title = $_POST['title'];
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
-            $gender = $_POST['gender'];
 
-            $phone_with_country_code = '';
-            $phonenumber = $_POST['phonenumber'];
-            $first_character_of_phone = substr($phonenumber, 0, 1);
-            if ($first_character_of_phone == 0) {
-                $phone_with_country_code = preg_replace('/0/', '234', $phonenumber, 1);
-            } else {
-                $phone_with_country_code = $phonenumber;
-            }
-
-            $member = $_POST['member'];
-            $maritalstatus = $_POST['maritalstatus'];
-            $date_of_visit = $_POST['date_of_visit'];
-            $email = $_POST['email'];
-            $visit_reason = $_POST['visit_reason'];
-            $address = $_POST['address'];
-            $prayer_request = $_POST['prayer_request'];
-            $asign_to = $_POST['asign_to'];
-
-
-            $lecrosoft = "INSERT INTO `first_timers`(`title`, `first_name`, `last_name`, `address`, `phone_number`, `email`, `reffered_by_member`, `prayer_request`, `visit_reason`, `date_of_visit`,`gender`, `marital_status`,`asign_to`) VALUES ('$title','$firstname','$lastname','$address','$phone_with_country_code','$email',$member,'$prayer_request','$visit_reason','$date_of_visit','$gender','$maritalstatus',$asign_to)";
-            $query_lecrosoft = mysqli_query($con, $lecrosoft);
-        }
-
-        ?>
     </div>
 </div>
 

@@ -37,7 +37,7 @@ if (isset($_POST['family_id'])) {
 
     </div>
     <div class="form-group mb-3">
-        <input type="text" class="form-control" id="jtime" value='<?php echo date('d M Y', strtotime($join_date)) ?>'>
+        <input type="date" class="form-control" id="jtime" value='<?php echo date('d M Y', strtotime($join_date)) ?>'>
 
     </div>
     <div class="modal-footer">

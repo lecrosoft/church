@@ -24,7 +24,7 @@
         } else if (($transaction_cat != 'all' and $payment_mtd == 'all')) {
             $condition = "&& department_income.department_income_cat_id = $transaction_cat && year(transaction_date) = $year";
         } else if ($transaction_cat == 'all' and  $payment_mtd == 'all' and $year = '') {
-            $condition = " year(transaction_date) = year(current_date)";
+            $condition = "&& year(transaction_date) = year(current_date)";
         } else {
             $condition = "&& department_income.department_income_cat_id = $transaction_cat && payment_method_id = $payment_mtd && year(transaction_date) = $year";
         }
@@ -42,7 +42,7 @@
 
         // $lecrosoft = "SELECT * FROM income_and_expense";
 
-        $lecrosoft = "SELECT * FROM department_income LEFT JOIN department_income_category ON department_income.department_income_cat_id=department_income_category.department_income_cat_id LEFT JOIN payment_method ON department_income.payment_method_id = payment_method.id WHERE department_id = $depart_id" . $condition;
+        $lecrosoft = "SELECT * FROM department_income LEFT JOIN department_income_category ON department_income.department_income_cat_id=department_income_category.department_income_cat_id LEFT JOIN payment_method ON department_income.payment_method_id = payment_method.id WHERE department_income.department_id = $depart_id" . $condition;
 
         $query_lecrosoft = mysqli_query($con, $lecrosoft) or die(mysqli_error($con));
         $sum_income = 0;

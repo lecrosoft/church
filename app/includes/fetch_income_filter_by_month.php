@@ -130,11 +130,78 @@
 
      <script>
          $(document).ready(function() {
+
+
+             let selectedMonth = $('#selectedMonth').val();
+             let selectedYear = $('.selectedYear').val();
+             let transaction_cat = $('#transaction_cat').val();
+
+
+             <?php
+                $lecrosoft = "SELECT * FROM income_expence_category WHERE id = ${transaction_cat}";
+                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                $row = mysqli_fetch_assoc($query_lecrosoft);
+                extract($row);
+
+                ?>
+
+
+             let real_transaction_category_name = <?php echo $category_name; ?>
+             let payment_mtd = $('#payment_mtd').val();
+             let month = "";
+
+             if (selectedMonth == 1) {
+                 month = 'JANUARY';
+             } else if (selectedMonth == 2) {
+                 month = 'FEBRUARY';
+             } else if (selectedMonth == 3) {
+                 month = 'MARCH';
+
+             } else if (selectedMonth == 4) {
+                 month = 'APRIL';
+             } else if (selectedMonth == 5) {
+                 month = 'MAY';
+             } else if (selectedMonth == 6) {
+                 month = 'JUNE';
+             } else if (selectedMonth == 7) {
+                 month = 'JULY';
+
+             } else if (selectedMonth == 8) {
+                 month = 'AUGUST';
+             } else if (selectedMonth == 9) {
+                 month = 'SEPTEMBER';
+             } else if (selectedMonth == 10) {
+                 month = 'OCTOMBER';
+             } else if (selectedMonth == 11) {
+                 month = 'NOVEMBER';
+             } else if (selectedMonth == 12) {
+                 month = 'DECEMBER';
+             }
              $('#example-transation2').DataTable({
                  dom: 'Bfrtip',
-                 buttons: [
-                     'copy', 'csv', 'excel', 'pdf', 'print'
+                 buttons: [{
+                         extend: 'copyHtml5',
+                         messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                         footer: true
+                     },
+                     {
+                         extend: 'excelHtml5',
+                         messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                         footer: true
+                     },
+                     {
+                         extend: 'csvHtml5',
+                         messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                         footer: true
+                     },
+
+                     {
+                         extend: 'pdfHtml5',
+                         messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${real_transaction_category_name},  Payment Method : ${payment_mtd})`,
+                         footer: true
+                     }
                  ]
+
              });
          });
      </script>

@@ -4,7 +4,7 @@
 
 
     include('../../connections/conn.php');
-    sleep(1);
+
 
 
     ?>

@@ -130,12 +130,12 @@ include('includes/function.php');
 
                                         <!-- DELETE FAMILY CODE START  -->
                                         <?php
-                                        if (isset($_POST['del_fam_id'])) {
-                                            $del_fam_id = $_POST['del_fam_id'];
-                                            $lecrosoft = "DELETE FROM family WHERE family_id =$del_fam_id";
+                                        if (isset($_POST['del_cat_id'])) {
+                                            $del_cat_id = $_POST['del_cat_id'];
+                                            $lecrosoft = "DELETE FROM `income_expence_category` WHERE id =$del_cat_id";
                                             $query_lecrosoft = mysqli_query($con, $lecrosoft);
                                             if ($query_lecrosoft) {
-                                                echo '<script type="text/javascript">location = "family.php"</script>';
+                                                echo '<script type="text/javascript">location = "window.location.href"</script>';
                                             } else {
                                                 die("QUERY ERROR" . mysqli_error($con));
                                             }
@@ -385,10 +385,10 @@ include('includes/function.php');
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "family.php",
+                            url: "income_and_expense_cat.php",
                             method: "post",
                             data: {
-                                del_fam_id: id
+                                del_cat_id: id
                             },
                             success: function(data) {
 

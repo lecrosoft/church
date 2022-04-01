@@ -167,31 +167,31 @@ include('includes/function.php');
 
                                         <?php
                                         if (isset($_POST['add'])) {
-                                            $event_title = $_POST['event_title'];
+                                            $event_title_id = $_POST['event_title_id'];
                                             $contribution_by = $_POST['contribution_by'];
                                             $amount = $_POST['amount'];
                                             $contribution_date  = $_POST['contribution_date'];
 
 
                                             //  to prevent redundancy from add new contributor
-                                            $sql = "SELECT * FROM `contributions` WHERE `member_id` = $contribution_by && `event_id` = $event_title";
+                                            $sql = "SELECT * FROM `contributions` WHERE `member_id` = $contribution_by && `event_id` = $event_title_id";
                                             $query_sql = mysqli_query($con, $sql);
                                             $row = mysqli_fetch_assoc($query_sql);
                                             $member_id = $row['member_id'];
                                             $event_id = $row['event_id'];
-                                            if ($member_id == $contribution_by && $event_id == $event_title) {
+                                            if ($member_id == $contribution_by && $event_id == $event_title_id) {
                                                 echo "<script>alert('This User has Already been added as a contributor under this event')</script>";
                                                 // echo "Already Pledged";
                                             } else {
 
-                                                $lecrosoft = "INSERT INTO `contributions`(`event_id`, `member_id`, `amount_to_contribute`, `contribution_date`) VALUES ($event_title,$contribution_by,'$amount','$contribution_date')";
+                                                $lecrosoft = "INSERT INTO `contributions`(`event_id`, `member_id`, `amount_to_contribute`, `contribution_date`) VALUES ($event_title_id,$contribution_by,'$amount','$contribution_date')";
 
-                                                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+                                                $query_lecrosoft = mysqli_query($con, $lecrosoft) or die(mysqli_error($con));
 
-                                                $lecrosft_update_event = "UPDATE event SET `amount_promised` = `amount_promised` + $amount WHERE event_id = $event_title";
+                                                $lecrosft_update_event = "UPDATE event SET `amount_promised` = `amount_promised` + $amount WHERE event_id = $event_title_id";
                                                 $query_update_event = mysqli_query($con, $lecrosft_update_event);
                                                 if ($query_update_event) {
-                                                    echo "<script type='text/javascript'>location=location.href</script>";
+                                                    echo "<script type='text/javascript'>location=window.location.href</script>";
                                                 }
                                             }
                                         }
@@ -267,7 +267,7 @@ ADD PLEDGER -->
                                     <div class="form-group mb-3">
 
                                         <label for="">Event Title<span class="text-danger">*</span></label>
-                                        <select class="form-select form-control" name="event_title" required>
+                                        <select class="form-select form-control" name="event_title_id" required>
                                             <?php
                                             if (isset($_GET['event_id'])) {
                                                 $event_id = $_GET['event_id'];

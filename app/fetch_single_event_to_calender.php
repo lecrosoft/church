@@ -112,7 +112,7 @@ if (isset($_POST['id'])) {
                             <div class="d-flex justify-content-between mb-2">
 
 
-                                <a <?php echo $hidden ?> href="edit_all_event?editid=<?php echo $event_id ?>" class="btn btn-sm btn-primary ">Edit</a>
+                                <a <?php echo $hidden ?> href="edit_all_event.php?editid=<?php echo $event_id ?>" class="btn btn-sm btn-primary ">Edit</a>
                                 <a <?php echo $hidden ?> href="event_contribution.php?event_id=<?php echo $event_id ?>" class="btn btn-sm btn-primary ">Delete</a>
 
 

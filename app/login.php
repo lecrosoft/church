@@ -41,6 +41,7 @@
                 $email = mysqli_real_escape_string($con, $email);
                 $password = mysqli_real_escape_string($con, $password);
 
+
                 if (!empty($email) && !empty($password)) {
                   $lecrosoft = "SELECT * FROM members WHERE email = '$email'";
                   $query_lecrosoft = mysqli_query($con, $lecrosoft);
@@ -56,8 +57,13 @@
                   $db_photo = $row['photo'];
                   $db_phone = $row['phone_number_one'];
                 }
+
+                $verify_password = password_verify($password, $db_password);
+
+
+
                 // $email == $db_email && $password == $db_password && $db_user_role == "Admin"
-                if ($email == $db_email && $password == $db_password) {
+                if ($email == $db_email && $verify_password == 1) {
 
                   $_SESSION['member_id'] = $db_member_id;
                   $_SESSION['username'] = $db_username;
@@ -87,7 +93,7 @@
               <h6 class="font-weight-light">Sign in to continue.</h6>
               <form class="pt-3" method="POST">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" required="" name="email" placeholder="Username">
+                  <input type="email" class="form-control form-control-lg" required="" name="email" placeholder="Enter your email">
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" required="" name="password" placeholder="Password">
@@ -100,7 +106,7 @@
                     <label class="form-check-label text-muted">
                       <input type="checkbox" class="form-check-input"> Keep me signed in </label>
                   </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
+                  <a href="forgot_password" class="auth-link text-black">Forgot password?</a>
                 </div>
                 <!-- <div class="mb-2">
                   <button type="button" class="btn btn-block btn-facebook auth-form-btn">

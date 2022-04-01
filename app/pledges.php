@@ -191,7 +191,7 @@ include('includes/function.php');
                                                 $lecrosft_update_campaign = "UPDATE campaign SET `amount_pledged` = `amount_pledged` + $amount WHERE campaign_id = $cp_id";
                                                 $query_update_campaign = mysqli_query($con, $lecrosft_update_campaign);
                                                 if ($query_update_campaign) {
-                                                    echo "<script type='text/javascript'>location=location.href</script>";
+                                                    echo "<script type='text/javascript'>location=window.location.href</script>";
                                                 }
                                             }
                                         }

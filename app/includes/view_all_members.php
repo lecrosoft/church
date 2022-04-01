@@ -48,10 +48,12 @@
                             $realdate = date("d M Y", strtotime($date_of_birth));
                             echo "<tr>";
                             echo "<td class='py-1'>
+                            <a href='members.php?source=member-profile&id=$member_id'>
                             <img
                               src='./assets/images/users/$photo'
                               alt='image'
                             />
+                            </a>
                           </td>";
                             echo "<td>$title</td>";
                             echo "<td>$last_name</td>";

@@ -12,22 +12,35 @@ if (isset($_POST['income_expence_cat_id'])) {
 ?>
 <form method="POST">
     <div class="form-group mb-3">
-        <input type="text" class="form-control" id="fname" value='<?php echo $category_name ?>'>
+        <input type="text" class="form-control" id="category_name" value='<?php echo $category_name ?>'>
 
     </div>
     <div class="form-group mb-3">
-        <input type="text" class="form-control" id="fleader" value='<?php echo $description ?>'>
+        <input type="text" class="form-control" id="description" value='<?php echo $description ?>'>
 
     </div>
 
     <div class="form-group mb-3">
-        <input type="text" class="form-control" id="fquantity" value='<?php echo $type ?>'>
+
+        <select name="" class="form-select form-control" id="type">
+            <option value="<?php echo $type ?>"><?php echo $type ?> </option>
+
+            <?php
+            if ($type == "income") {
+                echo "<option value='expense'>Expense</option>";
+            } else {
+                echo "<option value='income'>Income</option>";
+            }
+
+            ?>
+        </select>
+
 
     </div>
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary update" id="<?php echo $family_id ?>">Save changes</button>
+        <button type="submit" class="btn btn-primary update" id="<?php echo $id ?>">Save changes</button>
     </div>
 </form>
 
@@ -49,29 +62,18 @@ if (isset($_POST['income_expence_cat_id'])) {
     $(document).ready(function() {
         $('.update').click(function() {
             var id = $(this).attr("id");
-            let fname = document.getElementById("fname").value
-            let fleader = document.getElementById("fleader").value
-            let fquantity = document.getElementById("fquantity").value
-            let fcontact = document.getElementById("fcontact").value
-            let address = document.getElementById("address").value
-            let status = document.getElementById("status").value
-            let jtime = document.getElementById("jtime").value
+            let category_name = document.getElementById("category_name").value
+            let description = document.getElementById("description").value
+            let type = document.getElementById("type").value
+
             $.ajax({
-                url: "fetch_family.php",
+                url: "income_expence_cat.php",
                 method: "POST",
                 data: {
                     id: id,
-                    fname: fname,
-                    fleader: fleader,
-                    fquantity: fquantity,
-                    fcontact: fcontact,
-                    address: address,
-                    status: status,
-                    jtime: jtime
-
-
-
-
+                    category_name: category_name,
+                    description: description,
+                    type: type
                 },
                 success: function(data) {
 
@@ -85,18 +87,15 @@ if (isset($_POST['income_expence_cat_id'])) {
 <?php
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
-    $fname = $_POST['fname'];
-    $fleader = $_POST['fleader'];
-    $fquantity = $_POST['fquantity'];
-    $fcontact = $_POST['fcontact'];
-    $address  = $_POST['address'];
-    $status = $_POST['status'];
-    $jtime = $_POST['jtime'];
+    $category_name = $_POST['category_name'];
+    $description = $_POST['description'];
+    $type = $_POST['type'];
 
-    $lecrosoft = "UPDATE `family` SET `family_name`='$fname',`family_leader`='$fleader',`family_quantity`='$fquantity',`family_contact`='$fcontact',`address`='$address',`status`='$status',`join_date`='$jtime' WHERE family_id = $id";
+
+    $lecrosoft = "UPDATE `income_expence_category` SET `category_name`='$category_name',`description`='$description',`type`='$type' WHERE `id` = $id";
     $query_lecrosoft = mysqli_query($con, $lecrosoft);
     if ($query_lecrosoft) {
-        echo '<script type="text/javascript">location = "family.php"</script>';
+        echo '<script type="text/javascript">location = "location.href"</script>';
     }
 }
 ?><?php

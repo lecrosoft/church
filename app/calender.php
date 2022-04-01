@@ -202,6 +202,7 @@ $member_to_fetch_id = $_SESSION['member_id'];
 
         <script>
             $(document).ready(function() {
+
                 var calendar = $('#calendar').fullCalendar({
                     editable: true,
                     eventColor: '#da8cff',
@@ -210,6 +211,7 @@ $member_to_fetch_id = $_SESSION['member_id'];
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay'
                     },
+
                     events: 'load_event_to_calender.php',
 
                     selectable: true,

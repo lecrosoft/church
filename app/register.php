@@ -47,6 +47,7 @@
                 $email = mysqli_real_escape_string($con, $email);
                 $password = mysqli_real_escape_string($con, $password);
 
+                $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
                 if (!empty($email) and !empty($password)) {
                   $lecrosoft = "SELECT * FROM members WHERE email ='$email'";
@@ -66,7 +67,7 @@
    An account with this email already Exists!
 </div>';
                   } else {
-                    $sql = "INSERT INTO `members`(`first_name`, `last_name`, `email`,  `password`) VALUES ('$firstname','$lastname','$email','$password')";
+                    $sql = "INSERT INTO `members`(`first_name`, `last_name`, `email`,  `password`) VALUES ('$firstname','$lastname','$email','$password_hash')";
 
                     $query_sql = mysqli_query($con, $sql) or die(mysqli_error($con));
 

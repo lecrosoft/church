@@ -17,6 +17,20 @@ include('includes/function.php');
             <?php include('includes/left_side_bar.php') ?>
             <!-- ========== SIDE BAR ENDS ============ -->
 
+            <?php
+            if (isset($_GET['d_id'])) {
+                $depart_id = $_GET['d_id'];
+                $lecrosoft = "SELECT * FROM department WHERE department_id = $depart_id";
+                $query_lecrosoft = mysqli_query($con, $lecrosoft);
+
+                $row = mysqli_fetch_assoc($query_lecrosoft);
+                $department_id = $row['department_id'];
+                $department = $row['department_name'];
+                $department_leader = $row['department_leader_name'];
+            }
+
+            ?>
+
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -26,24 +40,32 @@ include('includes/function.php');
 
 
                     <!-- ================== PAGE HEADER COMES IN ==================== -->
-                    <?php include('includes/page_header.php') ?>
+                    <div class="page-header">
+                        <h3 class="page-title">
+                            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                <i class="mdi mdi-home"></i>
+                            </span>
+                            Income Report
+                        </h3>
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <a href="department_dashboard.php?d_id=<?php echo $depart_id ?>"><span></span>Go back to dashboard
+                                        <i class="
+                        mdi mdi-alert-circle-outline
+                        icon-sm
+                        text-primary
+                        align-middle
+                      "></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                     <!-- ================== PAGE HEADER ENDS HERE ==================== -->
 
 
 
-                    <?php
-                    if (isset($_GET['d_id'])) {
-                        $depart_id = $_GET['d_id'];
-                        $lecrosoft = "SELECT * FROM department WHERE department_id = $depart_id";
-                        $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
-                        $row = mysqli_fetch_assoc($query_lecrosoft);
-                        $department_id = $row['department_id'];
-                        $department = $row['department_name'];
-                        $department_leader = $row['department_leader_name'];
-                    }
-
-                    ?>
                     <div class="row">
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">

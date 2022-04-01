@@ -28,7 +28,7 @@
 
 <script rel="stylesheet" src="summernote/summernote-bs4.js"></script>
 <script src="select2/js/select2.min.js"></script>
-<script src="pwa_script.js"></script>
+<!-- <script src="pwa_script.js"></script> -->
 <!-- End of data tables -->
 
 <script>

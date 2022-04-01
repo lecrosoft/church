@@ -24,6 +24,8 @@ include('includes/function.php');
 
 
                     <?php
+                    $first_name = $_SESSION['first_name'];
+                    $last_name = $_SESSION['last_name'];
                     if (isset($_GET['d_id'])) {
                         $depart_id = $_GET['d_id'];
                         $lecrosoft = "SELECT * FROM department WHERE department_id = $depart_id";
@@ -50,7 +52,7 @@ include('includes/function.php');
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    <a href="#"><span></span>Overview
+                                    <a href="department_dashboard.php?d_id=<?php echo $depart_id ?>"><span></span>Go back to dashboard
                                         <i class="
                         mdi mdi-alert-circle-outline
                         icon-sm
@@ -231,13 +233,43 @@ include('includes/function.php');
 
                 <!-- =============== MODAL COMES IN ======================= -->
 
-                <!-- EDIT FAMILY MODAL START-->
+                <!-- Record Payment START-->
+
+                <div id="recordPayment" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <input type="text" id="firstName" value="<?php echo $first_name ?>">
+                        <input type="text" id="lastName" value="<?php echo $last_name ?>">
+                        <input type="text" hidden class="department_clicked_id" id="<?php echo $depart_id ?>" value="<?php echo $depart_id ?>">
+                        <div class="modal-content" id="department_payment_content">
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- payment Historys START-->
+
+                <div id="paymentHistory" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <input type="text" hidden class="department_clicked_id" id="<?php echo $depart_id ?>" value="<?php echo $depart_id ?>">
+                        <div class="modal-content" id="department_payment_history_content">
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- EDIT Member MODAL START-->
 
                 <div id="dataModal" class="modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Edit Family Details</h5>
+                                <h5 class="modal-title">Edit Family Details666</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -259,7 +291,7 @@ include('includes/function.php');
 
 
 
-                <!-- ADD FAMILY -->
+                <!-- ADD Member -->
                 <div id="dataModal2" class="modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -424,15 +456,67 @@ include('includes/function.php');
 
         });
     </script>
-    <!-- CODE TO VIEW FAMILY DETAILS IN MODAL END -->
+    <!-- CODE TO VIEW Department MEMBERS DETAILS IN MODAL END -->
 
 
-    <!-- CODE TO SHOW FAMILY ADD FORM START -->
+    <!-- CODE TO SHOW MEMBER ADD FORM START -->
 
     <script>
         $(document).ready(function() {
             $('.add-family').click(function() {
                 $('#dataModal2').modal("show");
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.add-payment').click(function() {
+
+                let memberID = $(this).attr('id');
+                let firstName = $('#firstName').val();
+                let lastName = $('#lastName').val();
+                let departmentClickedID = $('.department_clicked_id').attr('id');
+                $.ajax({
+                    url: "fetch_department_payment_form.php",
+                    method: "POST",
+                    data: {
+                        memberID: memberID,
+                        firstName: firstName,
+                        lastName: lastName,
+                        departmentClickedID: departmentClickedID
+                    },
+                    success: function(data) {
+                        $('#department_payment_content').html(data);
+                        $('#recordPayment').modal("show");
+                    }
+                })
+
+
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.payment_history').click(function() {
+
+                let memberID = $(this).attr('id');
+
+                let departmentClickedID = $('.department_clicked_id').attr('id');
+                $.ajax({
+                    url: "fetch_department_payment_history.php",
+                    method: "POST",
+                    data: {
+                        memberID: memberID,
+
+                        departmentClickedID: departmentClickedID
+                    },
+                    success: function(data) {
+                        $('#department_payment_history_content').html(data);
+                        $('#paymentHistory').modal("show");
+                    }
+                })
+
+
             })
         })
     </script>

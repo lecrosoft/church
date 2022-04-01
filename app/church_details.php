@@ -70,66 +70,69 @@ include('includes/function.php');
 
                                             <div class="row">
                                                 <?php
-                                                $mail_sql = "SELECT * FROM `sms_settings`";
-                                                $query_sql = mysqli_query($con, $mail_sql);
+                                                $sql = "SELECT * FROM `general_settings` WHERE setting_id =1";
+                                                $query_sql = mysqli_query($con, $sql);
                                                 $row = mysqli_fetch_assoc($query_sql);
                                                 extract($row);
                                                 ?>
-                                                <div class="form-group col-md-6">
-                                                    <input type="text" hidden name="user_name" class="receipient_email_array form-control" placeholder="Sender Name" Value="<?php echo $sender_name ?>">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <input type="text" hidden name="sender_api" class=" form-control" placeholder="Api" Value="<?php echo $api_key ?>">
-                                                </div>
+
 
                                             </div>
 
                                             <div class="row">
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="">Select Sender ID</label>
-                                                    <select name="sender_id" class=" form-control form-select" id="">
-                                                        <?php $sql = "SELECT * FROM `sms_sender_id`";
-                                                        $query_sql = mysqli_query($con, $sql);
-
-                                                        while ($row = mysqli_fetch_assoc($query_sql)) {
-                                                            extract($row);
-                                                            echo "<option value='$sender_id'>$sender_id</option>";
-                                                        }
-                                                        ?>
-
-                                                    </select>
+                                                    <label for="">Church Name</label>
+                                                    <input type="text" class="form-control" value="<?php echo $church_name ?>">
                                                 </div>
+
                                                 <div class="form-group col-md-6">
-                                                    <label for="">Which group do you want to send SMS to</label>
-                                                    <select name="select_contact" id="select_contact" class="form-control form-select">
-                                                        <option disable selected value="">===Select Group === </option>
-                                                        <option value="members_only">Members Only </option>
-                                                        <option value="pastors_only">Pastors Only </option>
-                                                        <option value="members_and_pastors">Members and Pastors </option>
-                                                        <option value="first_timers">All First Timers </option>
-
-                                                    </select>
+                                                    <label for="">Phone number</label>
+                                                    <input type="text" class="form-control" value="<?php echo $phone_number ?>">
                                                 </div>
 
+
                                             </div>
-                                            <div class="">
-                                                <!-- <div class="form-group">
-                                                    <button type="button" class="btn btn-gradient-primary">
-                                                        SMS Unit Balance &nbsp; <span class="badge badge-light text-dark">400</span>
-                                                    </button>
-                                                </div> -->
-                                            </div>
+
 
 
 
                                             <div class="message-content">
                                                 <div class="form-group">
-                                                    <label for="">Message Text</label>
-                                                    <textarea class="form-control" name="body" id="" cols="30" rows="10" placeholder="Enter your message here"></textarea>
+                                                    <label for="">Address</label>
+                                                    <input type="text" class="form-control" value="<?php echo $address ?>">
                                                 </div>
-                                                <button type="submit" name="send" class="btn btn-gradient-primary">SEND </button>
+
                                             </div>
+
+
+
+
+                                            <!-- <div class="row">
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Church Name</label>
+                                                    <input type="text" class="form-control" value="<?php echo $church_name ?>">
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+
+                                                    <div class="form-group">
+                                                        <label>File upload</label>
+                                                        <input type="file" id="photo" name="photo" class="file-upload-default">
+                                                        <div class="input-group col-xs-12">
+                                                            <input type="text" class="form-control file-upload-info" value="<?php echo $photo ?>" disabled placeholder="Upload Image">
+                                                            <span class="input-group-append">
+                                                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div> -->
+
+                                            <button type="submit" name="send" class="btn btn-gradient-primary">SEND </button>
                                         </form>
 
 

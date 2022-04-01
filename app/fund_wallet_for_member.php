@@ -61,7 +61,7 @@ include('includes/function.php');
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Select the member you are adding fund to</label>
                                             <select name="member_id" id="" class="form-control form-select select2">
-                                                <option value=''>Select Approval </option>
+                                                <option value='' selected disabled>Select Approval </option>
                                                 <?php
                                                 $sql = "SELECT * FROM members";
                                                 $query_sql = mysqli_query($con, $sql);

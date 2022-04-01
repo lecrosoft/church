@@ -64,7 +64,7 @@ include('includes/function.php');
 
                                     <form method="POST" class="forms-sample" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="exampleInputUsername1">Event Title</label>
+                                            <label for="exampleInputUsername1">Prayer Request</label>
                                             <input type="text" name="title" class="form-control" id="exampleInputUsername1" placeholder="Prayer Request Title" value="<?php echo $prayer_title ?>">
                                         </div>
 

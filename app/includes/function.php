@@ -736,10 +736,10 @@ selectContributorsUnderEvent()
 {
   global $con;
 
-  if (isset($_GET['cp_id'])) {
-    $cp_id = $_GET['cp_id'];
+  if (isset($_GET['event_id'])) {
+    $event_get_id = $_GET['event_id'];
 
-    $lecrosoft = "SELECT pledges.*,campaign,first_name,last_name,note,amount,pledge_date,pledge_due_date FROM pledges LEFT JOIN campaign ON pledges.campaign_id=campaign.campaign_id LEFT JOIN members ON pledges.member_id = members.member_id WHERE pledges.campaign_id =$cp_id ";
+    $lecrosoft = "SELECT * FROM contributions  LEFT JOIN members ON contributions.member_id = members.member_id WHERE event_id =$event_get_id ";
     $query_lecrosoft = mysqli_query($con, $lecrosoft);
 
 
@@ -748,7 +748,7 @@ selectContributorsUnderEvent()
 
 
       extract($row);
-      if ($amount == $ammount_paid) {
+      if ($amount_to_contribute == $Amount_paid) {
         $disabled = "disabled";
         $btn_label = "Payment made";
         $btn_color = "btn-success";
@@ -761,14 +761,12 @@ selectContributorsUnderEvent()
       }
       echo "<tr>";
       echo "<td>" . "$last_name" . " " . "$first_name" . "</td>";
-      echo "<td>$amount</td>";
-      echo "<td>$pledge_date</td>";
-      echo "<td>$pledge_due_date</td>";
-      echo "<td>$ammount_paid</td>";
-
-      echo "<td>" . $balance . "</td>";
+      echo "<td>$amount_to_contribute</td>";
+      echo "<td>$contribution_date</td>";
+      echo "<td>$Amount_paid</td>";
+      echo "<td> $balance </td>";
       // echo "<td>$status</td>";
-      echo "<td class='text-nowrap'><button $disabled type='button'  id='$pledges_id' class='view_data btn $btn_color btn-sm' data-toggle='tooltip' data-original-title='Add payment for this pledger' > <i class='fa $faplus text-inverse m-r-10'></i> $btn_label </button> </td>";
+      echo "<td class='text-nowrap'><button $disabled type='button'  id='$contribution_id' class='view_data btn $btn_color btn-sm' data-toggle='tooltip' data-original-title='Add payment for this pledger' > <i class='fa $faplus text-inverse m-r-10'></i> $btn_label </button> </td>";
       echo "</tr>";
     }
   }
@@ -877,7 +875,19 @@ selectDepartmentMember()
 
     echo "<td>$status</td>";
 
-    echo "<td class='text-nowrap'><a type='button'  id='$id' class='view_data' data-toggle='tooltip' data-original-title='Edit'> <i class='mdi mdi-border-color text-warning m-r-10'></i> </a> <a id='$id' class='delete-alert'  data-toggle='tooltip' data-original-title='Delete'> <i class='mdi mdi-delete-forever text-danger'></i> </a> </td>";
+    echo "<td class='text-nowrap'>
+    <div class='btn-group'>
+    
+  <button type='button' class='btn btn-sm mdi mdi-dots-vertical' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+  </button>
+  <div class='dropdown-menu dropdown-menu-right'>
+    <button class='dropdown-item add-payment' id='$member_id' type='button'><i class='mdi mdi-credit-card text-success m-r-10'></i> Record Payment</button>
+    <button class='dropdown-item payment_history' id='$member_id' type='button'><i class='mdi mdi-history text-primary m-r-10'></i> Payment History</button>
+    <button id='$id' class='dropdown-item view_data' type='button'><i class='mdi mdi-border-color text-warning m-r-10'></i> Edit</button>
+    <button id='$id' class='dropdown-item delete-alert' type='button'><i class='mdi mdi-delete-forever text-danger'></i> Delete </button>
+  </div>
+</div>
+    </td>";
     echo "</tr>";
   }
 }
@@ -978,7 +988,7 @@ function selectDepartmentIncomeByMonth()
   global $con;
 
   $depart_id = $_GET['d_id'];
-  $lecrosoft = "SELECT * FROM department_income LEFT JOIN department_income_category ON department_income.department_income_cat_id=department_income_category.department_income_cat_id LEFT JOIN payment_method ON department_income.payment_method_id = payment_method.id WHERE department_id = $depart_id  && month(transaction_date) = month(current_date) AND year(transaction_date) = year(current_date)";
+  $lecrosoft = "SELECT * FROM department_income LEFT JOIN department_income_category ON department_income.department_income_cat_id=department_income_category.department_income_cat_id LEFT JOIN payment_method ON department_income.payment_method_id = payment_method.id WHERE department_income.department_id = $depart_id  && month(transaction_date) = month(current_date) AND year(transaction_date) = year(current_date)";
   $query_lecrosoft = mysqli_query($con, $lecrosoft);
   $sum_income = 0;
   $formated_sum_income = "";
@@ -1023,7 +1033,7 @@ selectDepartmentIncomeByYear()
 {
   global $con;
   $depart_id = $_GET['d_id'];
-  $lecrosoft = "SELECT * FROM department_income LEFT JOIN department_income_category ON department_income.department_income_cat_id=department_income_category.department_income_cat_id LEFT JOIN payment_method ON department_income.payment_method_id = payment_method.id WHERE department_id = $depart_id  && year(transaction_date) = year(current_date)";
+  $lecrosoft = "SELECT * FROM department_income LEFT JOIN department_income_category ON department_income.department_income_cat_id=department_income_category.department_income_cat_id LEFT JOIN payment_method ON department_income.payment_method_id = payment_method.id WHERE department_income.department_id = $depart_id  && year(transaction_date) = year(current_date)";
   $query_lecrosoft = mysqli_query($con, $lecrosoft);
   $sum_income = 0;
   $formated_sum_income = "";

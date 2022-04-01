@@ -48,10 +48,11 @@ if (isset($_POST['update_members'])) {
     $user_role = $_POST['user_role'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $password_harsh = password_hash($password, PASSWORD_DEFAULT);
     $user_type = $_POST['user_type'];
     $can_accept_wallet = $_POST['can_accept_wallet'];
-    move_uploaded_file($tmp_name, $folder . $photo);
-    $sql = "UPDATE `members` SET `title`='$title',`first_name`='$fname',`last_name`='$lname',`phone_number_one`='$phone_one_with_code',`phone_number_two`='$phone_two_with_code',`email`='$email',`photo`='$photo',`state`='$state',`baptize_date`='$bptdate',`state_of_origin`='$stateoforigin',`marrital_status`='$marstatus',`employment_status`='$empstatus',`job_type`='$jobtype',`family`='$family',`country`='$country',`address`='$address',`facebook`='$fb_id',`linktdin`='$linkdn',`city`='$city',`gender`='$gender',`status`='$status',`date_of_birth`='$dob',`username`='$username',`password`='$password',`user_role`='$user_role',`user_type`='$user_type',`can_accept_wallet_payment`='$can_accept_wallet' WHERE `member_id` = $member_id";
+    // move_uploaded_file($tmp_name, $folder . $photo);
+    $sql = "UPDATE `members` SET `title`='$title',`first_name`='$fname',`last_name`='$lname',`phone_number_one`='$phone_one_with_code',`phone_number_two`='$phone_two_with_code',`email`='$email',`state`='$state',`baptize_date`='$bptdate',`state_of_origin`='$stateoforigin',`marrital_status`='$marstatus',`employment_status`='$empstatus',`job_type`='$jobtype',`family`='$family',`country`='$country',`address`='$address',`facebook`='$fb_id',`linktdin`='$linkdn',`city`='$city',`gender`='$gender',`status`='$status',`date_of_birth`='$dob',`username`='$username',`user_role`='$user_role',`user_type`='$user_type',`can_accept_wallet_payment`='$can_accept_wallet' WHERE `member_id` = $member_id";
     $query_sql = mysqli_query($con, $sql) or die(mysqli_error($con));
 
     if ($query_sql) {

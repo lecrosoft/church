@@ -5,6 +5,7 @@ if (isset($_GET['id'])) {
     $query_lecrosoft = mysqli_query($con, $lecrosoft);
     $row = mysqli_fetch_assoc($query_lecrosoft);
     extract($row);
+    $resident_state = $row['state'];
 }
 ?>
 <div class="row">
@@ -164,11 +165,11 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
                         <!--/span-->
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
 
                             <div class="form-group">
                                 <label>File upload</label>
-                                <input type="file" id="photo" name="photo" class="file-upload-default">
+                                <input type="file" id="photo" name="photo" value="<?php echo $photo ?>" class="file-upload-default">
                                 <div class="input-group col-xs-12">
                                     <input type="text" class="form-control file-upload-info" value="<?php echo $photo ?>" disabled placeholder="Upload Image">
                                     <span class="input-group-append">
@@ -176,7 +177,7 @@ if (isset($_GET['id'])) {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!--/span-->
                     </div>
                     <!--/row-->
@@ -208,7 +209,7 @@ if (isset($_GET['id'])) {
 
                                 ?>
                                 <select class="form-control select2" name="state" data-placeholder="Choose a Category" tabindex="1">
-                                    <option value="<?php echo $state ?>"><?php echo $state ?></option>
+                                    <option value="<?php echo $resident_state ?>"><?php echo $resident_state ?></option>
                                     <?php
                                     while ($row = mysqli_fetch_assoc($query_lecrosoft)) {
                                         $state = $row['state'];
@@ -405,7 +406,7 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
                         <!--/span-->
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
 
 
@@ -414,7 +415,7 @@ if (isset($_GET['id'])) {
 
 
                             </div>
-                        </div>
+                        </div> -->
                         <!--/span-->
                     </div>
                     <div class="row">
@@ -422,7 +423,7 @@ if (isset($_GET['id'])) {
                             <div class="form-group">
 
 
-                                <label class="control-label" <?php echo $hidden ?>>Can accept wallent payment?</label>
+                                <label class="control-label" <?php echo $hidden ?>>Can accept wallet payment?</label>
                                 <select name="can_accept_wallet" class="form-select form-control" id="" <?php echo $hidden ?>>
                                     <option value="<?php echo $can_accept_wallet_payment ?>"><?php echo $can_accept_wallet_payment ?></option>
 

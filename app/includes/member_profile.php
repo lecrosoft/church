@@ -13,7 +13,44 @@ if (isset($_GET['id'])) {
 <div class="row">
     <div class="col-md-4 col-xs-12">
         <div class="white-box">
-            <div class="user-bg mb-4"> <img width="100%" alt="user" height="300px" src="assets/images/users/<?php echo $photo ?>"> </div>
+            <div class="user-bg mb-4"> <img width="100%" alt="user" height="300px" src="assets/images/users/<?php echo $photo ?>">
+
+                <form action="" enctype="multipart/form-data" method="POST">
+                    <div class="form-group">
+
+                        <input type="file" id="photo_Id" name="photo" class="file-upload-default">
+
+                        <div class="input-group col-xs-12">
+                            <input type="text" hidden class="form-control file-upload-info" value="<?php echo $photo ?>" disabled placeholder="Upload Image">
+                            <span class="input-group-append py-2">
+                                <button class="file-upload-browse btn btn-gradient-primary btn-sm" type="button">Change picture</button>
+                                <button name="upload-btn" class="btn btn-gradient-primary upload-btn btn-sm" type="submit">Upload</button>
+                            </span>
+                            <?php
+                            if (isset($_POST['upload-btn'])) {
+                                $photo_to_update = $_FILES['photo']['name'];
+                                $tmp_name = $_FILES['photo']['tmp_name'];
+                                $folder = "assets/images/users/$photo_to_update";
+
+
+
+
+                                if (move_uploaded_file($tmp_name, $folder)) {
+                                    $sql = "UPDATE `members` SET `photo`='$photo_to_update'  WHERE `member_id` = $member_id";
+                                    $query_sql = mysqli_query($con, $sql) or die(mysqli_error($con));
+
+                                    if ($query_sql) {
+                                        echo '<script type="text/javascript">location = window.location.href</script>';
+                                    }
+                                } else {
+                                    echo "Upload failed";
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="user-btm-box">
 
                 <button type='button' class='mb-3  btn btn-gradient-primary btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

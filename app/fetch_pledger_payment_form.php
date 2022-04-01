@@ -243,6 +243,7 @@ if (isset($_POST['pledger_id'])) {
 
                             })
                             location = window.location.href;
+                            location = window.location.href;
                         } else {
 
                             Swal.fire({

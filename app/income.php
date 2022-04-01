@@ -297,10 +297,73 @@ include('includes/function.php');
 
     <script>
         $(document).ready(function() {
+            let selectedMonth = $('#selectedMonth').val();
+            let selectedYear = $('.selectedYear').val();
+            let transaction_cat = $('#transaction_cat').val();
+            let payment_mtd = $('#payment_mtd').val();
+            let month = "";
+
+            if (selectedMonth == 1) {
+                month = 'JANUARY';
+            } else if (selectedMonth == 2) {
+                month = 'FEBRUARY';
+            } else if (selectedMonth == 3) {
+                month = 'MARCH';
+
+            } else if (selectedMonth == 4) {
+                month = 'APRIL';
+            } else if (selectedMonth == 5) {
+                month = 'MAY';
+            } else if (selectedMonth == 6) {
+                month = 'JUNE';
+            } else if (selectedMonth == 7) {
+                month = 'JULY';
+
+            } else if (selectedMonth == 8) {
+                month = 'AUGUST';
+            } else if (selectedMonth == 9) {
+                month = 'SEPTEMBER';
+            } else if (selectedMonth == 10) {
+                month = 'OCTOMBER';
+            } else if (selectedMonth == 11) {
+                month = 'NOVEMBER';
+            } else if (selectedMonth == 12) {
+                month = 'DECEMBER';
+            }
+
+
+
+            // $('#example-transation').append('<caption style="caption-side: bottom">A fictional company\'s staff table.</caption>');
             $('#example-transation').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                // buttons: [
+                //     'copy', 'csv', 'excel', 'pdf', 'print',
+
+                // ]
+
+
+
+                buttons: [{
+                        extend: 'copyHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+
+                    {
+                        extend: 'pdfHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    }
                 ]
 
             });
@@ -328,19 +391,62 @@ include('includes/function.php');
         $(document).ready(function() {
             $('#example-transation3').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                buttons: [{
+                        extend: 'copyHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+
+                    {
+                        extend: 'pdfHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    }
                 ]
             });
         });
     </script>
     <script>
         $(document).ready(function() {
+
+            let selectedMonth = $('#selectedMonth').val();
+
+
             $('#example-transation5').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                buttons: [{
+                        extend: 'copyHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    },
+
+                    {
+                        extend: 'pdfHtml5',
+                        messageTop: `INCOME REPORT FOR THE MONTH OF  ${month} ${selectedYear}     (Transaction Category : ${transaction_cat},  Payment Method : ${payment_mtd})`,
+                        footer: true
+                    }
                 ]
+
             });
         });
     </script>

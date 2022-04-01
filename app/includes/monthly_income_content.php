@@ -49,7 +49,7 @@
                  </div>
                  <div class="form-group px-2 col-md-3">
                      <label for="">By Month</label>
-                     <select class="form-control form-select month">
+                     <select class="form-control form-select month" id="selectedMonth">
                          <option value="<?php echo date('m') ?>"><?php echo date('F') ?></option>
                          <?php
                             $lecrosoft  = "SELECT * FROM months";
@@ -67,7 +67,7 @@
                  <div class="form-group px-2 col-md-3 col-sm-12">
                      <label for="">By Year</label>
 
-                     <input type="text" id="datepicker_year3" class="form-control year" value='<?php echo date("Y") ?>'>
+                     <input type="text" id="datepicker_year3" class="form-control year selectedYear" value='<?php echo date("Y") ?>'>
                  </div>
              </div>
          </form>

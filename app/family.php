@@ -268,7 +268,7 @@ include('includes/function.php');
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <input type="text" class="form-control" name="jtime" placeholder="Enter Join Time">
+                                        <input type="date" class="form-control" name="jtime" placeholder="Enter Join Time">
 
                                     </div>
                                     <div class="modal-footer">

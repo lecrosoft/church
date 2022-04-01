@@ -71,7 +71,7 @@ if (isset($_POST['contributor_id'])) {
 
             </div>
             <div class="form-group mb-3">
-                <label for="" hidden>Description</label>
+                <label for="" hidden>Current Balance</label>
                 <input hidden type="number" class="form-control" id="current_balance" value='<?php echo $balance ?>' disabled>
 
             </div>
@@ -194,7 +194,7 @@ if (isset($_POST['contributor_id'])) {
                     text: 'Payment date cannot be empty !'
                     // footer: '<a href="">Why do I have this issue?</a>'
                 })
-            } else if (amount > current_balance) {
+            } else if (parseFloat(amount) > parseFloat(current_balance)) {
 
                 Swal.fire({
                     icon: 'error',

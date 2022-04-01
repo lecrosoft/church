@@ -48,9 +48,12 @@
               </a>
               <div class="collapse" id="events">
                   <ul class="nav flex-column sub-menu">
+                      <!-- <li class="nav-item">
+                          <a class="nav-link" href="real_calender">Callender</a>
+                      </li>
                       <li class="nav-item">
                           <a class="nav-link" href="calender">Callender</a>
-                      </li>
+                      </li> -->
                       <li class="nav-item">
                           <a class="nav-link" href="events.php">All Events</a>
                       </li>
@@ -61,12 +64,12 @@
                           <a class="nav-link" href="add_event">Add New Event</a>
                       </li>
 
-                      <li class="nav-item">
+                      <!-- <li class="nav-item">
                           <a class="nav-link" href="add_event" <?php echo $hidden ?>>All Applicant</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="add_event" <?php echo $hidden ?>>Add Applicant</a>
-                      </li>
+                      </li> -->
 
 
                   </ul>
@@ -376,9 +379,9 @@
                       <li class="nav-item">
                           <a class="nav-link" href="church_details">Church details</a>
                       </li>
-                      <li class="nav-item">
+                      <!-- <li class="nav-item">
                           <a class="nav-link" href="">Browse Attendance</a>
-                      </li>
+                      </li> -->
 
 
                   </ul>
@@ -410,7 +413,7 @@
                   <i class="menu-arrow"></i>
                   <i class="mdi mdi-checkbox-marked menu-icon"></i>
               </a>
-              <div class="collapse" id="communication-settings">
+              <!-- <div class="collapse" id="communication-settings">
                   <ul class="nav flex-column sub-menu">
                       <li class="nav-item">
                           <a class="nav-link" href="sms_settings">SMS</a>
@@ -421,7 +424,7 @@
 
 
                   </ul>
-              </div>
+              </div> -->
           </li>
       </ul>
   </nav>
