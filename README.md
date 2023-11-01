@@ -1,3 +1,3 @@
 # church
 
-a Church managemment system with cms and website.This softare is fully developed by Ogundimu Olumide Olalekan +2348104986022
+a church management system with a CMS and website.This software is fully developed by Ogundimu Olumide Olalekan (+2348104986022).
